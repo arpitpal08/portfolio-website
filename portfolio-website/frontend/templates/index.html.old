@@ -1,0 +1,6430 @@
+{% extends "base.html" %}
+
+{% block title %}Arpit Pal - Full Stack Developer{% endblock %}
+
+{% block body_class %}home-page{% endblock %}
+
+{% block custom_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/shared.css') }}">
+<style>
+    /* Hero Section */
+    .hero {
+        padding: 6rem 0;
+        background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("{{ url_for('static', filename='images/hero-pattern.svg') }}") repeat;
+        opacity: 0.1;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .hero-title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+        color: #000000; /* Ensure black text in light mode */
+    }
+
+    .highlight {
+        color: var(--accent-primary);
+    }
+
+    .typed-wrapper {
+        min-height: 3.5rem;
+    }
+
+    .typed-text {
+        color: var(--accent-secondary);
+    }
+
+    .hero-description {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+        color: #000000; /* Ensure black text in light mode */
+    }
+
+    .hero-buttons {
+        margin-bottom: 3rem;
+    }
+
+    .hero-stats {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .stat-item {
+        text-align: center;
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--accent-primary);
+        margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+        font-size: 0.9rem;
+        opacity: 0.8;
+        color: #000000; /* Ensure black text in light mode */
+    }
+
+    .hero-image {
+        position: relative;
+        text-align: center;
+    }
+
+    .hero-image img {
+        max-width: 100%;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+    }
+
+    .experience-badge {
+        position: absolute;
+        bottom: 2rem;
+        right: 2rem;
+        background: var(--accent-primary);
+        color: #000000; /* Ensure black text for visibility */
+        padding: 1rem;
+        border-radius: var(--border-radius);
+        text-align: center;
+    }
+
+    .badge-number {
+        display: block;
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+
+    .badge-text {
+        font-size: 0.8rem;
+    }
+
+    /* Featured Projects */
+    .project-image {
+        height: 200px;
+        overflow: hidden;
+    }
+
+    .project-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Expertise Cards */
+    .expertise-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .expertise-card {
+        background: var(--card-bg);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+    }
+
+    .expertise-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .expertise-icon {
+        font-size: 2.5rem;
+        color: var(--accent-primary);
+        margin-bottom: 1.5rem;
+    }
+
+    .expertise-list {
+        list-style: none;
+        padding: 0;
+        margin: 1rem 0 0;
+    }
+
+    .expertise-list li {
+        margin-bottom: 0.5rem;
+        padding-left: 1.5rem;
+        position: relative;
+        color: #000000; /* Ensure black text in light mode */
+    }
+
+    .expertise-list li::before {
+        content: '→';
+        position: absolute;
+        left: 0;
+        color: var(--accent-secondary);
+    }
+
+    /* CTA Section */
+    .cta-section {
+        background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+        color: white;
+    }
+
+    .cta-section h2 {
+        margin-bottom: 1rem;
+        color: #000000; /* Ensure black text for visibility */
+    }
+
+    .cta-section p {
+        color: #000000; /* Ensure black text for visibility */
+    }
+
+    .cta-buttons .btn-outline {
+        border-color: white;
+        color: white;
+    }
+
+    .cta-buttons .btn-outline:hover {
+        background-color: white;
+        color: #000000; /* Changed to black for better visibility on hover */
+    }
+
+    .cta-buttons .btn-primary:hover {
+        color: #000000; /* Ensure black text on hover */
+    }
+
+    /* Dark mode overrides */
+    body.dark-theme .hero-title,
+    body.dark-theme .hero-description,
+    body.dark-theme .stat-label,
+    body.dark-theme .expertise-list li,
+    body.dark-theme .cta-section h2,
+    body.dark-theme .cta-section p {
+        color: var(--text-on-dark);
+    }
+    
+    /* Ensure buttons have proper contrast in dark mode */
+    body.dark-theme .hero-buttons .btn-primary,
+    body.dark-theme .hero-buttons .btn-outline,
+    body.dark-theme .cta-buttons .btn-primary,
+    body.dark-theme .cta-buttons .btn-outline {
+        color: var(--text-on-light) !important;
+    }
+    
+    /* Special styling for Get in Touch button in dark mode */
+    body.dark-theme .hero-buttons a[href*="contact"].btn-outline,
+    body.dark-theme .cta-buttons a[href*="contact"].btn-outline {
+        background-color: transparent !important;
+        color: var(--text-on-dark) !important;
+        border: 2px solid var(--text-on-dark) !important;
+    }
+    
+    body.dark-theme .hero-buttons a[href*="contact"].btn-outline:hover,
+    body.dark-theme .cta-buttons a[href*="contact"].btn-outline:hover {
+        background-color: var(--text-on-dark) !important;
+        color: var(--bg-color) !important;
+        border-color: var(--text-on-dark) !important;
+    }
+    
+    /* Ensure expertise cards have visible text */
+    body.dark-theme .expertise-card {
+        background: var(--card-bg);
+    }
+    
+    body.dark-theme .expertise-card h3 {
+        color: var(--text-on-dark);
+    }
+    
+    /* Ensure project cards have visible text */
+    body.dark-theme .project-card {
+        background: rgba(30, 30, 30, 0.8);
+    }
+    
+    body.dark-theme .project-title,
+    body.dark-theme .project-description {
+        color: var(--text-on-dark);
+    }
+    
+    body.dark-theme .project-category {
+        color: var(--accent-primary);
+        background-color: rgba(30, 30, 30, 0.7);
+        border: 1px solid rgba(255, 215, 0, 0.5);
+    }
+    
+    /* Ensure CTA section has proper contrast */
+    body.dark-theme .cta-section {
+        background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+    }
+    
+    body.dark-theme .cta-section h2,
+    body.dark-theme .cta-section p {
+        color: var(--text-on-light) !important;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .hero {
+            padding: 4rem 0;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+        }
+
+        .hero-stats {
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .hero-image {
+            margin-top: 3rem;
+        }
+
+        .expertise-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* Add animations for project images */
+    @keyframes pulse {
+        0% { transform: scaleX(1); }
+        50% { transform: scaleX(1.2); }
+        100% { transform: scaleX(1); }
+    }
+
+    @keyframes scan {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+    }
+
+    .project-image-placeholder {
+        transition: transform 0.3s ease;
+    }
+
+    .project-card:hover .project-image-placeholder {
+        transform: scale(1.05);
+    }
+
+    /* Certifications Showcase Section */
+    .certifications-showcase {
+        padding: 5rem 0;
+        background: linear-gradient(135deg, var(--bg-color) 0%, var(--bg-secondary) 100%);
+        position: relative;
+    }
+    
+    .certifications-showcase::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(to right, transparent, var(--accent-primary), transparent);
+    }
+    
+    .credentials-container {
+        margin-top: 3rem;
+    }
+    
+    .credential-card {
+        background: var(--card-bg);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        padding: 1.5rem;
+        height: 100%;
+        transition: var(--transition);
+        border: 1px solid var(--card-border);
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .credential-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        border-color: var(--accent-primary);
+    }
+    
+    .credential-logo {
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    .credential-logo img {
+        max-height: 100%;
+        max-width: 100%;
+        object-fit: contain;
+    }
+    
+    .credential-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: var(--text-color);
+    }
+    
+    .credential-issuer {
+        font-size: 0.9rem;
+        color: var(--accent-primary);
+        font-weight: 500;
+        margin-bottom: 0.25rem;
+    }
+    
+    .credential-date {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+    }
+    
+    .credential-link {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        background-color: rgba(255, 193, 7, 0.1);
+        color: var(--accent-primary);
+        border-radius: 20px;
+        font-size: 0.85rem;
+        transition: var(--transition);
+        margin-top: auto;
+        font-weight: 600;
+        border: 1px solid var(--accent-primary);
+    }
+    
+    .credential-link:hover {
+        background-color: var(--accent-primary);
+        color: #000000;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Dark mode overrides for credentials */
+    body.dark-theme .credential-card {
+        background: rgba(30, 30, 30, 0.8);
+        border-color: rgba(255, 255, 255, 0.05);
+    }
+    
+    body.dark-theme .credential-title {
+        color: var(--text-on-dark);
+    }
+    
+    body.dark-theme .credential-issuer {
+        color: var(--accent-primary);
+    }
+    
+    body.dark-theme .credential-date {
+        color: rgba(255, 255, 255, 0.6);
+    }
+    
+    body.dark-theme .credential-link {
+        background-color: rgba(255, 193, 7, 0.2);
+        color: var(--accent-primary);
+        border: 1px solid var(--accent-primary);
+    }
+    
+    body.dark-theme .credential-link:hover {
+        background-color: var(--accent-primary);
+        color: #000000;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    body.dark-theme .credential-card:hover {
+        border-color: var(--accent-primary);
+        box-shadow: 0 15px 30px rgba(255, 193, 7, 0.1);
+    }
+
+    /* Special styling for credential links in each card */
+    .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #041E42;
+        border-color: #041E42;
+    }
+    
+    .walmart-card .credential-link:hover {
+        background-color: #041E42;
+        color: white;
+        border-color: #041E42;
+    }
+    
+    .jpmc-card .credential-link {
+        background-color: rgba(139, 69, 19, 0.1);
+        color: #8B4513;
+        border-color: #8B4513;
+    }
+    
+    .jpmc-card .credential-link:hover {
+        background-color: #8B4513;
+        color: white;
+        border-color: #8B4513;
+    }
+    
+    .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #003366;
+        border-color: #003366;
+    }
+    
+    .iiit-kota-card .credential-link:hover {
+        background-color: #003366;
+        color: white;
+        border-color: #003366;
+    }
+    
+    .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #0082CA;
+        border-color: #0082CA;
+    }
+    
+    .infosys-card .credential-link:hover {
+        background-color: #0082CA;
+        color: white;
+        border-color: #0082CA;
+    }
+    
+    /* Dark mode overrides for credential links */
+    body.dark-theme .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #1CD874;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .credential-link:hover {
+        background-color: #1CD874;
+        color: #041E42;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link {
+        background-color: rgba(193, 154, 107, 0.1);
+        color: #C19A6B;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link:hover {
+        background-color: #C19A6B;
+        color: #000000;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #FF6600;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link:hover {
+        background-color: #FF6600;
+        color: #000000;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #FF5722;
+        border-color: #FF5722;
+    }
+    
+    body.dark-theme .infosys-card .credential-link:hover {
+        background-color: #FF5722;
+        color: #000000;
+        border-color: #FF5722;
+    }
+
+    /* Special styling for IIIT Kota card */
+    .iiit-kota-card {
+        border-color: #003366;
+        position: relative;
+    }
+    
+    .iiit-kota-card:hover {
+        border-color: #FF6600;
+        box-shadow: 0 15px 30px rgba(255, 102, 0, 0.15);
+    }
+    
+    .iiit-kota-header {
+        margin-bottom: 1rem;
+    }
+    
+    .institution-name {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.5rem;
+    }
+    
+    .institution-primary {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #003366;
+        letter-spacing: 1px;
+        margin-bottom: 0.2rem;
+    }
+    
+    .institution-secondary {
+        font-size: 0.75rem;
+        color: #666;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .iiit-kota-card {
+        border-color: #003366;
+    }
+    
+    body.dark-theme .institution-primary {
+        color: #FF6600;
+    }
+    
+    body.dark-theme .institution-secondary {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Special styling for Infosys card */
+    .infosys-card {
+        border-color: #0082CA;
+        position: relative;
+    }
+    
+    .infosys-card:hover {
+        border-color: #FF5722;
+        box-shadow: 0 15px 30px rgba(255, 87, 34, 0.15);
+    }
+    
+    .infosys-header {
+        margin-bottom: 1rem;
+    }
+    
+    .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    .infosys-card .institution-secondary {
+        color: #FF5722;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .infosys-card {
+        border-color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-secondary {
+        color: #FF5722;
+    }
+    
+    /* Special styling for JPMorgan Chase card */
+    .jpmc-card {
+        border-color: #8B4513;
+        position: relative;
+    }
+    
+    .jpmc-card:hover {
+        border-color: #C19A6B;
+        box-shadow: 0 15px 30px rgba(139, 69, 19, 0.15);
+    }
+    
+    .jpmc-header {
+        margin-bottom: 1rem;
+    }
+    
+    .jpmc-card .institution-primary {
+        color: #8B4513;
+    }
+    
+    .jpmc-card .institution-secondary {
+        color: #C19A6B;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .jpmc-card {
+        border-color: #8B4513;
+    }
+    
+    body.dark-theme .jpmc-card .institution-primary {
+        color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .institution-secondary {
+        color: #E6C9A8;
+    }
+
+    /* Special styling for Walmart card */
+    .walmart-card {
+        border-color: #041E42;
+        position: relative;
+    }
+    
+    .walmart-card:hover {
+        border-color: #1CD874;
+        box-shadow: 0 15px 30px rgba(28, 216, 116, 0.15);
+    }
+    
+    .walmart-header {
+        margin-bottom: 1rem;
+    }
+    
+    .walmart-card .institution-primary {
+        color: #041E42;
+    }
+    
+    .walmart-card .institution-secondary {
+        color: #1CD874;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .walmart-card {
+        border-color: #041E42;
+    }
+    
+    body.dark-theme .walmart-card .institution-primary {
+        color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .institution-secondary {
+        color: #9EEFC3;
+    }
+    
+    /* Special styling for credential links in each card */
+    .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #041E42;
+        border-color: #041E42;
+    }
+    
+    .walmart-card .credential-link:hover {
+        background-color: #041E42;
+        color: white;
+        border-color: #041E42;
+    }
+    
+    .jpmc-card .credential-link {
+        background-color: rgba(139, 69, 19, 0.1);
+        color: #8B4513;
+        border-color: #8B4513;
+    }
+    
+    .jpmc-card .credential-link:hover {
+        background-color: #8B4513;
+        color: white;
+        border-color: #8B4513;
+    }
+    
+    .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #003366;
+        border-color: #003366;
+    }
+    
+    .iiit-kota-card .credential-link:hover {
+        background-color: #003366;
+        color: white;
+        border-color: #003366;
+    }
+    
+    .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #0082CA;
+        border-color: #0082CA;
+    }
+    
+    .infosys-card .credential-link:hover {
+        background-color: #0082CA;
+        color: white;
+        border-color: #0082CA;
+    }
+    
+    /* Dark mode overrides for credential links */
+    body.dark-theme .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #1CD874;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .credential-link:hover {
+        background-color: #1CD874;
+        color: #041E42;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link {
+        background-color: rgba(193, 154, 107, 0.1);
+        color: #C19A6B;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link:hover {
+        background-color: #C19A6B;
+        color: #000000;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #FF6600;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link:hover {
+        background-color: #FF6600;
+        color: #000000;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #FF5722;
+        border-color: #FF5722;
+    }
+    
+    body.dark-theme .infosys-card .credential-link:hover {
+        background-color: #FF5722;
+        color: #000000;
+        border-color: #FF5722;
+    }
+
+    /* Special styling for IIIT Kota card */
+    .iiit-kota-card {
+        border-color: #003366;
+        position: relative;
+    }
+    
+    .iiit-kota-card:hover {
+        border-color: #FF6600;
+        box-shadow: 0 15px 30px rgba(255, 102, 0, 0.15);
+    }
+    
+    .iiit-kota-header {
+        margin-bottom: 1rem;
+    }
+    
+    .institution-name {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.5rem;
+    }
+    
+    .institution-primary {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #003366;
+        letter-spacing: 1px;
+        margin-bottom: 0.2rem;
+    }
+    
+    .institution-secondary {
+        font-size: 0.75rem;
+        color: #666;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .iiit-kota-card {
+        border-color: #003366;
+    }
+    
+    body.dark-theme .institution-primary {
+        color: #FF6600;
+    }
+    
+    body.dark-theme .institution-secondary {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Special styling for Infosys card */
+    .infosys-card {
+        border-color: #0082CA;
+        position: relative;
+    }
+    
+    .infosys-card:hover {
+        border-color: #FF5722;
+        box-shadow: 0 15px 30px rgba(255, 87, 34, 0.15);
+    }
+    
+    .infosys-header {
+        margin-bottom: 1rem;
+    }
+    
+    .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    .infosys-card .institution-secondary {
+        color: #FF5722;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .infosys-card {
+        border-color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-secondary {
+        color: #FF5722;
+    }
+    
+    /* Special styling for JPMorgan Chase card */
+    .jpmc-card {
+        border-color: #8B4513;
+        position: relative;
+    }
+    
+    .jpmc-card:hover {
+        border-color: #C19A6B;
+        box-shadow: 0 15px 30px rgba(139, 69, 19, 0.15);
+    }
+    
+    .jpmc-header {
+        margin-bottom: 1rem;
+    }
+    
+    .jpmc-card .institution-primary {
+        color: #8B4513;
+    }
+    
+    .jpmc-card .institution-secondary {
+        color: #C19A6B;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .jpmc-card {
+        border-color: #8B4513;
+    }
+    
+    body.dark-theme .jpmc-card .institution-primary {
+        color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .institution-secondary {
+        color: #E6C9A8;
+    }
+
+    /* Special styling for Walmart card */
+    .walmart-card {
+        border-color: #041E42;
+        position: relative;
+    }
+    
+    .walmart-card:hover {
+        border-color: #1CD874;
+        box-shadow: 0 15px 30px rgba(28, 216, 116, 0.15);
+    }
+    
+    .walmart-header {
+        margin-bottom: 1rem;
+    }
+    
+    .walmart-card .institution-primary {
+        color: #041E42;
+    }
+    
+    .walmart-card .institution-secondary {
+        color: #1CD874;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .walmart-card {
+        border-color: #041E42;
+    }
+    
+    body.dark-theme .walmart-card .institution-primary {
+        color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .institution-secondary {
+        color: #9EEFC3;
+    }
+    
+    /* Special styling for credential links in each card */
+    .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #041E42;
+        border-color: #041E42;
+    }
+    
+    .walmart-card .credential-link:hover {
+        background-color: #041E42;
+        color: white;
+        border-color: #041E42;
+    }
+    
+    .jpmc-card .credential-link {
+        background-color: rgba(139, 69, 19, 0.1);
+        color: #8B4513;
+        border-color: #8B4513;
+    }
+    
+    .jpmc-card .credential-link:hover {
+        background-color: #8B4513;
+        color: white;
+        border-color: #8B4513;
+    }
+    
+    .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #003366;
+        border-color: #003366;
+    }
+    
+    .iiit-kota-card .credential-link:hover {
+        background-color: #003366;
+        color: white;
+        border-color: #003366;
+    }
+    
+    .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #0082CA;
+        border-color: #0082CA;
+    }
+    
+    .infosys-card .credential-link:hover {
+        background-color: #0082CA;
+        color: white;
+        border-color: #0082CA;
+    }
+    
+    /* Dark mode overrides for credential links */
+    body.dark-theme .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #1CD874;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .credential-link:hover {
+        background-color: #1CD874;
+        color: #041E42;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link {
+        background-color: rgba(193, 154, 107, 0.1);
+        color: #C19A6B;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link:hover {
+        background-color: #C19A6B;
+        color: #000000;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #FF6600;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link:hover {
+        background-color: #FF6600;
+        color: #000000;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #FF5722;
+        border-color: #FF5722;
+    }
+    
+    body.dark-theme .infosys-card .credential-link:hover {
+        background-color: #FF5722;
+        color: #000000;
+        border-color: #FF5722;
+    }
+
+    /* Special styling for IIIT Kota card */
+    .iiit-kota-card {
+        border-color: #003366;
+        position: relative;
+    }
+    
+    .iiit-kota-card:hover {
+        border-color: #FF6600;
+        box-shadow: 0 15px 30px rgba(255, 102, 0, 0.15);
+    }
+    
+    .iiit-kota-header {
+        margin-bottom: 1rem;
+    }
+    
+    .institution-name {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.5rem;
+    }
+    
+    .institution-primary {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #003366;
+        letter-spacing: 1px;
+        margin-bottom: 0.2rem;
+    }
+    
+    .institution-secondary {
+        font-size: 0.75rem;
+        color: #666;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .iiit-kota-card {
+        border-color: #003366;
+    }
+    
+    body.dark-theme .institution-primary {
+        color: #FF6600;
+    }
+    
+    body.dark-theme .institution-secondary {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Special styling for Infosys card */
+    .infosys-card {
+        border-color: #0082CA;
+        position: relative;
+    }
+    
+    .infosys-card:hover {
+        border-color: #FF5722;
+        box-shadow: 0 15px 30px rgba(255, 87, 34, 0.15);
+    }
+    
+    .infosys-header {
+        margin-bottom: 1rem;
+    }
+    
+    .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    .infosys-card .institution-secondary {
+        color: #FF5722;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .infosys-card {
+        border-color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-secondary {
+        color: #FF5722;
+    }
+    
+    /* Special styling for JPMorgan Chase card */
+    .jpmc-card {
+        border-color: #8B4513;
+        position: relative;
+    }
+    
+    .jpmc-card:hover {
+        border-color: #C19A6B;
+        box-shadow: 0 15px 30px rgba(139, 69, 19, 0.15);
+    }
+    
+    .jpmc-header {
+        margin-bottom: 1rem;
+    }
+    
+    .jpmc-card .institution-primary {
+        color: #8B4513;
+    }
+    
+    .jpmc-card .institution-secondary {
+        color: #C19A6B;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .jpmc-card {
+        border-color: #8B4513;
+    }
+    
+    body.dark-theme .jpmc-card .institution-primary {
+        color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .institution-secondary {
+        color: #E6C9A8;
+    }
+
+    /* Special styling for Walmart card */
+    .walmart-card {
+        border-color: #041E42;
+        position: relative;
+    }
+    
+    .walmart-card:hover {
+        border-color: #1CD874;
+        box-shadow: 0 15px 30px rgba(28, 216, 116, 0.15);
+    }
+    
+    .walmart-header {
+        margin-bottom: 1rem;
+    }
+    
+    .walmart-card .institution-primary {
+        color: #041E42;
+    }
+    
+    .walmart-card .institution-secondary {
+        color: #1CD874;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .walmart-card {
+        border-color: #041E42;
+    }
+    
+    body.dark-theme .walmart-card .institution-primary {
+        color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .institution-secondary {
+        color: #9EEFC3;
+    }
+    
+    /* Special styling for credential links in each card */
+    .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #041E42;
+        border-color: #041E42;
+    }
+    
+    .walmart-card .credential-link:hover {
+        background-color: #041E42;
+        color: white;
+        border-color: #041E42;
+    }
+    
+    .jpmc-card .credential-link {
+        background-color: rgba(139, 69, 19, 0.1);
+        color: #8B4513;
+        border-color: #8B4513;
+    }
+    
+    .jpmc-card .credential-link:hover {
+        background-color: #8B4513;
+        color: white;
+        border-color: #8B4513;
+    }
+    
+    .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #003366;
+        border-color: #003366;
+    }
+    
+    .iiit-kota-card .credential-link:hover {
+        background-color: #003366;
+        color: white;
+        border-color: #003366;
+    }
+    
+    .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #0082CA;
+        border-color: #0082CA;
+    }
+    
+    .infosys-card .credential-link:hover {
+        background-color: #0082CA;
+        color: white;
+        border-color: #0082CA;
+    }
+    
+    /* Dark mode overrides for credential links */
+    body.dark-theme .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #1CD874;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .credential-link:hover {
+        background-color: #1CD874;
+        color: #041E42;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link {
+        background-color: rgba(193, 154, 107, 0.1);
+        color: #C19A6B;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link:hover {
+        background-color: #C19A6B;
+        color: #000000;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #FF6600;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link:hover {
+        background-color: #FF6600;
+        color: #000000;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #FF5722;
+        border-color: #FF5722;
+    }
+    
+    body.dark-theme .infosys-card .credential-link:hover {
+        background-color: #FF5722;
+        color: #000000;
+        border-color: #FF5722;
+    }
+
+    /* Special styling for IIIT Kota card */
+    .iiit-kota-card {
+        border-color: #003366;
+        position: relative;
+    }
+    
+    .iiit-kota-card:hover {
+        border-color: #FF6600;
+        box-shadow: 0 15px 30px rgba(255, 102, 0, 0.15);
+    }
+    
+    .iiit-kota-header {
+        margin-bottom: 1rem;
+    }
+    
+    .institution-name {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.5rem;
+    }
+    
+    .institution-primary {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #003366;
+        letter-spacing: 1px;
+        margin-bottom: 0.2rem;
+    }
+    
+    .institution-secondary {
+        font-size: 0.75rem;
+        color: #666;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .iiit-kota-card {
+        border-color: #003366;
+    }
+    
+    body.dark-theme .institution-primary {
+        color: #FF6600;
+    }
+    
+    body.dark-theme .institution-secondary {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Special styling for Infosys card */
+    .infosys-card {
+        border-color: #0082CA;
+        position: relative;
+    }
+    
+    .infosys-card:hover {
+        border-color: #FF5722;
+        box-shadow: 0 15px 30px rgba(255, 87, 34, 0.15);
+    }
+    
+    .infosys-header {
+        margin-bottom: 1rem;
+    }
+    
+    .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    .infosys-card .institution-secondary {
+        color: #FF5722;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .infosys-card {
+        border-color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-secondary {
+        color: #FF5722;
+    }
+    
+    /* Special styling for JPMorgan Chase card */
+    .jpmc-card {
+        border-color: #8B4513;
+        position: relative;
+    }
+    
+    .jpmc-card:hover {
+        border-color: #C19A6B;
+        box-shadow: 0 15px 30px rgba(139, 69, 19, 0.15);
+    }
+    
+    .jpmc-header {
+        margin-bottom: 1rem;
+    }
+    
+    .jpmc-card .institution-primary {
+        color: #8B4513;
+    }
+    
+    .jpmc-card .institution-secondary {
+        color: #C19A6B;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .jpmc-card {
+        border-color: #8B4513;
+    }
+    
+    body.dark-theme .jpmc-card .institution-primary {
+        color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .institution-secondary {
+        color: #E6C9A8;
+    }
+
+    /* Special styling for Walmart card */
+    .walmart-card {
+        border-color: #041E42;
+        position: relative;
+    }
+    
+    .walmart-card:hover {
+        border-color: #1CD874;
+        box-shadow: 0 15px 30px rgba(28, 216, 116, 0.15);
+    }
+    
+    .walmart-header {
+        margin-bottom: 1rem;
+    }
+    
+    .walmart-card .institution-primary {
+        color: #041E42;
+    }
+    
+    .walmart-card .institution-secondary {
+        color: #1CD874;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .walmart-card {
+        border-color: #041E42;
+    }
+    
+    body.dark-theme .walmart-card .institution-primary {
+        color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .institution-secondary {
+        color: #9EEFC3;
+    }
+    
+    /* Special styling for credential links in each card */
+    .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #041E42;
+        border-color: #041E42;
+    }
+    
+    .walmart-card .credential-link:hover {
+        background-color: #041E42;
+        color: white;
+        border-color: #041E42;
+    }
+    
+    .jpmc-card .credential-link {
+        background-color: rgba(139, 69, 19, 0.1);
+        color: #8B4513;
+        border-color: #8B4513;
+    }
+    
+    .jpmc-card .credential-link:hover {
+        background-color: #8B4513;
+        color: white;
+        border-color: #8B4513;
+    }
+    
+    .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #003366;
+        border-color: #003366;
+    }
+    
+    .iiit-kota-card .credential-link:hover {
+        background-color: #003366;
+        color: white;
+        border-color: #003366;
+    }
+    
+    .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #0082CA;
+        border-color: #0082CA;
+    }
+    
+    .infosys-card .credential-link:hover {
+        background-color: #0082CA;
+        color: white;
+        border-color: #0082CA;
+    }
+    
+    /* Dark mode overrides for credential links */
+    body.dark-theme .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #1CD874;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .credential-link:hover {
+        background-color: #1CD874;
+        color: #041E42;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link {
+        background-color: rgba(193, 154, 107, 0.1);
+        color: #C19A6B;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link:hover {
+        background-color: #C19A6B;
+        color: #000000;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #FF6600;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link:hover {
+        background-color: #FF6600;
+        color: #000000;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #FF5722;
+        border-color: #FF5722;
+    }
+    
+    body.dark-theme .infosys-card .credential-link:hover {
+        background-color: #FF5722;
+        color: #000000;
+        border-color: #FF5722;
+    }
+
+    /* Special styling for IIIT Kota card */
+    .iiit-kota-card {
+        border-color: #003366;
+        position: relative;
+    }
+    
+    .iiit-kota-card:hover {
+        border-color: #FF6600;
+        box-shadow: 0 15px 30px rgba(255, 102, 0, 0.15);
+    }
+    
+    .iiit-kota-header {
+        margin-bottom: 1rem;
+    }
+    
+    .institution-name {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.5rem;
+    }
+    
+    .institution-primary {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #003366;
+        letter-spacing: 1px;
+        margin-bottom: 0.2rem;
+    }
+    
+    .institution-secondary {
+        font-size: 0.75rem;
+        color: #666;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .iiit-kota-card {
+        border-color: #003366;
+    }
+    
+    body.dark-theme .institution-primary {
+        color: #FF6600;
+    }
+    
+    body.dark-theme .institution-secondary {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Special styling for Infosys card */
+    .infosys-card {
+        border-color: #0082CA;
+        position: relative;
+    }
+    
+    .infosys-card:hover {
+        border-color: #FF5722;
+        box-shadow: 0 15px 30px rgba(255, 87, 34, 0.15);
+    }
+    
+    .infosys-header {
+        margin-bottom: 1rem;
+    }
+    
+    .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    .infosys-card .institution-secondary {
+        color: #FF5722;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .infosys-card {
+        border-color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-secondary {
+        color: #FF5722;
+    }
+    
+    /* Special styling for JPMorgan Chase card */
+    .jpmc-card {
+        border-color: #8B4513;
+        position: relative;
+    }
+    
+    .jpmc-card:hover {
+        border-color: #C19A6B;
+        box-shadow: 0 15px 30px rgba(139, 69, 19, 0.15);
+    }
+    
+    .jpmc-header {
+        margin-bottom: 1rem;
+    }
+    
+    .jpmc-card .institution-primary {
+        color: #8B4513;
+    }
+    
+    .jpmc-card .institution-secondary {
+        color: #C19A6B;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .jpmc-card {
+        border-color: #8B4513;
+    }
+    
+    body.dark-theme .jpmc-card .institution-primary {
+        color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .institution-secondary {
+        color: #E6C9A8;
+    }
+
+    /* Special styling for Walmart card */
+    .walmart-card {
+        border-color: #041E42;
+        position: relative;
+    }
+    
+    .walmart-card:hover {
+        border-color: #1CD874;
+        box-shadow: 0 15px 30px rgba(28, 216, 116, 0.15);
+    }
+    
+    .walmart-header {
+        margin-bottom: 1rem;
+    }
+    
+    .walmart-card .institution-primary {
+        color: #041E42;
+    }
+    
+    .walmart-card .institution-secondary {
+        color: #1CD874;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .walmart-card {
+        border-color: #041E42;
+    }
+    
+    body.dark-theme .walmart-card .institution-primary {
+        color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .institution-secondary {
+        color: #9EEFC3;
+    }
+    
+    /* Special styling for credential links in each card */
+    .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #041E42;
+        border-color: #041E42;
+    }
+    
+    .walmart-card .credential-link:hover {
+        background-color: #041E42;
+        color: white;
+        border-color: #041E42;
+    }
+    
+    .jpmc-card .credential-link {
+        background-color: rgba(139, 69, 19, 0.1);
+        color: #8B4513;
+        border-color: #8B4513;
+    }
+    
+    .jpmc-card .credential-link:hover {
+        background-color: #8B4513;
+        color: white;
+        border-color: #8B4513;
+    }
+    
+    .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #003366;
+        border-color: #003366;
+    }
+    
+    .iiit-kota-card .credential-link:hover {
+        background-color: #003366;
+        color: white;
+        border-color: #003366;
+    }
+    
+    .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #0082CA;
+        border-color: #0082CA;
+    }
+    
+    .infosys-card .credential-link:hover {
+        background-color: #0082CA;
+        color: white;
+        border-color: #0082CA;
+    }
+    
+    /* Dark mode overrides for credential links */
+    body.dark-theme .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #1CD874;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .credential-link:hover {
+        background-color: #1CD874;
+        color: #041E42;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link {
+        background-color: rgba(193, 154, 107, 0.1);
+        color: #C19A6B;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link:hover {
+        background-color: #C19A6B;
+        color: #000000;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #FF6600;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link:hover {
+        background-color: #FF6600;
+        color: #000000;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #FF5722;
+        border-color: #FF5722;
+    }
+    
+    body.dark-theme .infosys-card .credential-link:hover {
+        background-color: #FF5722;
+        color: #000000;
+        border-color: #FF5722;
+    }
+
+    /* Special styling for IIIT Kota card */
+    .iiit-kota-card {
+        border-color: #003366;
+        position: relative;
+    }
+    
+    .iiit-kota-card:hover {
+        border-color: #FF6600;
+        box-shadow: 0 15px 30px rgba(255, 102, 0, 0.15);
+    }
+    
+    .iiit-kota-header {
+        margin-bottom: 1rem;
+    }
+    
+    .institution-name {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.5rem;
+    }
+    
+    .institution-primary {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #003366;
+        letter-spacing: 1px;
+        margin-bottom: 0.2rem;
+    }
+    
+    .institution-secondary {
+        font-size: 0.75rem;
+        color: #666;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .iiit-kota-card {
+        border-color: #003366;
+    }
+    
+    body.dark-theme .institution-primary {
+        color: #FF6600;
+    }
+    
+    body.dark-theme .institution-secondary {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Special styling for Infosys card */
+    .infosys-card {
+        border-color: #0082CA;
+        position: relative;
+    }
+    
+    .infosys-card:hover {
+        border-color: #FF5722;
+        box-shadow: 0 15px 30px rgba(255, 87, 34, 0.15);
+    }
+    
+    .infosys-header {
+        margin-bottom: 1rem;
+    }
+    
+    .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    .infosys-card .institution-secondary {
+        color: #FF5722;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .infosys-card {
+        border-color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-secondary {
+        color: #FF5722;
+    }
+    
+    /* Special styling for JPMorgan Chase card */
+    .jpmc-card {
+        border-color: #8B4513;
+        position: relative;
+    }
+    
+    .jpmc-card:hover {
+        border-color: #C19A6B;
+        box-shadow: 0 15px 30px rgba(139, 69, 19, 0.15);
+    }
+    
+    .jpmc-header {
+        margin-bottom: 1rem;
+    }
+    
+    .jpmc-card .institution-primary {
+        color: #8B4513;
+    }
+    
+    .jpmc-card .institution-secondary {
+        color: #C19A6B;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .jpmc-card {
+        border-color: #8B4513;
+    }
+    
+    body.dark-theme .jpmc-card .institution-primary {
+        color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .institution-secondary {
+        color: #E6C9A8;
+    }
+
+    /* Special styling for Walmart card */
+    .walmart-card {
+        border-color: #041E42;
+        position: relative;
+    }
+    
+    .walmart-card:hover {
+        border-color: #1CD874;
+        box-shadow: 0 15px 30px rgba(28, 216, 116, 0.15);
+    }
+    
+    .walmart-header {
+        margin-bottom: 1rem;
+    }
+    
+    .walmart-card .institution-primary {
+        color: #041E42;
+    }
+    
+    .walmart-card .institution-secondary {
+        color: #1CD874;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .walmart-card {
+        border-color: #041E42;
+    }
+    
+    body.dark-theme .walmart-card .institution-primary {
+        color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .institution-secondary {
+        color: #9EEFC3;
+    }
+    
+    /* Special styling for credential links in each card */
+    .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #041E42;
+        border-color: #041E42;
+    }
+    
+    .walmart-card .credential-link:hover {
+        background-color: #041E42;
+        color: white;
+        border-color: #041E42;
+    }
+    
+    .jpmc-card .credential-link {
+        background-color: rgba(139, 69, 19, 0.1);
+        color: #8B4513;
+        border-color: #8B4513;
+    }
+    
+    .jpmc-card .credential-link:hover {
+        background-color: #8B4513;
+        color: white;
+        border-color: #8B4513;
+    }
+    
+    .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #003366;
+        border-color: #003366;
+    }
+    
+    .iiit-kota-card .credential-link:hover {
+        background-color: #003366;
+        color: white;
+        border-color: #003366;
+    }
+    
+    .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #0082CA;
+        border-color: #0082CA;
+    }
+    
+    .infosys-card .credential-link:hover {
+        background-color: #0082CA;
+        color: white;
+        border-color: #0082CA;
+    }
+    
+    /* Dark mode overrides for credential links */
+    body.dark-theme .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #1CD874;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .credential-link:hover {
+        background-color: #1CD874;
+        color: #041E42;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link {
+        background-color: rgba(193, 154, 107, 0.1);
+        color: #C19A6B;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link:hover {
+        background-color: #C19A6B;
+        color: #000000;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #FF6600;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link:hover {
+        background-color: #FF6600;
+        color: #000000;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #FF5722;
+        border-color: #FF5722;
+    }
+    
+    body.dark-theme .infosys-card .credential-link:hover {
+        background-color: #FF5722;
+        color: #000000;
+        border-color: #FF5722;
+    }
+
+    /* Special styling for IIIT Kota card */
+    .iiit-kota-card {
+        border-color: #003366;
+        position: relative;
+    }
+    
+    .iiit-kota-card:hover {
+        border-color: #FF6600;
+        box-shadow: 0 15px 30px rgba(255, 102, 0, 0.15);
+    }
+    
+    .iiit-kota-header {
+        margin-bottom: 1rem;
+    }
+    
+    .institution-name {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.5rem;
+    }
+    
+    .institution-primary {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #003366;
+        letter-spacing: 1px;
+        margin-bottom: 0.2rem;
+    }
+    
+    .institution-secondary {
+        font-size: 0.75rem;
+        color: #666;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .iiit-kota-card {
+        border-color: #003366;
+    }
+    
+    body.dark-theme .institution-primary {
+        color: #FF6600;
+    }
+    
+    body.dark-theme .institution-secondary {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Special styling for Infosys card */
+    .infosys-card {
+        border-color: #0082CA;
+        position: relative;
+    }
+    
+    .infosys-card:hover {
+        border-color: #FF5722;
+        box-shadow: 0 15px 30px rgba(255, 87, 34, 0.15);
+    }
+    
+    .infosys-header {
+        margin-bottom: 1rem;
+    }
+    
+    .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    .infosys-card .institution-secondary {
+        color: #FF5722;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .infosys-card {
+        border-color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-secondary {
+        color: #FF5722;
+    }
+    
+    /* Special styling for JPMorgan Chase card */
+    .jpmc-card {
+        border-color: #8B4513;
+        position: relative;
+    }
+    
+    .jpmc-card:hover {
+        border-color: #C19A6B;
+        box-shadow: 0 15px 30px rgba(139, 69, 19, 0.15);
+    }
+    
+    .jpmc-header {
+        margin-bottom: 1rem;
+    }
+    
+    .jpmc-card .institution-primary {
+        color: #8B4513;
+    }
+    
+    .jpmc-card .institution-secondary {
+        color: #C19A6B;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .jpmc-card {
+        border-color: #8B4513;
+    }
+    
+    body.dark-theme .jpmc-card .institution-primary {
+        color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .institution-secondary {
+        color: #E6C9A8;
+    }
+
+    /* Special styling for Walmart card */
+    .walmart-card {
+        border-color: #041E42;
+        position: relative;
+    }
+    
+    .walmart-card:hover {
+        border-color: #1CD874;
+        box-shadow: 0 15px 30px rgba(28, 216, 116, 0.15);
+    }
+    
+    .walmart-header {
+        margin-bottom: 1rem;
+    }
+    
+    .walmart-card .institution-primary {
+        color: #041E42;
+    }
+    
+    .walmart-card .institution-secondary {
+        color: #1CD874;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .walmart-card {
+        border-color: #041E42;
+    }
+    
+    body.dark-theme .walmart-card .institution-primary {
+        color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .institution-secondary {
+        color: #9EEFC3;
+    }
+    
+    /* Special styling for credential links in each card */
+    .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #041E42;
+        border-color: #041E42;
+    }
+    
+    .walmart-card .credential-link:hover {
+        background-color: #041E42;
+        color: white;
+        border-color: #041E42;
+    }
+    
+    .jpmc-card .credential-link {
+        background-color: rgba(139, 69, 19, 0.1);
+        color: #8B4513;
+        border-color: #8B4513;
+    }
+    
+    .jpmc-card .credential-link:hover {
+        background-color: #8B4513;
+        color: white;
+        border-color: #8B4513;
+    }
+    
+    .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #003366;
+        border-color: #003366;
+    }
+    
+    .iiit-kota-card .credential-link:hover {
+        background-color: #003366;
+        color: white;
+        border-color: #003366;
+    }
+    
+    .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #0082CA;
+        border-color: #0082CA;
+    }
+    
+    .infosys-card .credential-link:hover {
+        background-color: #0082CA;
+        color: white;
+        border-color: #0082CA;
+    }
+    
+    /* Dark mode overrides for credential links */
+    body.dark-theme .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #1CD874;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .credential-link:hover {
+        background-color: #1CD874;
+        color: #041E42;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link {
+        background-color: rgba(193, 154, 107, 0.1);
+        color: #C19A6B;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link:hover {
+        background-color: #C19A6B;
+        color: #000000;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #FF6600;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link:hover {
+        background-color: #FF6600;
+        color: #000000;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #FF5722;
+        border-color: #FF5722;
+    }
+    
+    body.dark-theme .infosys-card .credential-link:hover {
+        background-color: #FF5722;
+        color: #000000;
+        border-color: #FF5722;
+    }
+
+    /* Special styling for IIIT Kota card */
+    .iiit-kota-card {
+        border-color: #003366;
+        position: relative;
+    }
+    
+    .iiit-kota-card:hover {
+        border-color: #FF6600;
+        box-shadow: 0 15px 30px rgba(255, 102, 0, 0.15);
+    }
+    
+    .iiit-kota-header {
+        margin-bottom: 1rem;
+    }
+    
+    .institution-name {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.5rem;
+    }
+    
+    .institution-primary {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #003366;
+        letter-spacing: 1px;
+        margin-bottom: 0.2rem;
+    }
+    
+    .institution-secondary {
+        font-size: 0.75rem;
+        color: #666;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .iiit-kota-card {
+        border-color: #003366;
+    }
+    
+    body.dark-theme .institution-primary {
+        color: #FF6600;
+    }
+    
+    body.dark-theme .institution-secondary {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Special styling for Infosys card */
+    .infosys-card {
+        border-color: #0082CA;
+        position: relative;
+    }
+    
+    .infosys-card:hover {
+        border-color: #FF5722;
+        box-shadow: 0 15px 30px rgba(255, 87, 34, 0.15);
+    }
+    
+    .infosys-header {
+        margin-bottom: 1rem;
+    }
+    
+    .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    .infosys-card .institution-secondary {
+        color: #FF5722;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .infosys-card {
+        border-color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-secondary {
+        color: #FF5722;
+    }
+    
+    /* Special styling for JPMorgan Chase card */
+    .jpmc-card {
+        border-color: #8B4513;
+        position: relative;
+    }
+    
+    .jpmc-card:hover {
+        border-color: #C19A6B;
+        box-shadow: 0 15px 30px rgba(139, 69, 19, 0.15);
+    }
+    
+    .jpmc-header {
+        margin-bottom: 1rem;
+    }
+    
+    .jpmc-card .institution-primary {
+        color: #8B4513;
+    }
+    
+    .jpmc-card .institution-secondary {
+        color: #C19A6B;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .jpmc-card {
+        border-color: #8B4513;
+    }
+    
+    body.dark-theme .jpmc-card .institution-primary {
+        color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .institution-secondary {
+        color: #E6C9A8;
+    }
+
+    /* Special styling for Walmart card */
+    .walmart-card {
+        border-color: #041E42;
+        position: relative;
+    }
+    
+    .walmart-card:hover {
+        border-color: #1CD874;
+        box-shadow: 0 15px 30px rgba(28, 216, 116, 0.15);
+    }
+    
+    .walmart-header {
+        margin-bottom: 1rem;
+    }
+    
+    .walmart-card .institution-primary {
+        color: #041E42;
+    }
+    
+    .walmart-card .institution-secondary {
+        color: #1CD874;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .walmart-card {
+        border-color: #041E42;
+    }
+    
+    body.dark-theme .walmart-card .institution-primary {
+        color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .institution-secondary {
+        color: #9EEFC3;
+    }
+    
+    /* Special styling for credential links in each card */
+    .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #041E42;
+        border-color: #041E42;
+    }
+    
+    .walmart-card .credential-link:hover {
+        background-color: #041E42;
+        color: white;
+        border-color: #041E42;
+    }
+    
+    .jpmc-card .credential-link {
+        background-color: rgba(139, 69, 19, 0.1);
+        color: #8B4513;
+        border-color: #8B4513;
+    }
+    
+    .jpmc-card .credential-link:hover {
+        background-color: #8B4513;
+        color: white;
+        border-color: #8B4513;
+    }
+    
+    .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #003366;
+        border-color: #003366;
+    }
+    
+    .iiit-kota-card .credential-link:hover {
+        background-color: #003366;
+        color: white;
+        border-color: #003366;
+    }
+    
+    .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #0082CA;
+        border-color: #0082CA;
+    }
+    
+    .infosys-card .credential-link:hover {
+        background-color: #0082CA;
+        color: white;
+        border-color: #0082CA;
+    }
+    
+    /* Dark mode overrides for credential links */
+    body.dark-theme .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #1CD874;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .credential-link:hover {
+        background-color: #1CD874;
+        color: #041E42;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link {
+        background-color: rgba(193, 154, 107, 0.1);
+        color: #C19A6B;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link:hover {
+        background-color: #C19A6B;
+        color: #000000;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #FF6600;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link:hover {
+        background-color: #FF6600;
+        color: #000000;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #FF5722;
+        border-color: #FF5722;
+    }
+    
+    body.dark-theme .infosys-card .credential-link:hover {
+        background-color: #FF5722;
+        color: #000000;
+        border-color: #FF5722;
+    }
+
+    /* Special styling for IIIT Kota card */
+    .iiit-kota-card {
+        border-color: #003366;
+        position: relative;
+    }
+    
+    .iiit-kota-card:hover {
+        border-color: #FF6600;
+        box-shadow: 0 15px 30px rgba(255, 102, 0, 0.15);
+    }
+    
+    .iiit-kota-header {
+        margin-bottom: 1rem;
+    }
+    
+    .institution-name {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.5rem;
+    }
+    
+    .institution-primary {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #003366;
+        letter-spacing: 1px;
+        margin-bottom: 0.2rem;
+    }
+    
+    .institution-secondary {
+        font-size: 0.75rem;
+        color: #666;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .iiit-kota-card {
+        border-color: #003366;
+    }
+    
+    body.dark-theme .institution-primary {
+        color: #FF6600;
+    }
+    
+    body.dark-theme .institution-secondary {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Special styling for Infosys card */
+    .infosys-card {
+        border-color: #0082CA;
+        position: relative;
+    }
+    
+    .infosys-card:hover {
+        border-color: #FF5722;
+        box-shadow: 0 15px 30px rgba(255, 87, 34, 0.15);
+    }
+    
+    .infosys-header {
+        margin-bottom: 1rem;
+    }
+    
+    .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    .infosys-card .institution-secondary {
+        color: #FF5722;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .infosys-card {
+        border-color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-secondary {
+        color: #FF5722;
+    }
+    
+    /* Special styling for JPMorgan Chase card */
+    .jpmc-card {
+        border-color: #8B4513;
+        position: relative;
+    }
+    
+    .jpmc-card:hover {
+        border-color: #C19A6B;
+        box-shadow: 0 15px 30px rgba(139, 69, 19, 0.15);
+    }
+    
+    .jpmc-header {
+        margin-bottom: 1rem;
+    }
+    
+    .jpmc-card .institution-primary {
+        color: #8B4513;
+    }
+    
+    .jpmc-card .institution-secondary {
+        color: #C19A6B;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .jpmc-card {
+        border-color: #8B4513;
+    }
+    
+    body.dark-theme .jpmc-card .institution-primary {
+        color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .institution-secondary {
+        color: #E6C9A8;
+    }
+
+    /* Special styling for Walmart card */
+    .walmart-card {
+        border-color: #041E42;
+        position: relative;
+    }
+    
+    .walmart-card:hover {
+        border-color: #1CD874;
+        box-shadow: 0 15px 30px rgba(28, 216, 116, 0.15);
+    }
+    
+    .walmart-header {
+        margin-bottom: 1rem;
+    }
+    
+    .walmart-card .institution-primary {
+        color: #041E42;
+    }
+    
+    .walmart-card .institution-secondary {
+        color: #1CD874;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .walmart-card {
+        border-color: #041E42;
+    }
+    
+    body.dark-theme .walmart-card .institution-primary {
+        color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .institution-secondary {
+        color: #9EEFC3;
+    }
+    
+    /* Special styling for credential links in each card */
+    .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #041E42;
+        border-color: #041E42;
+    }
+    
+    .walmart-card .credential-link:hover {
+        background-color: #041E42;
+        color: white;
+        border-color: #041E42;
+    }
+    
+    .jpmc-card .credential-link {
+        background-color: rgba(139, 69, 19, 0.1);
+        color: #8B4513;
+        border-color: #8B4513;
+    }
+    
+    .jpmc-card .credential-link:hover {
+        background-color: #8B4513;
+        color: white;
+        border-color: #8B4513;
+    }
+    
+    .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #003366;
+        border-color: #003366;
+    }
+    
+    .iiit-kota-card .credential-link:hover {
+        background-color: #003366;
+        color: white;
+        border-color: #003366;
+    }
+    
+    .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #0082CA;
+        border-color: #0082CA;
+    }
+    
+    .infosys-card .credential-link:hover {
+        background-color: #0082CA;
+        color: white;
+        border-color: #0082CA;
+    }
+    
+    /* Dark mode overrides for credential links */
+    body.dark-theme .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #1CD874;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .credential-link:hover {
+        background-color: #1CD874;
+        color: #041E42;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link {
+        background-color: rgba(193, 154, 107, 0.1);
+        color: #C19A6B;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link:hover {
+        background-color: #C19A6B;
+        color: #000000;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #FF6600;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link:hover {
+        background-color: #FF6600;
+        color: #000000;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #FF5722;
+        border-color: #FF5722;
+    }
+    
+    body.dark-theme .infosys-card .credential-link:hover {
+        background-color: #FF5722;
+        color: #000000;
+        border-color: #FF5722;
+    }
+
+    /* Special styling for IIIT Kota card */
+    .iiit-kota-card {
+        border-color: #003366;
+        position: relative;
+    }
+    
+    .iiit-kota-card:hover {
+        border-color: #FF6600;
+        box-shadow: 0 15px 30px rgba(255, 102, 0, 0.15);
+    }
+    
+    .iiit-kota-header {
+        margin-bottom: 1rem;
+    }
+    
+    .institution-name {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.5rem;
+    }
+    
+    .institution-primary {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #003366;
+        letter-spacing: 1px;
+        margin-bottom: 0.2rem;
+    }
+    
+    .institution-secondary {
+        font-size: 0.75rem;
+        color: #666;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .iiit-kota-card {
+        border-color: #003366;
+    }
+    
+    body.dark-theme .institution-primary {
+        color: #FF6600;
+    }
+    
+    body.dark-theme .institution-secondary {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Special styling for Infosys card */
+    .infosys-card {
+        border-color: #0082CA;
+        position: relative;
+    }
+    
+    .infosys-card:hover {
+        border-color: #FF5722;
+        box-shadow: 0 15px 30px rgba(255, 87, 34, 0.15);
+    }
+    
+    .infosys-header {
+        margin-bottom: 1rem;
+    }
+    
+    .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    .infosys-card .institution-secondary {
+        color: #FF5722;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .infosys-card {
+        border-color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-secondary {
+        color: #FF5722;
+    }
+    
+    /* Special styling for JPMorgan Chase card */
+    .jpmc-card {
+        border-color: #8B4513;
+        position: relative;
+    }
+    
+    .jpmc-card:hover {
+        border-color: #C19A6B;
+        box-shadow: 0 15px 30px rgba(139, 69, 19, 0.15);
+    }
+    
+    .jpmc-header {
+        margin-bottom: 1rem;
+    }
+    
+    .jpmc-card .institution-primary {
+        color: #8B4513;
+    }
+    
+    .jpmc-card .institution-secondary {
+        color: #C19A6B;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .jpmc-card {
+        border-color: #8B4513;
+    }
+    
+    body.dark-theme .jpmc-card .institution-primary {
+        color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .institution-secondary {
+        color: #E6C9A8;
+    }
+
+    /* Special styling for Walmart card */
+    .walmart-card {
+        border-color: #041E42;
+        position: relative;
+    }
+    
+    .walmart-card:hover {
+        border-color: #1CD874;
+        box-shadow: 0 15px 30px rgba(28, 216, 116, 0.15);
+    }
+    
+    .walmart-header {
+        margin-bottom: 1rem;
+    }
+    
+    .walmart-card .institution-primary {
+        color: #041E42;
+    }
+    
+    .walmart-card .institution-secondary {
+        color: #1CD874;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .walmart-card {
+        border-color: #041E42;
+    }
+    
+    body.dark-theme .walmart-card .institution-primary {
+        color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .institution-secondary {
+        color: #9EEFC3;
+    }
+    
+    /* Special styling for credential links in each card */
+    .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #041E42;
+        border-color: #041E42;
+    }
+    
+    .walmart-card .credential-link:hover {
+        background-color: #041E42;
+        color: white;
+        border-color: #041E42;
+    }
+    
+    .jpmc-card .credential-link {
+        background-color: rgba(139, 69, 19, 0.1);
+        color: #8B4513;
+        border-color: #8B4513;
+    }
+    
+    .jpmc-card .credential-link:hover {
+        background-color: #8B4513;
+        color: white;
+        border-color: #8B4513;
+    }
+    
+    .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #003366;
+        border-color: #003366;
+    }
+    
+    .iiit-kota-card .credential-link:hover {
+        background-color: #003366;
+        color: white;
+        border-color: #003366;
+    }
+    
+    .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #0082CA;
+        border-color: #0082CA;
+    }
+    
+    .infosys-card .credential-link:hover {
+        background-color: #0082CA;
+        color: white;
+        border-color: #0082CA;
+    }
+    
+    /* Dark mode overrides for credential links */
+    body.dark-theme .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #1CD874;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .credential-link:hover {
+        background-color: #1CD874;
+        color: #041E42;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link {
+        background-color: rgba(193, 154, 107, 0.1);
+        color: #C19A6B;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link:hover {
+        background-color: #C19A6B;
+        color: #000000;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #FF6600;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link:hover {
+        background-color: #FF6600;
+        color: #000000;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #FF5722;
+        border-color: #FF5722;
+    }
+    
+    body.dark-theme .infosys-card .credential-link:hover {
+        background-color: #FF5722;
+        color: #000000;
+        border-color: #FF5722;
+    }
+
+    /* Special styling for IIIT Kota card */
+    .iiit-kota-card {
+        border-color: #003366;
+        position: relative;
+    }
+    
+    .iiit-kota-card:hover {
+        border-color: #FF6600;
+        box-shadow: 0 15px 30px rgba(255, 102, 0, 0.15);
+    }
+    
+    .iiit-kota-header {
+        margin-bottom: 1rem;
+    }
+    
+    .institution-name {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.5rem;
+    }
+    
+    .institution-primary {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #003366;
+        letter-spacing: 1px;
+        margin-bottom: 0.2rem;
+    }
+    
+    .institution-secondary {
+        font-size: 0.75rem;
+        color: #666;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .iiit-kota-card {
+        border-color: #003366;
+    }
+    
+    body.dark-theme .institution-primary {
+        color: #FF6600;
+    }
+    
+    body.dark-theme .institution-secondary {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Special styling for Infosys card */
+    .infosys-card {
+        border-color: #0082CA;
+        position: relative;
+    }
+    
+    .infosys-card:hover {
+        border-color: #FF5722;
+        box-shadow: 0 15px 30px rgba(255, 87, 34, 0.15);
+    }
+    
+    .infosys-header {
+        margin-bottom: 1rem;
+    }
+    
+    .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    .infosys-card .institution-secondary {
+        color: #FF5722;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .infosys-card {
+        border-color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-secondary {
+        color: #FF5722;
+    }
+    
+    /* Special styling for JPMorgan Chase card */
+    .jpmc-card {
+        border-color: #8B4513;
+        position: relative;
+    }
+    
+    .jpmc-card:hover {
+        border-color: #C19A6B;
+        box-shadow: 0 15px 30px rgba(139, 69, 19, 0.15);
+    }
+    
+    .jpmc-header {
+        margin-bottom: 1rem;
+    }
+    
+    .jpmc-card .institution-primary {
+        color: #8B4513;
+    }
+    
+    .jpmc-card .institution-secondary {
+        color: #C19A6B;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .jpmc-card {
+        border-color: #8B4513;
+    }
+    
+    body.dark-theme .jpmc-card .institution-primary {
+        color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .institution-secondary {
+        color: #E6C9A8;
+    }
+
+    /* Special styling for Walmart card */
+    .walmart-card {
+        border-color: #041E42;
+        position: relative;
+    }
+    
+    .walmart-card:hover {
+        border-color: #1CD874;
+        box-shadow: 0 15px 30px rgba(28, 216, 116, 0.15);
+    }
+    
+    .walmart-header {
+        margin-bottom: 1rem;
+    }
+    
+    .walmart-card .institution-primary {
+        color: #041E42;
+    }
+    
+    .walmart-card .institution-secondary {
+        color: #1CD874;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .walmart-card {
+        border-color: #041E42;
+    }
+    
+    body.dark-theme .walmart-card .institution-primary {
+        color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .institution-secondary {
+        color: #9EEFC3;
+    }
+    
+    /* Special styling for credential links in each card */
+    .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #041E42;
+        border-color: #041E42;
+    }
+    
+    .walmart-card .credential-link:hover {
+        background-color: #041E42;
+        color: white;
+        border-color: #041E42;
+    }
+    
+    .jpmc-card .credential-link {
+        background-color: rgba(139, 69, 19, 0.1);
+        color: #8B4513;
+        border-color: #8B4513;
+    }
+    
+    .jpmc-card .credential-link:hover {
+        background-color: #8B4513;
+        color: white;
+        border-color: #8B4513;
+    }
+    
+    .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #003366;
+        border-color: #003366;
+    }
+    
+    .iiit-kota-card .credential-link:hover {
+        background-color: #003366;
+        color: white;
+        border-color: #003366;
+    }
+    
+    .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #0082CA;
+        border-color: #0082CA;
+    }
+    
+    .infosys-card .credential-link:hover {
+        background-color: #0082CA;
+        color: white;
+        border-color: #0082CA;
+    }
+    
+    /* Dark mode overrides for credential links */
+    body.dark-theme .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #1CD874;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .credential-link:hover {
+        background-color: #1CD874;
+        color: #041E42;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link {
+        background-color: rgba(193, 154, 107, 0.1);
+        color: #C19A6B;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link:hover {
+        background-color: #C19A6B;
+        color: #000000;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #FF6600;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link:hover {
+        background-color: #FF6600;
+        color: #000000;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #FF5722;
+        border-color: #FF5722;
+    }
+    
+    body.dark-theme .infosys-card .credential-link:hover {
+        background-color: #FF5722;
+        color: #000000;
+        border-color: #FF5722;
+    }
+
+    /* Special styling for IIIT Kota card */
+    .iiit-kota-card {
+        border-color: #003366;
+        position: relative;
+    }
+    
+    .iiit-kota-card:hover {
+        border-color: #FF6600;
+        box-shadow: 0 15px 30px rgba(255, 102, 0, 0.15);
+    }
+    
+    .iiit-kota-header {
+        margin-bottom: 1rem;
+    }
+    
+    .institution-name {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.5rem;
+    }
+    
+    .institution-primary {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #003366;
+        letter-spacing: 1px;
+        margin-bottom: 0.2rem;
+    }
+    
+    .institution-secondary {
+        font-size: 0.75rem;
+        color: #666;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .iiit-kota-card {
+        border-color: #003366;
+    }
+    
+    body.dark-theme .institution-primary {
+        color: #FF6600;
+    }
+    
+    body.dark-theme .institution-secondary {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Special styling for Infosys card */
+    .infosys-card {
+        border-color: #0082CA;
+        position: relative;
+    }
+    
+    .infosys-card:hover {
+        border-color: #FF5722;
+        box-shadow: 0 15px 30px rgba(255, 87, 34, 0.15);
+    }
+    
+    .infosys-header {
+        margin-bottom: 1rem;
+    }
+    
+    .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    .infosys-card .institution-secondary {
+        color: #FF5722;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .infosys-card {
+        border-color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-secondary {
+        color: #FF5722;
+    }
+    
+    /* Special styling for JPMorgan Chase card */
+    .jpmc-card {
+        border-color: #8B4513;
+        position: relative;
+    }
+    
+    .jpmc-card:hover {
+        border-color: #C19A6B;
+        box-shadow: 0 15px 30px rgba(139, 69, 19, 0.15);
+    }
+    
+    .jpmc-header {
+        margin-bottom: 1rem;
+    }
+    
+    .jpmc-card .institution-primary {
+        color: #8B4513;
+    }
+    
+    .jpmc-card .institution-secondary {
+        color: #C19A6B;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .jpmc-card {
+        border-color: #8B4513;
+    }
+    
+    body.dark-theme .jpmc-card .institution-primary {
+        color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .institution-secondary {
+        color: #E6C9A8;
+    }
+
+    /* Special styling for Walmart card */
+    .walmart-card {
+        border-color: #041E42;
+        position: relative;
+    }
+    
+    .walmart-card:hover {
+        border-color: #1CD874;
+        box-shadow: 0 15px 30px rgba(28, 216, 116, 0.15);
+    }
+    
+    .walmart-header {
+        margin-bottom: 1rem;
+    }
+    
+    .walmart-card .institution-primary {
+        color: #041E42;
+    }
+    
+    .walmart-card .institution-secondary {
+        color: #1CD874;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .walmart-card {
+        border-color: #041E42;
+    }
+    
+    body.dark-theme .walmart-card .institution-primary {
+        color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .institution-secondary {
+        color: #9EEFC3;
+    }
+    
+    /* Special styling for credential links in each card */
+    .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #041E42;
+        border-color: #041E42;
+    }
+    
+    .walmart-card .credential-link:hover {
+        background-color: #041E42;
+        color: white;
+        border-color: #041E42;
+    }
+    
+    .jpmc-card .credential-link {
+        background-color: rgba(139, 69, 19, 0.1);
+        color: #8B4513;
+        border-color: #8B4513;
+    }
+    
+    .jpmc-card .credential-link:hover {
+        background-color: #8B4513;
+        color: white;
+        border-color: #8B4513;
+    }
+    
+    .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #003366;
+        border-color: #003366;
+    }
+    
+    .iiit-kota-card .credential-link:hover {
+        background-color: #003366;
+        color: white;
+        border-color: #003366;
+    }
+    
+    .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #0082CA;
+        border-color: #0082CA;
+    }
+    
+    .infosys-card .credential-link:hover {
+        background-color: #0082CA;
+        color: white;
+        border-color: #0082CA;
+    }
+    
+    /* Dark mode overrides for credential links */
+    body.dark-theme .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #1CD874;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .credential-link:hover {
+        background-color: #1CD874;
+        color: #041E42;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link {
+        background-color: rgba(193, 154, 107, 0.1);
+        color: #C19A6B;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link:hover {
+        background-color: #C19A6B;
+        color: #000000;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #FF6600;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link:hover {
+        background-color: #FF6600;
+        color: #000000;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #FF5722;
+        border-color: #FF5722;
+    }
+    
+    body.dark-theme .infosys-card .credential-link:hover {
+        background-color: #FF5722;
+        color: #000000;
+        border-color: #FF5722;
+    }
+
+    /* Special styling for IIIT Kota card */
+    .iiit-kota-card {
+        border-color: #003366;
+        position: relative;
+    }
+    
+    .iiit-kota-card:hover {
+        border-color: #FF6600;
+        box-shadow: 0 15px 30px rgba(255, 102, 0, 0.15);
+    }
+    
+    .iiit-kota-header {
+        margin-bottom: 1rem;
+    }
+    
+    .institution-name {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.5rem;
+    }
+    
+    .institution-primary {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #003366;
+        letter-spacing: 1px;
+        margin-bottom: 0.2rem;
+    }
+    
+    .institution-secondary {
+        font-size: 0.75rem;
+        color: #666;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .iiit-kota-card {
+        border-color: #003366;
+    }
+    
+    body.dark-theme .institution-primary {
+        color: #FF6600;
+    }
+    
+    body.dark-theme .institution-secondary {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Special styling for Infosys card */
+    .infosys-card {
+        border-color: #0082CA;
+        position: relative;
+    }
+    
+    .infosys-card:hover {
+        border-color: #FF5722;
+        box-shadow: 0 15px 30px rgba(255, 87, 34, 0.15);
+    }
+    
+    .infosys-header {
+        margin-bottom: 1rem;
+    }
+    
+    .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    .infosys-card .institution-secondary {
+        color: #FF5722;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .infosys-card {
+        border-color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-secondary {
+        color: #FF5722;
+    }
+    
+    /* Special styling for JPMorgan Chase card */
+    .jpmc-card {
+        border-color: #8B4513;
+        position: relative;
+    }
+    
+    .jpmc-card:hover {
+        border-color: #C19A6B;
+        box-shadow: 0 15px 30px rgba(139, 69, 19, 0.15);
+    }
+    
+    .jpmc-header {
+        margin-bottom: 1rem;
+    }
+    
+    .jpmc-card .institution-primary {
+        color: #8B4513;
+    }
+    
+    .jpmc-card .institution-secondary {
+        color: #C19A6B;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .jpmc-card {
+        border-color: #8B4513;
+    }
+    
+    body.dark-theme .jpmc-card .institution-primary {
+        color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .institution-secondary {
+        color: #E6C9A8;
+    }
+
+    /* Special styling for Walmart card */
+    .walmart-card {
+        border-color: #041E42;
+        position: relative;
+    }
+    
+    .walmart-card:hover {
+        border-color: #1CD874;
+        box-shadow: 0 15px 30px rgba(28, 216, 116, 0.15);
+    }
+    
+    .walmart-header {
+        margin-bottom: 1rem;
+    }
+    
+    .walmart-card .institution-primary {
+        color: #041E42;
+    }
+    
+    .walmart-card .institution-secondary {
+        color: #1CD874;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .walmart-card {
+        border-color: #041E42;
+    }
+    
+    body.dark-theme .walmart-card .institution-primary {
+        color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .institution-secondary {
+        color: #9EEFC3;
+    }
+    
+    /* Special styling for credential links in each card */
+    .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #041E42;
+        border-color: #041E42;
+    }
+    
+    .walmart-card .credential-link:hover {
+        background-color: #041E42;
+        color: white;
+        border-color: #041E42;
+    }
+    
+    .jpmc-card .credential-link {
+        background-color: rgba(139, 69, 19, 0.1);
+        color: #8B4513;
+        border-color: #8B4513;
+    }
+    
+    .jpmc-card .credential-link:hover {
+        background-color: #8B4513;
+        color: white;
+        border-color: #8B4513;
+    }
+    
+    .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #003366;
+        border-color: #003366;
+    }
+    
+    .iiit-kota-card .credential-link:hover {
+        background-color: #003366;
+        color: white;
+        border-color: #003366;
+    }
+    
+    .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #0082CA;
+        border-color: #0082CA;
+    }
+    
+    .infosys-card .credential-link:hover {
+        background-color: #0082CA;
+        color: white;
+        border-color: #0082CA;
+    }
+    
+    /* Dark mode overrides for credential links */
+    body.dark-theme .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #1CD874;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .credential-link:hover {
+        background-color: #1CD874;
+        color: #041E42;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link {
+        background-color: rgba(193, 154, 107, 0.1);
+        color: #C19A6B;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link:hover {
+        background-color: #C19A6B;
+        color: #000000;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #FF6600;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link:hover {
+        background-color: #FF6600;
+        color: #000000;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #FF5722;
+        border-color: #FF5722;
+    }
+    
+    body.dark-theme .infosys-card .credential-link:hover {
+        background-color: #FF5722;
+        color: #000000;
+        border-color: #FF5722;
+    }
+
+    /* Special styling for IIIT Kota card */
+    .iiit-kota-card {
+        border-color: #003366;
+        position: relative;
+    }
+    
+    .iiit-kota-card:hover {
+        border-color: #FF6600;
+        box-shadow: 0 15px 30px rgba(255, 102, 0, 0.15);
+    }
+    
+    .iiit-kota-header {
+        margin-bottom: 1rem;
+    }
+    
+    .institution-name {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.5rem;
+    }
+    
+    .institution-primary {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #003366;
+        letter-spacing: 1px;
+        margin-bottom: 0.2rem;
+    }
+    
+    .institution-secondary {
+        font-size: 0.75rem;
+        color: #666;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .iiit-kota-card {
+        border-color: #003366;
+    }
+    
+    body.dark-theme .institution-primary {
+        color: #FF6600;
+    }
+    
+    body.dark-theme .institution-secondary {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Special styling for Infosys card */
+    .infosys-card {
+        border-color: #0082CA;
+        position: relative;
+    }
+    
+    .infosys-card:hover {
+        border-color: #FF5722;
+        box-shadow: 0 15px 30px rgba(255, 87, 34, 0.15);
+    }
+    
+    .infosys-header {
+        margin-bottom: 1rem;
+    }
+    
+    .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    .infosys-card .institution-secondary {
+        color: #FF5722;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .infosys-card {
+        border-color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-secondary {
+        color: #FF5722;
+    }
+    
+    /* Special styling for JPMorgan Chase card */
+    .jpmc-card {
+        border-color: #8B4513;
+        position: relative;
+    }
+    
+    .jpmc-card:hover {
+        border-color: #C19A6B;
+        box-shadow: 0 15px 30px rgba(139, 69, 19, 0.15);
+    }
+    
+    .jpmc-header {
+        margin-bottom: 1rem;
+    }
+    
+    .jpmc-card .institution-primary {
+        color: #8B4513;
+    }
+    
+    .jpmc-card .institution-secondary {
+        color: #C19A6B;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .jpmc-card {
+        border-color: #8B4513;
+    }
+    
+    body.dark-theme .jpmc-card .institution-primary {
+        color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .institution-secondary {
+        color: #E6C9A8;
+    }
+
+    /* Special styling for Walmart card */
+    .walmart-card {
+        border-color: #041E42;
+        position: relative;
+    }
+    
+    .walmart-card:hover {
+        border-color: #1CD874;
+        box-shadow: 0 15px 30px rgba(28, 216, 116, 0.15);
+    }
+    
+    .walmart-header {
+        margin-bottom: 1rem;
+    }
+    
+    .walmart-card .institution-primary {
+        color: #041E42;
+    }
+    
+    .walmart-card .institution-secondary {
+        color: #1CD874;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .walmart-card {
+        border-color: #041E42;
+    }
+    
+    body.dark-theme .walmart-card .institution-primary {
+        color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .institution-secondary {
+        color: #9EEFC3;
+    }
+    
+    /* Special styling for credential links in each card */
+    .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #041E42;
+        border-color: #041E42;
+    }
+    
+    .walmart-card .credential-link:hover {
+        background-color: #041E42;
+        color: white;
+        border-color: #041E42;
+    }
+    
+    .jpmc-card .credential-link {
+        background-color: rgba(139, 69, 19, 0.1);
+        color: #8B4513;
+        border-color: #8B4513;
+    }
+    
+    .jpmc-card .credential-link:hover {
+        background-color: #8B4513;
+        color: white;
+        border-color: #8B4513;
+    }
+    
+    .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #003366;
+        border-color: #003366;
+    }
+    
+    .iiit-kota-card .credential-link:hover {
+        background-color: #003366;
+        color: white;
+        border-color: #003366;
+    }
+    
+    .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #0082CA;
+        border-color: #0082CA;
+    }
+    
+    .infosys-card .credential-link:hover {
+        background-color: #0082CA;
+        color: white;
+        border-color: #0082CA;
+    }
+    
+    /* Dark mode overrides for credential links */
+    body.dark-theme .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #1CD874;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .credential-link:hover {
+        background-color: #1CD874;
+        color: #041E42;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link {
+        background-color: rgba(193, 154, 107, 0.1);
+        color: #C19A6B;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link:hover {
+        background-color: #C19A6B;
+        color: #000000;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #FF6600;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link:hover {
+        background-color: #FF6600;
+        color: #000000;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #FF5722;
+        border-color: #FF5722;
+    }
+    
+    body.dark-theme .infosys-card .credential-link:hover {
+        background-color: #FF5722;
+        color: #000000;
+        border-color: #FF5722;
+    }
+
+    /* Special styling for IIIT Kota card */
+    .iiit-kota-card {
+        border-color: #003366;
+        position: relative;
+    }
+    
+    .iiit-kota-card:hover {
+        border-color: #FF6600;
+        box-shadow: 0 15px 30px rgba(255, 102, 0, 0.15);
+    }
+    
+    .iiit-kota-header {
+        margin-bottom: 1rem;
+    }
+    
+    .institution-name {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.5rem;
+    }
+    
+    .institution-primary {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #003366;
+        letter-spacing: 1px;
+        margin-bottom: 0.2rem;
+    }
+    
+    .institution-secondary {
+        font-size: 0.75rem;
+        color: #666;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .iiit-kota-card {
+        border-color: #003366;
+    }
+    
+    body.dark-theme .institution-primary {
+        color: #FF6600;
+    }
+    
+    body.dark-theme .institution-secondary {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Special styling for Infosys card */
+    .infosys-card {
+        border-color: #0082CA;
+        position: relative;
+    }
+    
+    .infosys-card:hover {
+        border-color: #FF5722;
+        box-shadow: 0 15px 30px rgba(255, 87, 34, 0.15);
+    }
+    
+    .infosys-header {
+        margin-bottom: 1rem;
+    }
+    
+    .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    .infosys-card .institution-secondary {
+        color: #FF5722;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .infosys-card {
+        border-color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-secondary {
+        color: #FF5722;
+    }
+    
+    /* Special styling for JPMorgan Chase card */
+    .jpmc-card {
+        border-color: #8B4513;
+        position: relative;
+    }
+    
+    .jpmc-card:hover {
+        border-color: #C19A6B;
+        box-shadow: 0 15px 30px rgba(139, 69, 19, 0.15);
+    }
+    
+    .jpmc-header {
+        margin-bottom: 1rem;
+    }
+    
+    .jpmc-card .institution-primary {
+        color: #8B4513;
+    }
+    
+    .jpmc-card .institution-secondary {
+        color: #C19A6B;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .jpmc-card {
+        border-color: #8B4513;
+    }
+    
+    body.dark-theme .jpmc-card .institution-primary {
+        color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .institution-secondary {
+        color: #E6C9A8;
+    }
+
+    /* Special styling for Walmart card */
+    .walmart-card {
+        border-color: #041E42;
+        position: relative;
+    }
+    
+    .walmart-card:hover {
+        border-color: #1CD874;
+        box-shadow: 0 15px 30px rgba(28, 216, 116, 0.15);
+    }
+    
+    .walmart-header {
+        margin-bottom: 1rem;
+    }
+    
+    .walmart-card .institution-primary {
+        color: #041E42;
+    }
+    
+    .walmart-card .institution-secondary {
+        color: #1CD874;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .walmart-card {
+        border-color: #041E42;
+    }
+    
+    body.dark-theme .walmart-card .institution-primary {
+        color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .institution-secondary {
+        color: #9EEFC3;
+    }
+    
+    /* Special styling for credential links in each card */
+    .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #041E42;
+        border-color: #041E42;
+    }
+    
+    .walmart-card .credential-link:hover {
+        background-color: #041E42;
+        color: white;
+        border-color: #041E42;
+    }
+    
+    .jpmc-card .credential-link {
+        background-color: rgba(139, 69, 19, 0.1);
+        color: #8B4513;
+        border-color: #8B4513;
+    }
+    
+    .jpmc-card .credential-link:hover {
+        background-color: #8B4513;
+        color: white;
+        border-color: #8B4513;
+    }
+    
+    .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #003366;
+        border-color: #003366;
+    }
+    
+    .iiit-kota-card .credential-link:hover {
+        background-color: #003366;
+        color: white;
+        border-color: #003366;
+    }
+    
+    .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #0082CA;
+        border-color: #0082CA;
+    }
+    
+    .infosys-card .credential-link:hover {
+        background-color: #0082CA;
+        color: white;
+        border-color: #0082CA;
+    }
+    
+    /* Dark mode overrides for credential links */
+    body.dark-theme .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #1CD874;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .credential-link:hover {
+        background-color: #1CD874;
+        color: #041E42;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link {
+        background-color: rgba(193, 154, 107, 0.1);
+        color: #C19A6B;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link:hover {
+        background-color: #C19A6B;
+        color: #000000;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #FF6600;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link:hover {
+        background-color: #FF6600;
+        color: #000000;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #FF5722;
+        border-color: #FF5722;
+    }
+    
+    body.dark-theme .infosys-card .credential-link:hover {
+        background-color: #FF5722;
+        color: #000000;
+        border-color: #FF5722;
+    }
+
+    /* Special styling for IIIT Kota card */
+    .iiit-kota-card {
+        border-color: #003366;
+        position: relative;
+    }
+    
+    .iiit-kota-card:hover {
+        border-color: #FF6600;
+        box-shadow: 0 15px 30px rgba(255, 102, 0, 0.15);
+    }
+    
+    .iiit-kota-header {
+        margin-bottom: 1rem;
+    }
+    
+    .institution-name {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.5rem;
+    }
+    
+    .institution-primary {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #003366;
+        letter-spacing: 1px;
+        margin-bottom: 0.2rem;
+    }
+    
+    .institution-secondary {
+        font-size: 0.75rem;
+        color: #666;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .iiit-kota-card {
+        border-color: #003366;
+    }
+    
+    body.dark-theme .institution-primary {
+        color: #FF6600;
+    }
+    
+    body.dark-theme .institution-secondary {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Special styling for Infosys card */
+    .infosys-card {
+        border-color: #0082CA;
+        position: relative;
+    }
+    
+    .infosys-card:hover {
+        border-color: #FF5722;
+        box-shadow: 0 15px 30px rgba(255, 87, 34, 0.15);
+    }
+    
+    .infosys-header {
+        margin-bottom: 1rem;
+    }
+    
+    .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    .infosys-card .institution-secondary {
+        color: #FF5722;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .infosys-card {
+        border-color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-secondary {
+        color: #FF5722;
+    }
+    
+    /* Special styling for JPMorgan Chase card */
+    .jpmc-card {
+        border-color: #8B4513;
+        position: relative;
+    }
+    
+    .jpmc-card:hover {
+        border-color: #C19A6B;
+        box-shadow: 0 15px 30px rgba(139, 69, 19, 0.15);
+    }
+    
+    .jpmc-header {
+        margin-bottom: 1rem;
+    }
+    
+    .jpmc-card .institution-primary {
+        color: #8B4513;
+    }
+    
+    .jpmc-card .institution-secondary {
+        color: #C19A6B;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .jpmc-card {
+        border-color: #8B4513;
+    }
+    
+    body.dark-theme .jpmc-card .institution-primary {
+        color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .institution-secondary {
+        color: #E6C9A8;
+    }
+
+    /* Special styling for Walmart card */
+    .walmart-card {
+        border-color: #041E42;
+        position: relative;
+    }
+    
+    .walmart-card:hover {
+        border-color: #1CD874;
+        box-shadow: 0 15px 30px rgba(28, 216, 116, 0.15);
+    }
+    
+    .walmart-header {
+        margin-bottom: 1rem;
+    }
+    
+    .walmart-card .institution-primary {
+        color: #041E42;
+    }
+    
+    .walmart-card .institution-secondary {
+        color: #1CD874;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .walmart-card {
+        border-color: #041E42;
+    }
+    
+    body.dark-theme .walmart-card .institution-primary {
+        color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .institution-secondary {
+        color: #9EEFC3;
+    }
+    
+    /* Special styling for credential links in each card */
+    .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #041E42;
+        border-color: #041E42;
+    }
+    
+    .walmart-card .credential-link:hover {
+        background-color: #041E42;
+        color: white;
+        border-color: #041E42;
+    }
+    
+    .jpmc-card .credential-link {
+        background-color: rgba(139, 69, 19, 0.1);
+        color: #8B4513;
+        border-color: #8B4513;
+    }
+    
+    .jpmc-card .credential-link:hover {
+        background-color: #8B4513;
+        color: white;
+        border-color: #8B4513;
+    }
+    
+    .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #003366;
+        border-color: #003366;
+    }
+    
+    .iiit-kota-card .credential-link:hover {
+        background-color: #003366;
+        color: white;
+        border-color: #003366;
+    }
+    
+    .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #0082CA;
+        border-color: #0082CA;
+    }
+    
+    .infosys-card .credential-link:hover {
+        background-color: #0082CA;
+        color: white;
+        border-color: #0082CA;
+    }
+    
+    /* Dark mode overrides for credential links */
+    body.dark-theme .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #1CD874;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .credential-link:hover {
+        background-color: #1CD874;
+        color: #041E42;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link {
+        background-color: rgba(193, 154, 107, 0.1);
+        color: #C19A6B;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link:hover {
+        background-color: #C19A6B;
+        color: #000000;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #FF6600;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link:hover {
+        background-color: #FF6600;
+        color: #000000;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #FF5722;
+        border-color: #FF5722;
+    }
+    
+    body.dark-theme .infosys-card .credential-link:hover {
+        background-color: #FF5722;
+        color: #000000;
+        border-color: #FF5722;
+    }
+
+    /* Special styling for IIIT Kota card */
+    .iiit-kota-card {
+        border-color: #003366;
+        position: relative;
+    }
+    
+    .iiit-kota-card:hover {
+        border-color: #FF6600;
+        box-shadow: 0 15px 30px rgba(255, 102, 0, 0.15);
+    }
+    
+    .iiit-kota-header {
+        margin-bottom: 1rem;
+    }
+    
+    .institution-name {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.5rem;
+    }
+    
+    .institution-primary {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #003366;
+        letter-spacing: 1px;
+        margin-bottom: 0.2rem;
+    }
+    
+    .institution-secondary {
+        font-size: 0.75rem;
+        color: #666;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .iiit-kota-card {
+        border-color: #003366;
+    }
+    
+    body.dark-theme .institution-primary {
+        color: #FF6600;
+    }
+    
+    body.dark-theme .institution-secondary {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Special styling for Infosys card */
+    .infosys-card {
+        border-color: #0082CA;
+        position: relative;
+    }
+    
+    .infosys-card:hover {
+        border-color: #FF5722;
+        box-shadow: 0 15px 30px rgba(255, 87, 34, 0.15);
+    }
+    
+    .infosys-header {
+        margin-bottom: 1rem;
+    }
+    
+    .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    .infosys-card .institution-secondary {
+        color: #FF5722;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .infosys-card {
+        border-color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-secondary {
+        color: #FF5722;
+    }
+    
+    /* Special styling for JPMorgan Chase card */
+    .jpmc-card {
+        border-color: #8B4513;
+        position: relative;
+    }
+    
+    .jpmc-card:hover {
+        border-color: #C19A6B;
+        box-shadow: 0 15px 30px rgba(139, 69, 19, 0.15);
+    }
+    
+    .jpmc-header {
+        margin-bottom: 1rem;
+    }
+    
+    .jpmc-card .institution-primary {
+        color: #8B4513;
+    }
+    
+    .jpmc-card .institution-secondary {
+        color: #C19A6B;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .jpmc-card {
+        border-color: #8B4513;
+    }
+    
+    body.dark-theme .jpmc-card .institution-primary {
+        color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .institution-secondary {
+        color: #E6C9A8;
+    }
+
+    /* Special styling for Walmart card */
+    .walmart-card {
+        border-color: #041E42;
+        position: relative;
+    }
+    
+    .walmart-card:hover {
+        border-color: #1CD874;
+        box-shadow: 0 15px 30px rgba(28, 216, 116, 0.15);
+    }
+    
+    .walmart-header {
+        margin-bottom: 1rem;
+    }
+    
+    .walmart-card .institution-primary {
+        color: #041E42;
+    }
+    
+    .walmart-card .institution-secondary {
+        color: #1CD874;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .walmart-card {
+        border-color: #041E42;
+    }
+    
+    body.dark-theme .walmart-card .institution-primary {
+        color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .institution-secondary {
+        color: #9EEFC3;
+    }
+    
+    /* Special styling for credential links in each card */
+    .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #041E42;
+        border-color: #041E42;
+    }
+    
+    .walmart-card .credential-link:hover {
+        background-color: #041E42;
+        color: white;
+        border-color: #041E42;
+    }
+    
+    .jpmc-card .credential-link {
+        background-color: rgba(139, 69, 19, 0.1);
+        color: #8B4513;
+        border-color: #8B4513;
+    }
+    
+    .jpmc-card .credential-link:hover {
+        background-color: #8B4513;
+        color: white;
+        border-color: #8B4513;
+    }
+    
+    .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #003366;
+        border-color: #003366;
+    }
+    
+    .iiit-kota-card .credential-link:hover {
+        background-color: #003366;
+        color: white;
+        border-color: #003366;
+    }
+    
+    .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #0082CA;
+        border-color: #0082CA;
+    }
+    
+    .infosys-card .credential-link:hover {
+        background-color: #0082CA;
+        color: white;
+        border-color: #0082CA;
+    }
+    
+    /* Dark mode overrides for credential links */
+    body.dark-theme .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #1CD874;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .credential-link:hover {
+        background-color: #1CD874;
+        color: #041E42;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link {
+        background-color: rgba(193, 154, 107, 0.1);
+        color: #C19A6B;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link:hover {
+        background-color: #C19A6B;
+        color: #000000;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #FF6600;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link:hover {
+        background-color: #FF6600;
+        color: #000000;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #FF5722;
+        border-color: #FF5722;
+    }
+    
+    body.dark-theme .infosys-card .credential-link:hover {
+        background-color: #FF5722;
+        color: #000000;
+        border-color: #FF5722;
+    }
+
+    /* Special styling for IIIT Kota card */
+    .iiit-kota-card {
+        border-color: #003366;
+        position: relative;
+    }
+    
+    .iiit-kota-card:hover {
+        border-color: #FF6600;
+        box-shadow: 0 15px 30px rgba(255, 102, 0, 0.15);
+    }
+    
+    .iiit-kota-header {
+        margin-bottom: 1rem;
+    }
+    
+    .institution-name {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.5rem;
+    }
+    
+    .institution-primary {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #003366;
+        letter-spacing: 1px;
+        margin-bottom: 0.2rem;
+    }
+    
+    .institution-secondary {
+        font-size: 0.75rem;
+        color: #666;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .iiit-kota-card {
+        border-color: #003366;
+    }
+    
+    body.dark-theme .institution-primary {
+        color: #FF6600;
+    }
+    
+    body.dark-theme .institution-secondary {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Special styling for Infosys card */
+    .infosys-card {
+        border-color: #0082CA;
+        position: relative;
+    }
+    
+    .infosys-card:hover {
+        border-color: #FF5722;
+        box-shadow: 0 15px 30px rgba(255, 87, 34, 0.15);
+    }
+    
+    .infosys-header {
+        margin-bottom: 1rem;
+    }
+    
+    .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    .infosys-card .institution-secondary {
+        color: #FF5722;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .infosys-card {
+        border-color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-secondary {
+        color: #FF5722;
+    }
+    
+    /* Special styling for JPMorgan Chase card */
+    .jpmc-card {
+        border-color: #8B4513;
+        position: relative;
+    }
+    
+    .jpmc-card:hover {
+        border-color: #C19A6B;
+        box-shadow: 0 15px 30px rgba(139, 69, 19, 0.15);
+    }
+    
+    .jpmc-header {
+        margin-bottom: 1rem;
+    }
+    
+    .jpmc-card .institution-primary {
+        color: #8B4513;
+    }
+    
+    .jpmc-card .institution-secondary {
+        color: #C19A6B;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .jpmc-card {
+        border-color: #8B4513;
+    }
+    
+    body.dark-theme .jpmc-card .institution-primary {
+        color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .institution-secondary {
+        color: #E6C9A8;
+    }
+
+    /* Special styling for Walmart card */
+    .walmart-card {
+        border-color: #041E42;
+        position: relative;
+    }
+    
+    .walmart-card:hover {
+        border-color: #1CD874;
+        box-shadow: 0 15px 30px rgba(28, 216, 116, 0.15);
+    }
+    
+    .walmart-header {
+        margin-bottom: 1rem;
+    }
+    
+    .walmart-card .institution-primary {
+        color: #041E42;
+    }
+    
+    .walmart-card .institution-secondary {
+        color: #1CD874;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .walmart-card {
+        border-color: #041E42;
+    }
+    
+    body.dark-theme .walmart-card .institution-primary {
+        color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .institution-secondary {
+        color: #9EEFC3;
+    }
+    
+    /* Special styling for credential links in each card */
+    .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #041E42;
+        border-color: #041E42;
+    }
+    
+    .walmart-card .credential-link:hover {
+        background-color: #041E42;
+        color: white;
+        border-color: #041E42;
+    }
+    
+    .jpmc-card .credential-link {
+        background-color: rgba(139, 69, 19, 0.1);
+        color: #8B4513;
+        border-color: #8B4513;
+    }
+    
+    .jpmc-card .credential-link:hover {
+        background-color: #8B4513;
+        color: white;
+        border-color: #8B4513;
+    }
+    
+    .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #003366;
+        border-color: #003366;
+    }
+    
+    .iiit-kota-card .credential-link:hover {
+        background-color: #003366;
+        color: white;
+        border-color: #003366;
+    }
+    
+    .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #0082CA;
+        border-color: #0082CA;
+    }
+    
+    .infosys-card .credential-link:hover {
+        background-color: #0082CA;
+        color: white;
+        border-color: #0082CA;
+    }
+    
+    /* Dark mode overrides for credential links */
+    body.dark-theme .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #1CD874;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .credential-link:hover {
+        background-color: #1CD874;
+        color: #041E42;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link {
+        background-color: rgba(193, 154, 107, 0.1);
+        color: #C19A6B;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link:hover {
+        background-color: #C19A6B;
+        color: #000000;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #FF6600;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link:hover {
+        background-color: #FF6600;
+        color: #000000;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #FF5722;
+        border-color: #FF5722;
+    }
+    
+    body.dark-theme .infosys-card .credential-link:hover {
+        background-color: #FF5722;
+        color: #000000;
+        border-color: #FF5722;
+    }
+
+    /* Special styling for IIIT Kota card */
+    .iiit-kota-card {
+        border-color: #003366;
+        position: relative;
+    }
+    
+    .iiit-kota-card:hover {
+        border-color: #FF6600;
+        box-shadow: 0 15px 30px rgba(255, 102, 0, 0.15);
+    }
+    
+    .iiit-kota-header {
+        margin-bottom: 1rem;
+    }
+    
+    .institution-name {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.5rem;
+    }
+    
+    .institution-primary {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #003366;
+        letter-spacing: 1px;
+        margin-bottom: 0.2rem;
+    }
+    
+    .institution-secondary {
+        font-size: 0.75rem;
+        color: #666;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .iiit-kota-card {
+        border-color: #003366;
+    }
+    
+    body.dark-theme .institution-primary {
+        color: #FF6600;
+    }
+    
+    body.dark-theme .institution-secondary {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Special styling for Infosys card */
+    .infosys-card {
+        border-color: #0082CA;
+        position: relative;
+    }
+    
+    .infosys-card:hover {
+        border-color: #FF5722;
+        box-shadow: 0 15px 30px rgba(255, 87, 34, 0.15);
+    }
+    
+    .infosys-header {
+        margin-bottom: 1rem;
+    }
+    
+    .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    .infosys-card .institution-secondary {
+        color: #FF5722;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .infosys-card {
+        border-color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-secondary {
+        color: #FF5722;
+    }
+    
+    /* Special styling for JPMorgan Chase card */
+    .jpmc-card {
+        border-color: #8B4513;
+        position: relative;
+    }
+    
+    .jpmc-card:hover {
+        border-color: #C19A6B;
+        box-shadow: 0 15px 30px rgba(139, 69, 19, 0.15);
+    }
+    
+    .jpmc-header {
+        margin-bottom: 1rem;
+    }
+    
+    .jpmc-card .institution-primary {
+        color: #8B4513;
+    }
+    
+    .jpmc-card .institution-secondary {
+        color: #C19A6B;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .jpmc-card {
+        border-color: #8B4513;
+    }
+    
+    body.dark-theme .jpmc-card .institution-primary {
+        color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .institution-secondary {
+        color: #E6C9A8;
+    }
+
+    /* Special styling for Walmart card */
+    .walmart-card {
+        border-color: #041E42;
+        position: relative;
+    }
+    
+    .walmart-card:hover {
+        border-color: #1CD874;
+        box-shadow: 0 15px 30px rgba(28, 216, 116, 0.15);
+    }
+    
+    .walmart-header {
+        margin-bottom: 1rem;
+    }
+    
+    .walmart-card .institution-primary {
+        color: #041E42;
+    }
+    
+    .walmart-card .institution-secondary {
+        color: #1CD874;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .walmart-card {
+        border-color: #041E42;
+    }
+    
+    body.dark-theme .walmart-card .institution-primary {
+        color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .institution-secondary {
+        color: #9EEFC3;
+    }
+    
+    /* Special styling for credential links in each card */
+    .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #041E42;
+        border-color: #041E42;
+    }
+    
+    .walmart-card .credential-link:hover {
+        background-color: #041E42;
+        color: white;
+        border-color: #041E42;
+    }
+    
+    .jpmc-card .credential-link {
+        background-color: rgba(139, 69, 19, 0.1);
+        color: #8B4513;
+        border-color: #8B4513;
+    }
+    
+    .jpmc-card .credential-link:hover {
+        background-color: #8B4513;
+        color: white;
+        border-color: #8B4513;
+    }
+    
+    .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #003366;
+        border-color: #003366;
+    }
+    
+    .iiit-kota-card .credential-link:hover {
+        background-color: #003366;
+        color: white;
+        border-color: #003366;
+    }
+    
+    .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #0082CA;
+        border-color: #0082CA;
+    }
+    
+    .infosys-card .credential-link:hover {
+        background-color: #0082CA;
+        color: white;
+        border-color: #0082CA;
+    }
+    
+    /* Dark mode overrides for credential links */
+    body.dark-theme .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #1CD874;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .credential-link:hover {
+        background-color: #1CD874;
+        color: #041E42;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link {
+        background-color: rgba(193, 154, 107, 0.1);
+        color: #C19A6B;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link:hover {
+        background-color: #C19A6B;
+        color: #000000;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #FF6600;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link:hover {
+        background-color: #FF6600;
+        color: #000000;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #FF5722;
+        border-color: #FF5722;
+    }
+    
+    body.dark-theme .infosys-card .credential-link:hover {
+        background-color: #FF5722;
+        color: #000000;
+        border-color: #FF5722;
+    }
+
+    /* Special styling for IIIT Kota card */
+    .iiit-kota-card {
+        border-color: #003366;
+        position: relative;
+    }
+    
+    .iiit-kota-card:hover {
+        border-color: #FF6600;
+        box-shadow: 0 15px 30px rgba(255, 102, 0, 0.15);
+    }
+    
+    .iiit-kota-header {
+        margin-bottom: 1rem;
+    }
+    
+    .institution-name {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.5rem;
+    }
+    
+    .institution-primary {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #003366;
+        letter-spacing: 1px;
+        margin-bottom: 0.2rem;
+    }
+    
+    .institution-secondary {
+        font-size: 0.75rem;
+        color: #666;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .iiit-kota-card {
+        border-color: #003366;
+    }
+    
+    body.dark-theme .institution-primary {
+        color: #FF6600;
+    }
+    
+    body.dark-theme .institution-secondary {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Special styling for Infosys card */
+    .infosys-card {
+        border-color: #0082CA;
+        position: relative;
+    }
+    
+    .infosys-card:hover {
+        border-color: #FF5722;
+        box-shadow: 0 15px 30px rgba(255, 87, 34, 0.15);
+    }
+    
+    .infosys-header {
+        margin-bottom: 1rem;
+    }
+    
+    .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    .infosys-card .institution-secondary {
+        color: #FF5722;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .infosys-card {
+        border-color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-secondary {
+        color: #FF5722;
+    }
+    
+    /* Special styling for JPMorgan Chase card */
+    .jpmc-card {
+        border-color: #8B4513;
+        position: relative;
+    }
+    
+    .jpmc-card:hover {
+        border-color: #C19A6B;
+        box-shadow: 0 15px 30px rgba(139, 69, 19, 0.15);
+    }
+    
+    .jpmc-header {
+        margin-bottom: 1rem;
+    }
+    
+    .jpmc-card .institution-primary {
+        color: #8B4513;
+    }
+    
+    .jpmc-card .institution-secondary {
+        color: #C19A6B;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .jpmc-card {
+        border-color: #8B4513;
+    }
+    
+    body.dark-theme .jpmc-card .institution-primary {
+        color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .institution-secondary {
+        color: #E6C9A8;
+    }
+
+    /* Special styling for Walmart card */
+    .walmart-card {
+        border-color: #041E42;
+        position: relative;
+    }
+    
+    .walmart-card:hover {
+        border-color: #1CD874;
+        box-shadow: 0 15px 30px rgba(28, 216, 116, 0.15);
+    }
+    
+    .walmart-header {
+        margin-bottom: 1rem;
+    }
+    
+    .walmart-card .institution-primary {
+        color: #041E42;
+    }
+    
+    .walmart-card .institution-secondary {
+        color: #1CD874;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .walmart-card {
+        border-color: #041E42;
+    }
+    
+    body.dark-theme .walmart-card .institution-primary {
+        color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .institution-secondary {
+        color: #9EEFC3;
+    }
+    
+    /* Special styling for credential links in each card */
+    .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #041E42;
+        border-color: #041E42;
+    }
+    
+    .walmart-card .credential-link:hover {
+        background-color: #041E42;
+        color: white;
+        border-color: #041E42;
+    }
+    
+    .jpmc-card .credential-link {
+        background-color: rgba(139, 69, 19, 0.1);
+        color: #8B4513;
+        border-color: #8B4513;
+    }
+    
+    .jpmc-card .credential-link:hover {
+        background-color: #8B4513;
+        color: white;
+        border-color: #8B4513;
+    }
+    
+    .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #003366;
+        border-color: #003366;
+    }
+    
+    .iiit-kota-card .credential-link:hover {
+        background-color: #003366;
+        color: white;
+        border-color: #003366;
+    }
+    
+    .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #0082CA;
+        border-color: #0082CA;
+    }
+    
+    .infosys-card .credential-link:hover {
+        background-color: #0082CA;
+        color: white;
+        border-color: #0082CA;
+    }
+    
+    /* Dark mode overrides for credential links */
+    body.dark-theme .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #1CD874;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .credential-link:hover {
+        background-color: #1CD874;
+        color: #041E42;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link {
+        background-color: rgba(193, 154, 107, 0.1);
+        color: #C19A6B;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link:hover {
+        background-color: #C19A6B;
+        color: #000000;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #FF6600;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link:hover {
+        background-color: #FF6600;
+        color: #000000;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #FF5722;
+        border-color: #FF5722;
+    }
+    
+    body.dark-theme .infosys-card .credential-link:hover {
+        background-color: #FF5722;
+        color: #000000;
+        border-color: #FF5722;
+    }
+
+    /* Special styling for IIIT Kota card */
+    .iiit-kota-card {
+        border-color: #003366;
+        position: relative;
+    }
+    
+    .iiit-kota-card:hover {
+        border-color: #FF6600;
+        box-shadow: 0 15px 30px rgba(255, 102, 0, 0.15);
+    }
+    
+    .iiit-kota-header {
+        margin-bottom: 1rem;
+    }
+    
+    .institution-name {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.5rem;
+    }
+    
+    .institution-primary {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #003366;
+        letter-spacing: 1px;
+        margin-bottom: 0.2rem;
+    }
+    
+    .institution-secondary {
+        font-size: 0.75rem;
+        color: #666;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .iiit-kota-card {
+        border-color: #003366;
+    }
+    
+    body.dark-theme .institution-primary {
+        color: #FF6600;
+    }
+    
+    body.dark-theme .institution-secondary {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Special styling for Infosys card */
+    .infosys-card {
+        border-color: #0082CA;
+        position: relative;
+    }
+    
+    .infosys-card:hover {
+        border-color: #FF5722;
+        box-shadow: 0 15px 30px rgba(255, 87, 34, 0.15);
+    }
+    
+    .infosys-header {
+        margin-bottom: 1rem;
+    }
+    
+    .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    .infosys-card .institution-secondary {
+        color: #FF5722;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .infosys-card {
+        border-color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-secondary {
+        color: #FF5722;
+    }
+    
+    /* Special styling for JPMorgan Chase card */
+    .jpmc-card {
+        border-color: #8B4513;
+        position: relative;
+    }
+    
+    .jpmc-card:hover {
+        border-color: #C19A6B;
+        box-shadow: 0 15px 30px rgba(139, 69, 19, 0.15);
+    }
+    
+    .jpmc-header {
+        margin-bottom: 1rem;
+    }
+    
+    .jpmc-card .institution-primary {
+        color: #8B4513;
+    }
+    
+    .jpmc-card .institution-secondary {
+        color: #C19A6B;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .jpmc-card {
+        border-color: #8B4513;
+    }
+    
+    body.dark-theme .jpmc-card .institution-primary {
+        color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .institution-secondary {
+        color: #E6C9A8;
+    }
+
+    /* Special styling for Walmart card */
+    .walmart-card {
+        border-color: #041E42;
+        position: relative;
+    }
+    
+    .walmart-card:hover {
+        border-color: #1CD874;
+        box-shadow: 0 15px 30px rgba(28, 216, 116, 0.15);
+    }
+    
+    .walmart-header {
+        margin-bottom: 1rem;
+    }
+    
+    .walmart-card .institution-primary {
+        color: #041E42;
+    }
+    
+    .walmart-card .institution-secondary {
+        color: #1CD874;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .walmart-card {
+        border-color: #041E42;
+    }
+    
+    body.dark-theme .walmart-card .institution-primary {
+        color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .institution-secondary {
+        color: #9EEFC3;
+    }
+    
+    /* Special styling for credential links in each card */
+    .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #041E42;
+        border-color: #041E42;
+    }
+    
+    .walmart-card .credential-link:hover {
+        background-color: #041E42;
+        color: white;
+        border-color: #041E42;
+    }
+    
+    .jpmc-card .credential-link {
+        background-color: rgba(139, 69, 19, 0.1);
+        color: #8B4513;
+        border-color: #8B4513;
+    }
+    
+    .jpmc-card .credential-link:hover {
+        background-color: #8B4513;
+        color: white;
+        border-color: #8B4513;
+    }
+    
+    .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #003366;
+        border-color: #003366;
+    }
+    
+    .iiit-kota-card .credential-link:hover {
+        background-color: #003366;
+        color: white;
+        border-color: #003366;
+    }
+    
+    .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #0082CA;
+        border-color: #0082CA;
+    }
+    
+    .infosys-card .credential-link:hover {
+        background-color: #0082CA;
+        color: white;
+        border-color: #0082CA;
+    }
+    
+    /* Dark mode overrides for credential links */
+    body.dark-theme .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #1CD874;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .credential-link:hover {
+        background-color: #1CD874;
+        color: #041E42;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link {
+        background-color: rgba(193, 154, 107, 0.1);
+        color: #C19A6B;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link:hover {
+        background-color: #C19A6B;
+        color: #000000;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #FF6600;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link:hover {
+        background-color: #FF6600;
+        color: #000000;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #FF5722;
+        border-color: #FF5722;
+    }
+    
+    body.dark-theme .infosys-card .credential-link:hover {
+        background-color: #FF5722;
+        color: #000000;
+        border-color: #FF5722;
+    }
+
+    /* Special styling for IIIT Kota card */
+    .iiit-kota-card {
+        border-color: #003366;
+        position: relative;
+    }
+    
+    .iiit-kota-card:hover {
+        border-color: #FF6600;
+        box-shadow: 0 15px 30px rgba(255, 102, 0, 0.15);
+    }
+    
+    .iiit-kota-header {
+        margin-bottom: 1rem;
+    }
+    
+    .institution-name {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.5rem;
+    }
+    
+    .institution-primary {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #003366;
+        letter-spacing: 1px;
+        margin-bottom: 0.2rem;
+    }
+    
+    .institution-secondary {
+        font-size: 0.75rem;
+        color: #666;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .iiit-kota-card {
+        border-color: #003366;
+    }
+    
+    body.dark-theme .institution-primary {
+        color: #FF6600;
+    }
+    
+    body.dark-theme .institution-secondary {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Special styling for Infosys card */
+    .infosys-card {
+        border-color: #0082CA;
+        position: relative;
+    }
+    
+    .infosys-card:hover {
+        border-color: #FF5722;
+        box-shadow: 0 15px 30px rgba(255, 87, 34, 0.15);
+    }
+    
+    .infosys-header {
+        margin-bottom: 1rem;
+    }
+    
+    .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    .infosys-card .institution-secondary {
+        color: #FF5722;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .infosys-card {
+        border-color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-secondary {
+        color: #FF5722;
+    }
+    
+    /* Special styling for JPMorgan Chase card */
+    .jpmc-card {
+        border-color: #8B4513;
+        position: relative;
+    }
+    
+    .jpmc-card:hover {
+        border-color: #C19A6B;
+        box-shadow: 0 15px 30px rgba(139, 69, 19, 0.15);
+    }
+    
+    .jpmc-header {
+        margin-bottom: 1rem;
+    }
+    
+    .jpmc-card .institution-primary {
+        color: #8B4513;
+    }
+    
+    .jpmc-card .institution-secondary {
+        color: #C19A6B;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .jpmc-card {
+        border-color: #8B4513;
+    }
+    
+    body.dark-theme .jpmc-card .institution-primary {
+        color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .institution-secondary {
+        color: #E6C9A8;
+    }
+
+    /* Special styling for Walmart card */
+    .walmart-card {
+        border-color: #041E42;
+        position: relative;
+    }
+    
+    .walmart-card:hover {
+        border-color: #1CD874;
+        box-shadow: 0 15px 30px rgba(28, 216, 116, 0.15);
+    }
+    
+    .walmart-header {
+        margin-bottom: 1rem;
+    }
+    
+    .walmart-card .institution-primary {
+        color: #041E42;
+    }
+    
+    .walmart-card .institution-secondary {
+        color: #1CD874;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .walmart-card {
+        border-color: #041E42;
+    }
+    
+    body.dark-theme .walmart-card .institution-primary {
+        color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .institution-secondary {
+        color: #9EEFC3;
+    }
+    
+    /* Special styling for credential links in each card */
+    .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #041E42;
+        border-color: #041E42;
+    }
+    
+    .walmart-card .credential-link:hover {
+        background-color: #041E42;
+        color: white;
+        border-color: #041E42;
+    }
+    
+    .jpmc-card .credential-link {
+        background-color: rgba(139, 69, 19, 0.1);
+        color: #8B4513;
+        border-color: #8B4513;
+    }
+    
+    .jpmc-card .credential-link:hover {
+        background-color: #8B4513;
+        color: white;
+        border-color: #8B4513;
+    }
+    
+    .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #003366;
+        border-color: #003366;
+    }
+    
+    .iiit-kota-card .credential-link:hover {
+        background-color: #003366;
+        color: white;
+        border-color: #003366;
+    }
+    
+    .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #0082CA;
+        border-color: #0082CA;
+    }
+    
+    .infosys-card .credential-link:hover {
+        background-color: #0082CA;
+        color: white;
+        border-color: #0082CA;
+    }
+    
+    /* Dark mode overrides for credential links */
+    body.dark-theme .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #1CD874;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .credential-link:hover {
+        background-color: #1CD874;
+        color: #041E42;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link {
+        background-color: rgba(193, 154, 107, 0.1);
+        color: #C19A6B;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link:hover {
+        background-color: #C19A6B;
+        color: #000000;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #FF6600;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link:hover {
+        background-color: #FF6600;
+        color: #000000;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #FF5722;
+        border-color: #FF5722;
+    }
+    
+    body.dark-theme .infosys-card .credential-link:hover {
+        background-color: #FF5722;
+        color: #000000;
+        border-color: #FF5722;
+    }
+
+    /* Special styling for IIIT Kota card */
+    .iiit-kota-card {
+        border-color: #003366;
+        position: relative;
+    }
+    
+    .iiit-kota-card:hover {
+        border-color: #FF6600;
+        box-shadow: 0 15px 30px rgba(255, 102, 0, 0.15);
+    }
+    
+    .iiit-kota-header {
+        margin-bottom: 1rem;
+    }
+    
+    .institution-name {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.5rem;
+    }
+    
+    .institution-primary {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #003366;
+        letter-spacing: 1px;
+        margin-bottom: 0.2rem;
+    }
+    
+    .institution-secondary {
+        font-size: 0.75rem;
+        color: #666;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .iiit-kota-card {
+        border-color: #003366;
+    }
+    
+    body.dark-theme .institution-primary {
+        color: #FF6600;
+    }
+    
+    body.dark-theme .institution-secondary {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Special styling for Infosys card */
+    .infosys-card {
+        border-color: #0082CA;
+        position: relative;
+    }
+    
+    .infosys-card:hover {
+        border-color: #FF5722;
+        box-shadow: 0 15px 30px rgba(255, 87, 34, 0.15);
+    }
+    
+    .infosys-header {
+        margin-bottom: 1rem;
+    }
+    
+    .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    .infosys-card .institution-secondary {
+        color: #FF5722;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .infosys-card {
+        border-color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    
+    body.dark-theme .infosys-card .institution-secondary {
+        color: #FF5722;
+    }
+    
+    /* Special styling for JPMorgan Chase card */
+    .jpmc-card {
+        border-color: #8B4513;
+        position: relative;
+    }
+    
+    .jpmc-card:hover {
+        border-color: #C19A6B;
+        box-shadow: 0 15px 30px rgba(139, 69, 19, 0.15);
+    }
+    
+    .jpmc-header {
+        margin-bottom: 1rem;
+    }
+    
+    .jpmc-card .institution-primary {
+        color: #8B4513;
+    }
+    
+    .jpmc-card .institution-secondary {
+        color: #C19A6B;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .jpmc-card {
+        border-color: #8B4513;
+    }
+    
+    body.dark-theme .jpmc-card .institution-primary {
+        color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .institution-secondary {
+        color: #E6C9A8;
+    }
+
+    /* Special styling for Walmart card */
+    .walmart-card {
+        border-color: #041E42;
+        position: relative;
+    }
+    
+    .walmart-card:hover {
+        border-color: #1CD874;
+        box-shadow: 0 15px 30px rgba(28, 216, 116, 0.15);
+    }
+    
+    .walmart-header {
+        margin-bottom: 1rem;
+    }
+    
+    .walmart-card .institution-primary {
+        color: #041E42;
+    }
+    
+    .walmart-card .institution-secondary {
+        color: #1CD874;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .walmart-card {
+        border-color: #041E42;
+    }
+    
+    body.dark-theme .walmart-card .institution-primary {
+        color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .institution-secondary {
+        color: #9EEFC3;
+    }
+    
+    /* Special styling for credential links in each card */
+    .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #041E42;
+        border-color: #041E42;
+    }
+    
+    .walmart-card .credential-link:hover {
+        background-color: #041E42;
+        color: white;
+        border-color: #041E42;
+    }
+    
+    .jpmc-card .credential-link {
+        background-color: rgba(139, 69, 19, 0.1);
+        color: #8B4513;
+        border-color: #8B4513;
+    }
+    
+    .jpmc-card .credential-link:hover {
+        background-color: #8B4513;
+        color: white;
+        border-color: #8B4513;
+    }
+    
+    .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #003366;
+        border-color: #003366;
+    }
+    
+    .iiit-kota-card .credential-link:hover {
+        background-color: #003366;
+        color: white;
+        border-color: #003366;
+    }
+    
+    .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #0082CA;
+        border-color: #0082CA;
+    }
+    
+    .infosys-card .credential-link:hover {
+        background-color: #0082CA;
+        color: white;
+        border-color: #0082CA;
+    }
+    
+    /* Dark mode overrides for credential links */
+    body.dark-theme .walmart-card .credential-link {
+        background-color: rgba(28, 216, 116, 0.1);
+        color: #1CD874;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .walmart-card .credential-link:hover {
+        background-color: #1CD874;
+        color: #041E42;
+        border-color: #1CD874;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link {
+        background-color: rgba(193, 154, 107, 0.1);
+        color: #C19A6B;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .jpmc-card .credential-link:hover {
+        background-color: #C19A6B;
+        color: #000000;
+        border-color: #C19A6B;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link {
+        background-color: rgba(255, 102, 0, 0.1);
+        color: #FF6600;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .iiit-kota-card .credential-link:hover {
+        background-color: #FF6600;
+        color: #000000;
+        border-color: #FF6600;
+    }
+    
+    body.dark-theme .infosys-card .credential-link {
+        background-color: rgba(255, 87, 34, 0.1);
+        color: #FF5722;
+        border-color: #FF5722;
+    }
+    
+    body.dark-theme .infosys-card .credential-link:hover {
+        background-color: #FF5722;
+        color: #000000;
+        border-color: #FF5722;
+    }
+
+    /* Special styling for IIIT Kota card */
+    .iiit-kota-card {
+        border-color: #003366;
+        position: relative;
+    }
+    
+    .iiit-kota-card:hover {
+        border-color: #FF6600;
+        box-shadow: 0 15px 30px rgba(255, 102, 0, 0.15);
+    }
+    
+    .iiit-kota-header {
+        margin-bottom: 1rem;
+    }
+    
+    .institution-name {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.5rem;
+    }
+    
+    .institution-primary {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #003366;
+        letter-spacing: 1px;
+        margin-bottom: 0.2rem;
+    }
+    
+    .institution-secondary {
+        font-size: 0.75rem;
+        color: #666;
+        font-weight: 500;
+    }
+    
+    body.dark-theme .iiit-kota-card {
+        border-color: #003366;
+    }
+    
+    body.dark-theme .institution-primary {
+        color: #FF6600;
+    }
+    
+    body.dark-theme .institution-secondary {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Special styling for Infosys card */
+    .infosys-card {
+        border-color: #0082CA;
+        position: relative;
+    }
+    
+    .infosys-card:hover {
+        border-color: #FF5722;
+        box-shadow: 0 15px 30px rgba(255, 87, 34, 0.15);
+    }
+    
+    .infosys-header {
+        margin-bottom: 1rem;
+    }
+    
+    .infosys-card .institution-primary {
+        color: #0082CA;
+    }
+    

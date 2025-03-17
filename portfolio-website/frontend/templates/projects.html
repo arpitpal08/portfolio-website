@@ -1,0 +1,720 @@
+{% extends "base.html" %}
+
+{% block title %}Projects - Arpit Pal{% endblock %}
+
+{% block body_class %}projects-page{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <h1 class="page-title">My Projects</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Projects</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<!-- Project Filters -->
+<section class="section">
+    <div class="container">
+        <div class="project-filters">
+            <button class="project-filter active" data-filter="all">All Projects</button>
+            <button class="project-filter" data-filter="cybersecurity">Cybersecurity</button>
+            <button class="project-filter" data-filter="backend">Backend</button>
+            <button class="project-filter" data-filter="ai-ml">AI & ML</button>
+            <button class="project-filter" data-filter="web">Web Development</button>
+        </div>
+        
+        <div class="projects-grid">
+            <!-- RAG Pipeline Project -->
+            <div class="project-card" data-categories="ai-ml backend">
+                <div class="project-header">
+                    <div class="project-title-container">
+                        <h3 class="project-title">RAG Pipeline Using LangChain</h3>
+                        <div class="project-date">March 2024</div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/arpitpal08" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" target="_blank" class="project-link">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">
+                        Developed a Retrieval-Augmented Generation (RAG) pipeline using LangChain for accurate and contextually relevant responses.
+                        The system integrates with various document sources and provides enhanced information retrieval capabilities.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">LangChain</span>
+                        <span class="project-tag">ChromaDB</span>
+                        <span class="project-tag">LLMs</span>
+                    </div>
+                    <div class="project-features">
+                        <h4>Key Features:</h4>
+                        <ul>
+                            <li>Document processing and chunking</li>
+                            <li>Vector storage with ChromaDB</li>
+                            <li>Semantic search capabilities</li>
+                            <li>Context-aware response generation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- API Security Testing Framework -->
+            <div class="project-card" data-categories="cybersecurity backend">
+                <div class="project-header">
+                    <div class="project-title-container">
+                        <h3 class="project-title">API Security Testing Framework</h3>
+                        <div class="project-date">January 2024</div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/arpitpal08" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" target="_blank" class="project-link">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">
+                        Created a comprehensive API security testing framework to identify and mitigate vulnerabilities in RESTful APIs.
+                        The framework includes automated testing capabilities and detailed reporting features.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Java</span>
+                        <span class="project-tag">Spring Boot</span>
+                        <span class="project-tag">Burp Suite</span>
+                        <span class="project-tag">OWASP</span>
+                    </div>
+                    <div class="project-features">
+                        <h4>Key Features:</h4>
+                        <ul>
+                            <li>Automated vulnerability scanning</li>
+                            <li>OWASP Top 10 coverage</li>
+                            <li>Detailed security reports</li>
+                            <li>Integration with CI/CD pipelines</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- IT Helpdesk Chatbot -->
+            <div class="project-card" data-categories="ai-ml web">
+                <div class="project-header">
+                    <div class="project-title-container">
+                        <h3 class="project-title">IT Helpdesk Chatbot</h3>
+                        <div class="project-date">February 2024</div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/arpitpal08" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" target="_blank" class="project-link">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">
+                        Developed an AI-powered IT helpdesk chatbot using TinyLlama and RAG to provide accurate responses to technical queries.
+                        The system integrates with existing IT documentation and knowledge bases.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">TinyLlama</span>
+                        <span class="project-tag">Flask</span>
+                        <span class="project-tag">React.js</span>
+                    </div>
+                    <div class="project-features">
+                        <h4>Key Features:</h4>
+                        <ul>
+                            <li>Natural language understanding</li>
+                            <li>Context-aware responses</li>
+                            <li>Knowledge base integration</li>
+                            <li>User feedback system</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Network Security Scanner -->
+            <div class="project-card" data-categories="cybersecurity">
+                <div class="project-header">
+                    <div class="project-title-container">
+                        <h3 class="project-title">Network Security Scanner</h3>
+                        <div class="project-date">December 2023</div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/arpitpal08" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" target="_blank" class="project-link">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">
+                        Built a comprehensive network security scanner that identifies vulnerabilities and misconfigurations
+                        in network infrastructure and connected devices.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">Nmap</span>
+                        <span class="project-tag">Wireshark</span>
+                        <span class="project-tag">Network Security</span>
+                    </div>
+                    <div class="project-features">
+                        <h4>Key Features:</h4>
+                        <ul>
+                            <li>Port scanning and service detection</li>
+                            <li>Vulnerability assessment</li>
+                            <li>Network traffic analysis</li>
+                            <li>Security report generation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Network Intrusion Detection System -->
+            <div class="project-card" data-categories="cybersecurity ai-ml">
+                <div class="project-header">
+                    <div class="project-title-container">
+                        <h3 class="project-title">Network Intrusion Detection System</h3>
+                        <div class="project-date">March 2025</div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/arpitpal08/Network-Intrusion-Detection-System" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" target="_blank" class="project-link">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">
+                        Developed a sophisticated machine learning-based network intrusion detection system 
+                        to identify and alert on suspicious network activities and potential security threats in real-time.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">TensorFlow</span>
+                        <span class="project-tag">Scapy</span>
+                        <span class="project-tag">Machine Learning</span>
+                    </div>
+                    <div class="project-features">
+                        <h4>Key Features:</h4>
+                        <ul>
+                            <li>Real-time traffic monitoring</li>
+                            <li>ML-based anomaly detection</li>
+                            <li>Rule-based detection engine</li>
+                            <li>Comprehensive alerting system</li>
+                            <li>Detailed traffic analysis</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Secure File Transfer System -->
+            <div class="project-card" data-categories="backend cybersecurity">
+                <div class="project-header">
+                    <div class="project-title-container">
+                        <h3 class="project-title">Secure File Transfer System</h3>
+                        <div class="project-date">November 2023</div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/arpitpal08" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" target="_blank" class="project-link">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">
+                        Developed a secure file transfer system with end-to-end encryption and secure authentication.
+                        The system includes features for file sharing, access control, and audit logging.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Java</span>
+                        <span class="project-tag">Spring Boot</span>
+                        <span class="project-tag">AES Encryption</span>
+                        <span class="project-tag">JWT</span>
+                    </div>
+                    <div class="project-features">
+                        <h4>Key Features:</h4>
+                        <ul>
+                            <li>End-to-end encryption</li>
+                            <li>Role-based access control</li>
+                            <li>File integrity verification</li>
+                            <li>Audit trail logging</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- AI-Powered Code Review Tool -->
+            <div class="project-card" data-categories="ai-ml backend">
+                <div class="project-header">
+                    <div class="project-title-container">
+                        <h3 class="project-title">AI-Powered Code Review Tool</h3>
+                        <div class="project-date">October 2023</div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/arpitpal08" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" target="_blank" class="project-link">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">
+                        Created an AI-powered code review tool that analyzes code quality, identifies potential issues,
+                        and suggests improvements using machine learning models.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">TensorFlow</span>
+                        <span class="project-tag">GitHub API</span>
+                        <span class="project-tag">Code Analysis</span>
+                    </div>
+                    <div class="project-features">
+                        <h4>Key Features:</h4>
+                        <ul>
+                            <li>Code quality analysis</li>
+                            <li>Security vulnerability detection</li>
+                            <li>Performance optimization suggestions</li>
+                            <li>Integration with CI/CD pipelines</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="section bg-light">
+    <div class="container text-center">
+        <h2 class="section-title">Want to Collaborate?</h2>
+        <p class="mb-4">Let's work together on your next project or security challenge.</p>
+        <div class="cta-buttons">
+            <a href="{{ url_for('contact') }}" class="btn btn-primary me-3">Get In Touch</a>
+            <a href="{{ url_for('chatbot') }}" class="btn btn-secondary">Chat with AI Assistant</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block custom_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/shared.css') }}">
+<style>
+    /* Custom styling for projects page */
+    .page-header {
+        background: linear-gradient(135deg, var(--bg-color), var(--bg-secondary));
+        padding: 3rem 0;
+        margin-bottom: 0;
+        border-bottom: 3px solid var(--accent-primary);
+    }
+    
+    .page-title {
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: #000000;
+        margin-bottom: 0.5rem;
+        position: relative;
+        display: inline-block;
+    }
+    
+    .page-title:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        border-radius: 2px;
+    }
+    
+    .breadcrumb {
+        background-color: transparent;
+        padding: 0;
+        margin: 0;
+        margin-top: 1.5rem;
+    }
+    
+    .breadcrumb-item a {
+        color: #000000;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    
+    .breadcrumb-item a:hover {
+        color: var(--accent-primary);
+    }
+    
+    .breadcrumb-item.active {
+        color: #000000;
+        opacity: 0.7;
+    }
+    
+    /* Project Filters */
+    .section {
+        padding: 4rem 0;
+        background-color: #fffdf0;
+    }
+    
+    .project-filters {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 3rem;
+    }
+    
+    .project-filter {
+        padding: 0.8rem 1.5rem;
+        background-color: #ffffff;
+        border: 2px solid var(--accent-primary);
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: #000000;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .project-filter:hover {
+        background-color: var(--accent-primary);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
+    }
+    
+    .project-filter.active {
+        background-color: var(--accent-primary);
+        color: #000000;
+        box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
+    }
+    
+    /* Projects Grid */
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: 2.5rem;
+        margin-top: 2rem;
+    }
+    
+    .project-card {
+        background-color: #ffffff;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        border-top: 5px solid var(--accent-primary);
+        position: relative;
+    }
+    
+    .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .project-card:nth-child(odd) {
+        border-top-color: var(--accent-primary); /* Yellow */
+    }
+    
+    .project-card:nth-child(even) {
+        border-top-color: var(--accent-secondary); /* Yellow-green */
+    }
+    
+    .project-header {
+        padding: 1.8rem 1.8rem 1rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+    }
+    
+    .project-title-container {
+        flex: 1;
+        padding-right: 10px;
+    }
+    
+    .project-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #000000;
+        margin-bottom: 0.8rem;
+        position: relative;
+        padding-left: 15px;
+        border-left: 4px solid var(--accent-primary);
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+    }
+    
+    .project-title:hover {
+        padding-left: 20px;
+    }
+    
+    .project-date {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: #555555;
+        margin-bottom: 1rem;
+        margin-left: 15px; /* Match the padding of the title */
+    }
+    
+    .project-links {
+        display: flex;
+        gap: 0.8rem;
+        margin-left: 10px;
+        align-self: center;
+    }
+    
+    .project-link {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background-color: var(--accent-primary);
+        color: #000000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .project-link:hover {
+        transform: translateY(-3px) rotate(5deg);
+        background-color: var(--accent-secondary);
+        color: #000000;
+        box-shadow: 0 5px 15px rgba(141, 198, 63, 0.3);
+    }
+    
+    .project-body {
+        padding: 1.8rem;
+    }
+    
+    .project-description {
+        font-size: 1rem;
+        line-height: 1.7;
+        color: #333333;
+        margin-bottom: 1.5rem;
+    }
+    
+    .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .project-tag {
+        font-size: 0.85rem;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        background-color: rgba(255, 193, 7, 0.1);
+        color: #000000;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    
+    .project-tag:hover {
+        background-color: var(--accent-primary);
+        transform: translateY(-3px);
+        box-shadow: 0 3px 10px rgba(255, 193, 7, 0.2);
+    }
+    
+    .project-features {
+        border-top: 1px dashed rgba(0, 0, 0, 0.1);
+        padding-top: 1.5rem;
+    }
+    
+    .project-features h4 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #000000;
+        margin-bottom: 1rem;
+    }
+    
+    .project-features ul {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 0;
+    }
+    
+    .project-features li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+        color: #333333;
+    }
+    
+    .project-features li:before {
+        content: '\f00c';
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        color: var(--accent-secondary);
+        position: absolute;
+        left: 0;
+        top: 2px;
+    }
+    
+    /* Background for alternating sections */
+    .section.bg-light {
+        background-color: #fff8e1;
+    }
+    
+    /* Responsive */
+    @media (max-width: 992px) {
+        .project-filters {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+        
+        .projects-grid {
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .page-title {
+            font-size: 2.2rem;
+        }
+        
+        .project-filter {
+            padding: 0.6rem 1.2rem;
+            font-size: 0.9rem;
+        }
+        
+        .projects-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .page-title {
+            font-size: 1.8rem;
+            text-align: center;
+        }
+        
+        .page-title:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .breadcrumb {
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .projects-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+    
+    /* Dark mode overrides for projects page */
+    body.dark-theme .project-card {
+        background-color: var(--card-bg);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    body.dark-theme .project-title {
+        color: var(--text-on-dark);
+    }
+    
+    body.dark-theme .project-date {
+        color: var(--accent-primary);
+    }
+    
+    body.dark-theme .project-description {
+        color: var(--text-on-dark);
+    }
+    
+    body.dark-theme .project-tag {
+        background-color: rgba(255, 193, 7, 0.2);
+        color: var(--text-on-dark);
+    }
+    
+    body.dark-theme .project-features h4 {
+        color: var(--text-on-dark);
+    }
+    
+    body.dark-theme .project-features li {
+        color: var(--text-on-dark);
+    }
+    
+    body.dark-theme .project-filter {
+        background-color: rgba(30, 30, 30, 0.8);
+        color: var(--text-on-dark);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    body.dark-theme .project-filter:hover, 
+    body.dark-theme .project-filter.active {
+        background-color: var(--accent-primary);
+        color: var(--text-on-light);
+    }
+    
+    body.dark-theme .section.bg-light {
+        background-color: var(--bg-secondary);
+    }
+    
+    body.dark-theme .section.bg-light h2,
+    body.dark-theme .section.bg-light p {
+        color: var(--text-on-dark);
+    }
+</style>
+{% endblock %}
+
+{% block custom_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Project filtering functionality
+        const projectFilters = document.querySelectorAll('.project-filter');
+        const projectCards = document.querySelectorAll('.project-card');
+        
+        projectFilters.forEach(filter => {
+            filter.addEventListener('click', function() {
+                // Remove active class from all filters
+                projectFilters.forEach(f => f.classList.remove('active'));
+                
+                // Add active class to clicked filter
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-filter');
+                
+                // Filter projects
+                projectCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-categories').includes(category)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    });
+</script>
+{% endblock %} 

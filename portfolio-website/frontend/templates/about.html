@@ -1,0 +1,2042 @@
+{% extends "base.html" %}
+
+{% block title %}About Me - Arpit Pal{% endblock %}
+
+{% block body_class %}about-page{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="container">
+        <h1 class="page-title">About Me</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">About</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="container">
+    <div class="about-content">
+        <div class="about-photo-container">
+            <img src="{{ url_for('static', filename='images/about img.jpg') }}" alt="Arpit Pal" class="about-photo">
+        </div>
+        <div class="about-text">
+            <h2>Hi, I'm Arpit Pal</h2>
+            <p>
+                I am a passionate software developer with expertise in full-stack development, cybersecurity, and AI/ML.
+                My journey in technology has been driven by a constant desire to learn and create innovative solutions
+                that make a difference.
+            </p>
+            <p>
+                With a strong foundation in computer science and hands-on experience with modern technologies,
+                I strive to build secure, scalable, and user-friendly applications. I believe in writing clean,
+                maintainable code and following best practices in software development.
+            </p>
+            <p>
+                When I'm not coding, you can find me exploring new technologies, contributing to open-source projects,
+                or sharing my knowledge through technical writing and mentoring.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Education & Certifications -->
+<section class="section bg-light">
+    <div class="container">
+        <div class="timeline">
+            <!-- Education -->
+            <div class="timeline-section">
+                <h3 class="education-heading">
+                    <i class="fas fa-graduation-cap"></i> Education
+                    <span class="education-heading-line"></span>
+                </h3>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="education-badge">B.Tech</span>
+                        <h4 class="timeline-title">Bachelor of Technology - Computer Science (Cyber Security)</h4>
+                        <div class="timeline-subtitle">Government Engineering College, Ajmer</div>
+                        <div class="timeline-period">November 2022 - June 2026</div>
+                        <div class="timeline-description">
+                            <p>Pursuing a B.Tech degree with a specialization in Cyber Security, focusing on:</p>
+                            <ul>
+                                <li>Operating Systems</li>
+                                <li>Data Structures</li>
+                                <li>Cybersecurity</li>
+                                <li>Machine Learning</li>
+                                <li>Networking</li>
+                                <li>Databases</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="education-badge">12th</span>
+                        <h4 class="timeline-title">Senior Secondary Education</h4>
+                        <div class="timeline-subtitle">White Leaf Public Senior Secondary School, Delhi</div>
+                        <div class="timeline-period">February 2021 - May 2022</div>
+                        <div class="timeline-description">
+                            <p>Completed senior secondary education with a focus on Physics, Chemistry, and Mathematics.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Certifications -->
+            <div class="timeline-section">
+                <h3 class="certifications-heading">
+                    <i class="fas fa-cog"></i> Certifications
+                    <span class="certifications-heading-line"></span>
+                </h3>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="certification-badge">Cyber Security</span>
+                        <h4 class="timeline-title">Cyber Security And Digital Forensics</h4>
+                        <div class="timeline-subtitle">IIIT Kota</div>
+                        <div class="timeline-period">Advanced</div>
+                        <div class="timeline-description">
+                            <p>Validated knowledge in cybersecurity principles and digital forensics techniques, showcasing proficiency in identifying, analyzing, and mitigating security threats while preserving and investigating digital evidence.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="certification-badge">VAPT</span>
+                        <h4 class="timeline-title">Vulnerability Assessment and Penetration Testing (VAPT)</h4>
+                        <div class="timeline-subtitle">Internshala</div>
+                        <div class="timeline-period">Intermediate</div>
+                        <div class="timeline-description">
+                            <p>Validated skills in identifying, assessing, and mitigating vulnerabilities in systems and networks, showcasing expertise in penetration testing techniques and securing applications against potential threats.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="certification-badge">Web Dev</span>
+                        <h4 class="timeline-title">Web Development</h4>
+                        <div class="timeline-subtitle">Internshala</div>
+                        <div class="timeline-period">Advanced</div>
+                        <div class="timeline-description">
+                            <p>Demonstrated expertise in designing, developing, and maintaining web applications, covering core technologies like HTML, CSS, JavaScript, and backend frameworks to create responsive and user-centric websites.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="certification-badge">Ethical Hacking</span>
+                        <h4 class="timeline-title">Ethical Hacking - White & Black Box Testing</h4>
+                        <div class="timeline-subtitle">Indian Institute of Skill Development Private Limited</div>
+                        <div class="timeline-period">April 2023 - January 2024</div>
+                        <div class="timeline-description">
+                            <p>Comprehensive training in ethical hacking methodologies, including both white box and black box testing approaches, vulnerability assessment, and security hardening techniques.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Achievements -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Achievements & Honors</h2>
+        
+        <div class="achievements-grid">
+            <div class="achievement-card">
+                <div class="achievement-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <div class="achievement-content">
+                    <h3 class="achievement-title">Smart India Hackathon</h3>
+                    <p class="achievement-description">
+                        Contributed to solving real-world challenges through innovative solutions as part of the Smart India Hackathon.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="achievement-card">
+                <div class="achievement-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <div class="achievement-content">
+                    <h3 class="achievement-title">Flipkart Grid</h3>
+                    <p class="achievement-description">
+                        Competed in Flipkart Grid, demonstrating strong problem-solving and coding skills in a challenging environment.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="achievement-card">
+                <div class="achievement-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="achievement-content">
+                    <h3 class="achievement-title">IT Day Hackathon</h3>
+                    <p class="achievement-description">
+                        Participated in the IT Day Hackathon, showcasing technical skills to solve complex challenges.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="achievement-card">
+                <div class="achievement-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="achievement-content">
+                    <h3 class="achievement-title">Workshop Organizer</h3>
+                    <p class="achievement-description">
+                        Organized and conducted workshops on Ethical Hacking, covering topics like penetration testing and vulnerability scanning.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Volunteer Experience -->
+<section class="section bg-light">
+    <div class="container">
+        <h2 class="section-title">Volunteer Experience</h2>
+        
+        <div class="volunteer-cards-container">
+            <div class="volunteer-card">
+                <div class="volunteer-banner">
+                    <h3 class="volunteer-title">NSS Volunteer</h3>
+                    <div class="volunteer-location">Ajmer, India</div>
+                    <div class="volunteer-period">January 2023 - Present</div>
+                </div>
+                <div class="volunteer-content">
+                    <p class="volunteer-description">
+                        Led community development initiatives, including awareness campaigns and cleanliness drives.
+                    </p>
+                    <ul class="volunteer-activities">
+                        <li>Organized community awareness programs on cybersecurity and digital literacy</li>
+                        <li>Participated in environmental conservation activities</li>
+                        <li>Contributed to cleanliness drives in local communities</li>
+                        <li>Mentored junior volunteers on community service projects</li>
+                    </ul>
+                </div>
+                <div class="volunteer-shape volunteer-shape-1"></div>
+            </div>
+            
+            <div class="volunteer-card">
+                <div class="volunteer-banner">
+                    <h3 class="volunteer-title">Workshop Organizer, Ethical Hacking</h3>
+                    <div class="volunteer-location">Ajmer, India</div>
+                </div>
+                <div class="volunteer-content">
+                    <p class="volunteer-description">
+                        Organized and conducted workshops covering topics like penetration testing and vulnerability scanning.
+                    </p>
+                    <ul class="volunteer-activities">
+                        <li>Designed and delivered hands-on workshops on ethical hacking techniques</li>
+                        <li>Created educational materials on cybersecurity best practices</li>
+                        <li>Mentored students interested in pursuing careers in cybersecurity</li>
+                        <li>Collaborated with educational institutions to promote cybersecurity awareness</li>
+                    </ul>
+                </div>
+                <div class="volunteer-shape volunteer-shape-2"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Personal Interests -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Personal Interests</h2>
+        
+        <div class="interests-container">
+            <div class="interest-item">
+                <div class="interest-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3 class="interest-title">Ethical Hacking</h3>
+                <p class="interest-description">
+                    Exploring cybersecurity vulnerabilities and developing secure systems.
+                </p>
+            </div>
+            
+            <div class="interest-item">
+                <div class="interest-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3 class="interest-title">AI & Machine Learning</h3>
+                <p class="interest-description">
+                    Developing intelligent systems and exploring the potential of AI.
+                </p>
+            </div>
+            
+            <div class="interest-item">
+                <div class="interest-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h3 class="interest-title">Technical Writing</h3>
+                <p class="interest-description">
+                    Creating documentation and articles on cybersecurity topics.
+                </p>
+            </div>
+            
+            <div class="interest-item">
+                <div class="interest-icon">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+                <h3 class="interest-title">Teaching & Mentoring</h3>
+                <p class="interest-description">
+                    Sharing knowledge and guiding others in technology fields.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="section bg-light">
+    <div class="container text-center">
+        <h2 class="section-title">Ready to Collaborate?</h2>
+        <p class="mb-4">Let's work together on your next project or security challenge.</p>
+        <div class="cta-buttons">
+            <a href="{{ url_for('contact') }}" class="btn btn-primary me-3">Get In Touch</a>
+            <a href="{{ url_for('projects') }}" class="btn btn-outline">View My Projects</a>
+        </div>
+    </div>
+</section>
+
+<div class="social-links">
+    <a href="https://github.com/yourusername" class="social-link" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-github"></i>
+    </a>
+    <a href="https://linkedin.com/in/yourusername" class="social-link" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-linkedin-in"></i>
+    </a>
+    <a href="https://twitter.com/yourusername" class="social-link" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-twitter"></i>
+    </a>
+    <a href="https://huggingface.co/yourusername" class="social-link" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-hugging-face"></i>
+    </a>
+    <a href="mailto:your.email@example.com" class="social-link">
+        <i class="fas fa-envelope"></i>
+    </a>
+</div>
+{% endblock %}
+
+{% block custom_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/chatbot.css') }}">
+<style>
+    /* Custom styles for the about page */
+    .page-header {
+        background: linear-gradient(135deg, var(--bg-color), var(--bg-secondary));
+        padding: 3.5rem 0 3rem;
+        margin-bottom: 0;
+        border-bottom: 3px solid var(--accent-primary);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        position: relative;
+    }
+    
+    .page-header:after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), var(--accent-primary));
+        background-size: 200% 100%;
+        animation: gradient-shift 8s ease infinite;
+    }
+    
+    @keyframes gradient-shift {
+        0% {background-position: 0% 50%}
+        50% {background-position: 100% 50%}
+        100% {background-position: 0% 50%}
+    }
+    
+    .page-title {
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: #000000;
+        margin-bottom: 0.5rem;
+        position: relative;
+        display: inline-block;
+        letter-spacing: -0.5px;
+    }
+    
+    .page-title:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        border-radius: 2px;
+    }
+    
+    .breadcrumb {
+        background-color: transparent;
+        padding: 0;
+        margin: 0;
+        margin-top: 1.5rem;
+    }
+    
+    .breadcrumb-item a {
+        color: #000000;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    
+    .breadcrumb-item a:hover {
+        color: var(--accent-primary);
+    }
+    
+    .breadcrumb-item.active {
+        color: #000000;
+        opacity: 0.7;
+    }
+    
+    /* Section styling */
+    .section {
+        padding: 5rem 0;
+        background-color: #fffdf0;
+        position: relative;
+    }
+    
+    .section.bg-light {
+        background-color: #fff;
+        padding: 5rem 0;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 3rem;
+        text-align: center;
+        color: #000000;
+        position: relative;
+        display: inline-block;
+        left: 50%;
+        transform: translateX(-50%);
+        letter-spacing: -0.5px;
+    }
+    
+    .section-title:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -12px;
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        border-radius: 2px;
+    }
+    
+    /* About content section */
+    .about-content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3.5rem;
+        margin: 3rem 0;
+        align-items: center;
+    }
+    
+    .about-photo-container {
+        flex: 1;
+        min-width: 300px;
+        position: relative;
+        z-index: 1;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        max-width: 400px;
+        margin: 0 auto;
+        background-color: #133052;
+        border-radius: 15px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        border: 5px solid #ffd700;
+    }
+    
+    .about-photo-container:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 3px solid var(--accent-primary);
+        border-radius: 15px;
+        top: 15px;
+        left: 15px;
+        z-index: -1;
+    }
+    
+    .about-photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 30%;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        position: relative;
+        display: block;
+    }
+    
+    .about-text {
+        flex: 2;
+        min-width: 300px;
+    }
+    
+    .about-text h2 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        color: #000000;
+        position: relative;
+        display: inline-block;
+        letter-spacing: -0.5px;
+    }
+    
+    .about-text h2:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        border-radius: 2px;
+    }
+    
+    .about-text p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #333333;
+        margin-bottom: 1.4rem;
+    }
+    
+    .about-experience {
+        position: absolute;
+        bottom: 30px;
+        left: -20px;
+        background-color: var(--accent-primary);
+        color: #000000;
+        padding: 15px 20px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 8px 20px rgba(255, 193, 7, 0.3);
+        transition: all 0.3s ease;
+    }
+    
+    .about-experience:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(255, 193, 7, 0.4);
+    }
+    
+    .experience-number {
+        display: block;
+        font-size: 2.4rem;
+        font-weight: 700;
+    }
+    
+    .experience-text {
+        font-size: 1rem;
+        font-weight: 600;
+    }
+    
+    /* Timeline styling - Enhanced for Education & Certification */
+    .timeline {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .timeline:before {
+        content: '';
+        position: absolute;
+        left: 7px;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: linear-gradient(to bottom, var(--accent-primary), var(--accent-secondary));
+        border-radius: 3px;
+        box-shadow: 0 0 15px rgba(255, 193, 7, 0.2);
+    }
+    
+    .timeline-section {
+        margin-bottom: 4rem;
+        position: relative;
+    }
+    
+    /* Education heading with dark blue background */
+    .education-heading {
+        display: flex;
+        align-items: center;
+        font-size: 2.4rem;
+        font-weight: 800;
+        color: #000000;
+        position: relative;
+        margin-left: 0;
+        margin-bottom: 5rem;
+        padding: 0.8rem 2rem 0.8rem 4rem;
+        z-index: 1;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 50px;
+        box-shadow: 0 4px 20px rgba(255, 193, 7, 0.3), 0 0 0 2px rgba(255, 193, 7, 0.1);
+        border: 1px solid rgba(255, 193, 7, 0.2);
+        backdrop-filter: blur(5px);
+    }
+    
+    .education-heading i {
+        position: absolute;
+        left: -20px;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: var(--accent-primary);
+        color: #000;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        box-shadow: 0 5px 15px rgba(255, 193, 7, 0.5), 0 0 0 5px rgba(255, 255, 255, 0.7);
+        z-index: 2;
+        border: 3px solid #fff;
+    }
+    
+    .education-heading::after {
+        display: none;
+    }
+    
+    .education-heading-line {
+        display: none;
+    }
+    
+    /* Certification heading with matching style */
+    .certifications-heading {
+        display: flex;
+        align-items: center;
+        font-size: 2.4rem;
+        font-weight: 800;
+        color: #000000;
+        position: relative;
+        margin-left: 0;
+        margin-bottom: 5rem;
+        padding: 0.8rem 2rem 0.8rem 4rem;
+        z-index: 1;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 50px;
+        box-shadow: 0 4px 20px rgba(141, 198, 63, 0.3), 0 0 0 2px rgba(141, 198, 63, 0.1);
+        border: 1px solid rgba(141, 198, 63, 0.2);
+        backdrop-filter: blur(5px);
+    }
+    
+    .certifications-heading i {
+        position: absolute;
+        left: -20px;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: var(--accent-secondary);
+        color: #000;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        box-shadow: 0 5px 15px rgba(141, 198, 63, 0.5), 0 0 0 5px rgba(255, 255, 255, 0.7);
+        z-index: 2;
+        border: 3px solid #fff;
+    }
+    
+    .certifications-heading::after {
+        display: none;
+    }
+    
+    .certifications-heading:before {
+        display: none;
+    }
+    
+    .certifications-heading-line {
+        display: none;
+    }
+    
+    .timeline-item {
+        position: relative;
+        padding-left: 45px;
+        margin-bottom: 3rem;
+    }
+    
+    .timeline-marker {
+        position: absolute;
+        left: 0;
+        top: 10px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: var(--accent-primary);
+        z-index: 2;
+        transition: all 0.4s ease;
+        box-shadow: 0 0 0 5px rgba(255, 193, 7, 0.2);
+        border: 2px solid #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .timeline-marker:after {
+        content: '';
+        width: 50%;
+        height: 50%;
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 50%;
+    }
+    
+    .timeline-section:nth-child(2) .timeline-marker {
+        background-color: var(--accent-secondary);
+        box-shadow: 0 0 0 5px rgba(141, 198, 63, 0.2);
+    }
+    
+    .timeline-item:hover .timeline-marker {
+        transform: scale(1.5);
+        box-shadow: 0 0 0 8px rgba(255, 193, 7, 0.2), 0 0 20px rgba(255, 193, 7, 0.4);
+    }
+    
+    .timeline-section:nth-child(2) .timeline-item:hover .timeline-marker {
+        box-shadow: 0 0 0 8px rgba(141, 198, 63, 0.2), 0 0 20px rgba(141, 198, 63, 0.4);
+    }
+    
+    .timeline-marker::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 18px;
+        bottom: -32px;
+        width: 2px;
+        background-color: rgba(255, 193, 7, 0.3);
+        transform: translateX(-50%);
+    }
+    
+    .timeline-section:nth-child(2) .timeline-marker::before {
+        background-color: rgba(141, 198, 63, 0.3);
+    }
+    
+    .timeline-item:last-child .timeline-marker::before {
+        display: none;
+    }
+    
+    .timeline-content {
+        background-color: #ffffff;
+        border-radius: 15px;
+        padding: 2rem 2.5rem;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(0, 0, 0, 0.03);
+        z-index: 1;
+    }
+    
+    .timeline-section:nth-child(1) .timeline-content {
+        border-left: 5px solid var(--accent-primary);
+    }
+    
+    .timeline-section:nth-child(2) .timeline-content {
+        border-left: 5px solid var(--accent-secondary);
+    }
+    
+    .timeline-content:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 150px;
+        height: 150px;
+        background: radial-gradient(circle, rgba(255, 193, 7, 0.08) 0%, transparent 70%);
+        border-radius: 0 15px 0 0;
+        z-index: -1;
+    }
+    
+    .timeline-section:nth-child(2) .timeline-content:before {
+        background: radial-gradient(circle, rgba(141, 198, 63, 0.08) 0%, transparent 70%);
+    }
+    
+    .timeline-content:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, var(--accent-primary), transparent);
+        opacity: 0;
+        transition: all 0.4s ease;
+    }
+    
+    .timeline-section:nth-child(2) .timeline-content:after {
+        background: linear-gradient(90deg, var(--accent-secondary), transparent);
+    }
+    
+    .timeline-content:hover {
+        transform: translateY(-8px) translateX(5px);
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
+    }
+    
+    .timeline-content:hover:after {
+        opacity: 1;
+    }
+    
+    .timeline-title {
+        margin-bottom: 0.5rem;
+        color: #000000;
+        font-weight: 800;
+        font-size: 1.4rem;
+        letter-spacing: -0.5px;
+        position: relative;
+        display: inline-block;
+    }
+    
+    .timeline-subtitle {
+        color: var(--accent-primary);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+    }
+    
+    .timeline-section:nth-child(2) .timeline-subtitle {
+        color: var(--accent-secondary);
+    }
+    
+    .timeline-period {
+        display: inline-block;
+        font-size: 0.95rem;
+        color: #555555;
+        margin-bottom: 1.5rem;
+        font-weight: 500;
+        background-color: rgba(255, 193, 7, 0.1);
+        padding: 4px 12px;
+        border-radius: 20px;
+    }
+    
+    .timeline-section:nth-child(2) .timeline-period {
+        background-color: rgba(141, 198, 63, 0.1);
+    }
+    
+    .timeline-description p {
+        margin-bottom: 1rem;
+        line-height: 1.7;
+        font-size: 1.05rem;
+    }
+    
+    .timeline-description ul {
+        padding-left: 0;
+        margin-bottom: 0.5rem;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .timeline-description li {
+        margin-bottom: 0.8rem;
+        color: #333333;
+        position: relative;
+        padding-left: 1.5rem;
+        flex: 0 0 calc(50% - 1rem);
+        margin-right: 1rem;
+    }
+    
+    .timeline-description li:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.5rem;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: var(--accent-primary);
+    }
+    
+    .timeline-description li:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.5rem;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: var(--accent-primary);
+    }
+    
+    .timeline-description li:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.5rem;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: var(--accent-primary);
+    }
+    
+    .timeline-section:nth-child(2) .timeline-description li:before {
+        background-color: var(--accent-secondary);
+    }
+    
+    /* Enhanced timeline markers */
+    .timeline-marker {
+        position: absolute;
+        left: 0;
+        top: 10px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: var(--accent-primary);
+        z-index: 2;
+        transition: all 0.4s ease;
+        box-shadow: 0 0 0 5px rgba(255, 193, 7, 0.2);
+        border: 2px solid #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .timeline-marker:after {
+        content: '';
+        width: 50%;
+        height: 50%;
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 50%;
+    }
+    
+    .timeline-section:nth-child(2) .timeline-marker {
+        background-color: var(--accent-secondary);
+        box-shadow: 0 0 0 5px rgba(141, 198, 63, 0.2);
+    }
+    
+    .timeline-item:hover .timeline-marker {
+        transform: scale(1.5);
+        box-shadow: 0 0 0 8px rgba(255, 193, 7, 0.2), 0 0 20px rgba(255, 193, 7, 0.4);
+    }
+    
+    .timeline-section:nth-child(2) .timeline-item:hover .timeline-marker {
+        box-shadow: 0 0 0 8px rgba(141, 198, 63, 0.2), 0 0 20px rgba(141, 198, 63, 0.4);
+    }
+    
+    /* Enhanced education & certification badges */
+    .education-badge {
+        position: absolute;
+        right: 1.5rem;
+        top: 1.5rem;
+        background: linear-gradient(135deg, var(--accent-primary), #ff9800);
+        color: #000;
+        font-weight: 700;
+        font-size: 0.85rem;
+        padding: 6px 15px;
+        border-radius: 20px;
+        box-shadow: 0 5px 15px rgba(255, 193, 7, 0.2);
+        letter-spacing: 0.5px;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        transform: rotate(2deg);
+    }
+    
+    .education-badge:before {
+        content: '';
+        position: absolute;
+        left: -5px;
+        top: -5px;
+        right: -5px;
+        bottom: -5px;
+        border: 1px dashed rgba(255, 193, 7, 0.4);
+        border-radius: 20px;
+        animation: badge-pulse 3s infinite;
+    }
+    
+    .certification-badge {
+        position: absolute;
+        right: 1.5rem;
+        top: 1.5rem;
+        background: linear-gradient(135deg, var(--accent-secondary), #33691e);
+        color: #000;
+        font-weight: 700;
+        font-size: 0.85rem;
+        padding: 6px 15px;
+        border-radius: 20px;
+        box-shadow: 0 5px 15px rgba(141, 198, 63, 0.2);
+        letter-spacing: 0.5px;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        transform: rotate(-2deg);
+    }
+    
+    .certification-badge:before {
+        content: '';
+        position: absolute;
+        left: -5px;
+        top: -5px;
+        right: -5px;
+        bottom: -5px;
+        border: 1px dashed rgba(141, 198, 63, 0.4);
+        border-radius: 20px;
+        animation: badge-pulse 3s infinite;
+    }
+    
+    @keyframes badge-pulse {
+        0% { opacity: 0.6; }
+        50% { opacity: 1; }
+        100% { opacity: 0.6; }
+    }
+    
+    /* Achievements styling */
+    .achievements-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 2.5rem;
+        margin-top: 2.5rem;
+    }
+    
+    .achievement-card {
+        display: flex;
+        background-color: #ffffff;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        transition: all 0.3s ease;
+        border-top: 4px solid var(--accent-primary);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .achievement-card:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(135deg, transparent 70%, rgba(255, 193, 7, 0.1) 100%);
+        border-radius: 0 0 15px 0;
+    }
+    
+    .achievement-card:nth-child(even) {
+        border-top-color: var(--accent-secondary);
+    }
+    
+    .achievement-card:nth-child(even):after {
+        background: linear-gradient(135deg, transparent 70%, rgba(141, 198, 63, 0.1) 100%);
+    }
+    
+    .achievement-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    }
+    
+    .achievement-icon {
+        font-size: 2.4rem;
+        color: var(--accent-primary);
+        margin-right: 1.8rem;
+        min-width: 60px;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+    
+    .achievement-card:hover .achievement-icon {
+        transform: scale(1.1) rotate(5deg);
+    }
+    
+    .achievement-card:nth-child(even) .achievement-icon {
+        color: var(--accent-secondary);
+    }
+    
+    .achievement-title {
+        margin-bottom: 1rem;
+        font-weight: 700;
+        color: #000000;
+        font-size: 1.3rem;
+    }
+    
+    .achievement-description {
+        line-height: 1.7;
+        color: #333333;
+    }
+    
+    /* Volunteer experience styling - Enhanced with 3D effects */
+    .section.bg-light:nth-of-type(3) {
+        background: linear-gradient(90deg, #ffd700, #9acd32);
+        padding: 6rem 0;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .section.bg-light:nth-of-type(3):before {
+        content: '';
+        position: absolute;
+        top: -100px;
+        right: -100px;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+        border-radius: 50%;
+        z-index: 1;
+    }
+    
+    .section.bg-light:nth-of-type(3):after {
+        content: '';
+        position: absolute;
+        bottom: -100px;
+        left: -100px;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+        border-radius: 50%;
+        z-index: 1;
+    }
+    
+    .section.bg-light:nth-of-type(3) .section-title {
+        color: #000000;
+        margin-bottom: 4rem;
+        text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
+    }
+    
+    .section.bg-light:nth-of-type(3) .section-title:after {
+        background: linear-gradient(90deg, #ffffff, rgba(255, 255, 255, 0.5));
+        width: 100px;
+        height: 5px;
+        bottom: -15px;
+    }
+    
+    .volunteer-cards-container {
+        position: relative;
+        perspective: 1000px;
+    }
+    
+    .volunteer-card {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 0;
+        margin-bottom: 3.5rem;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transform-style: preserve-3d;
+    }
+    
+    .volunteer-card:hover {
+        transform: translateY(-15px) rotateX(5deg);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    }
+    
+    .volunteer-card:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, 
+            rgba(255, 193, 7, 0.15) 0%, 
+            transparent 50%, 
+            rgba(141, 198, 63, 0.1) 100%);
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        z-index: 1;
+    }
+    
+    .volunteer-card:hover:before {
+        opacity: 1;
+    }
+    
+    .volunteer-card:nth-child(even):before {
+        background: linear-gradient(135deg, 
+            rgba(141, 198, 63, 0.15) 0%, 
+            transparent 50%, 
+            rgba(255, 193, 7, 0.1) 100%);
+    }
+    
+    .volunteer-banner {
+        background-color: var(--accent-primary);
+        color: #000000;
+        text-align: center;
+        padding: 1.5rem;
+        position: relative;
+        z-index: 2;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .volunteer-card:nth-child(even) .volunteer-banner {
+        background-color: var(--accent-secondary);
+    }
+    
+    .volunteer-banner:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm34-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm32-63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E") repeat;
+        z-index: -1;
+    }
+    
+    .volunteer-title {
+        margin: 0 0 0.3rem;
+        font-weight: 900;
+        color: #000000;
+        font-size: 2rem;
+        position: relative;
+        display: inline-block;
+        letter-spacing: 0.5px;
+        text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.3);
+        padding: 0.3rem 1rem;
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        border: 2px solid rgba(0, 0, 0, 0.2);
+        transform: translateY(-5px);
+    }
+    
+    .volunteer-title:after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: rgba(0, 0, 0, 0.3);
+        border-radius: 3px;
+    }
+    
+    .volunteer-location {
+        display: inline-block;
+        margin-bottom: 0.5rem;
+        color: #000000;
+        font-weight: 600;
+        font-size: 1rem;
+        opacity: 0.9;
+    }
+    
+    .volunteer-period {
+        display: inline-block;
+        font-size: 0.9rem;
+        color: #000000;
+        font-weight: 500;
+        margin-top: 0.5rem;
+        opacity: 0.8;
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 0.3rem 1rem;
+        border-radius: 20px;
+    }
+    
+    .volunteer-content {
+        padding: 2.5rem;
+        text-align: left;
+        position: relative;
+        z-index: 2;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 0 0 20px 20px;
+    }
+    
+    .volunteer-description {
+        margin-bottom: 1.5rem;
+    }
+    
+    .volunteer-description p {
+        color: #000000;
+        line-height: 1.7;
+        font-size: 1.05rem;
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-left: 1.5rem;
+        text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
+    }
+    
+    .volunteer-description p:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.5rem;
+        width: 5px;
+        height: 85%;
+        background: var(--accent-primary);
+        border-radius: 5px;
+    }
+    
+    .volunteer-card:nth-child(even) .volunteer-description p:before {
+        background: var(--accent-secondary);
+    }
+    
+    .volunteer-activities {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        counter-reset: volunteer-counter;
+    }
+    
+    .volunteer-activities li {
+        color: #000000;
+        padding: 1rem 1.5rem 1rem 3.5rem;
+        margin-bottom: 0.8rem;
+        position: relative;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        counter-increment: volunteer-counter;
+        text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .volunteer-activities li:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+        transform: translateX(5px);
+    }
+    
+    .volunteer-activities li:before {
+        content: counter(volunteer-counter);
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 26px;
+        height: 26px;
+        background-color: var(--accent-primary);
+        color: #000000;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 0.85rem;
+    }
+    
+    .volunteer-card:nth-child(even) .volunteer-activities li:before {
+        background-color: var(--accent-secondary);
+    }
+    
+    .volunteer-shape {
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 193, 7, 0.2) 0%, transparent 70%);
+        z-index: 0;
+    }
+    
+    .volunteer-shape-1 {
+        top: -50px;
+        right: -50px;
+    }
+    
+    .volunteer-shape-2 {
+        bottom: -50px;
+        left: -50px;
+        background: radial-gradient(circle, rgba(141, 198, 63, 0.2) 0%, transparent 70%);
+    }
+    
+    .volunteer-card:nth-child(even) .volunteer-shape-1 {
+        background: radial-gradient(circle, rgba(141, 198, 63, 0.2) 0%, transparent 70%);
+    }
+    
+    .volunteer-card:nth-child(even) .volunteer-shape-2 {
+        background: radial-gradient(circle, rgba(255, 193, 7, 0.2) 0%, transparent 70%);
+    }
+    
+    .volunteer-card:nth-child(even) .volunteer-description p:before {
+        background: var(--accent-secondary);
+    }
+    
+    @media (max-width: 768px) {
+        .volunteer-card {
+            margin-bottom: 2.5rem;
+        }
+        
+        .volunteer-content {
+            padding: 1.5rem;
+        }
+        
+        .volunteer-activities li {
+            padding: 1rem 1rem 1rem 3rem;
+        }
+    }
+    
+    /* Update the HTML to this new structure */
+    .volunteer-header {
+        display: none; /* Hide the old header */
+    }
+    
+    /* Personal interests styling */
+    .interests-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 2.5rem;
+        margin-top: 2.5rem;
+    }
+    
+    .interest-item {
+        text-align: center;
+        padding: 2.8rem 2rem;
+        background-color: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        transition: all 0.4s ease;
+        border-bottom: 4px solid var(--accent-primary);
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+    
+    .interest-item:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 0;
+        background: linear-gradient(180deg, transparent, rgba(255, 193, 7, 0.05));
+        transition: all 0.4s ease;
+        z-index: -1;
+    }
+    
+    .interest-item:hover:after {
+        height: 100%;
+    }
+    
+    .interest-item:nth-child(even) {
+        border-bottom-color: var(--accent-secondary);
+    }
+    
+    .interest-item:nth-child(even):after {
+        background: linear-gradient(180deg, transparent, rgba(141, 198, 63, 0.05));
+    }
+    
+    .interest-item:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    }
+    
+    .interest-icon {
+        font-size: 3rem;
+        color: var(--accent-primary);
+        margin-bottom: 1.8rem;
+        transition: all 0.4s ease;
+        display: inline-block;
+    }
+    
+    .interest-item:nth-child(even) .interest-icon {
+        color: var(--accent-secondary);
+    }
+    
+    .interest-item:hover .interest-icon {
+        transform: scale(1.2) rotate(10deg);
+    }
+    
+    .interest-title {
+        margin-bottom: 1.2rem;
+        font-weight: 700;
+        color: #000000;
+        font-size: 1.3rem;
+    }
+    
+    .interest-description {
+        color: #333333;
+        line-height: 1.7;
+    }
+    
+    /* Call to Action Styling */
+    .section.bg-light .container {
+        padding: 3rem;
+        border-radius: 15px;
+        background-color: #f8f9fa;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(141, 198, 63, 0.1);
+    }
+    
+    .section.bg-light .container:before,
+    .section.bg-light .container:after {
+        content: '';
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 193, 7, 0.1) 0%, transparent 70%);
+        z-index: 0;
+    }
+    
+    .section.bg-light .container:before {
+        top: -100px;
+        left: -100px;
+    }
+    
+    .section.bg-light .container:after {
+        bottom: -100px;
+        right: -100px;
+        background: radial-gradient(circle, rgba(141, 198, 63, 0.1) 0%, transparent 70%);
+    }
+    
+    .section.bg-light .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
+        color: #000000;
+        position: relative;
+        display: inline-block;
+        z-index: 1;
+    }
+    
+    .section.bg-light .section-title:after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: -12px;
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        transform: translateX(-50%);
+        border-radius: 2px;
+    }
+    
+    .section.bg-light p {
+        color: #000000;
+        max-width: 800px;
+        margin: 0 auto 1.5rem;
+        font-size: 1.1rem;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .cta-buttons {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        margin-top: 2.5rem;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .btn {
+        padding: 0.9rem 2rem;
+        font-size: 1.05rem;
+        font-weight: 600;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border: 2px solid transparent;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+    
+    .btn:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background-color: rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        z-index: -1;
+    }
+    
+    .btn:hover:after {
+        height: 100%;
+    }
+    
+    .btn-primary {
+        background-color: var(--accent-primary);
+        color: #000000;
+        border-color: var(--accent-primary);
+    }
+    
+    .btn-primary:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(255, 193, 7, 0.4);
+        background-color: var(--accent-primary);
+        color: #000000;
+    }
+    
+    .btn-outline {
+        background-color: transparent;
+        color: #000000;
+        border-color: var(--accent-primary);
+    }
+    
+    .btn-outline:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(255, 193, 7, 0.2);
+        background-color: var(--accent-primary);
+        color: #000000;
+    }
+    
+    /* Social links styling */
+    .social-links {
+        display: flex;
+        gap: 1.2rem;
+        justify-content: center;
+        margin-top: 3rem;
+        margin-bottom: 1rem;
+    }
+    
+    .social-link {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background-color: var(--accent-primary);
+        color: #000000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .social-link:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 0.5s ease;
+    }
+    
+    .social-link:hover:after {
+        width: 110%;
+        height: 110%;
+    }
+    
+    .social-link:hover {
+        transform: translateY(-5px) rotate(5deg);
+        box-shadow: 0 10px 25px rgba(255, 193, 7, 0.4);
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        .about-experience {
+            position: relative;
+            bottom: auto;
+            left: auto;
+            margin-top: -30px;
+            margin-bottom: 2rem;
+            max-width: 150px;
+        }
+        
+        .achievements-grid,
+        .interests-container {
+            grid-template-columns: 1fr;
+        }
+        
+        .cta-buttons {
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+            max-width: 300px;
+            margin: 2rem auto 0;
+        }
+        
+        .about-photo-container:before {
+            display: none;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .page-title {
+            font-size: 2.2rem;
+            text-align: center;
+        }
+        
+        .page-title:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .breadcrumb {
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .section {
+            padding: 3rem 0;
+        }
+        
+        .section.bg-light {
+            padding: 3rem 0;
+        }
+        
+        .section.bg-light .container {
+            padding: 2rem 1.5rem;
+        }
+        
+        .timeline-content, 
+        .achievement-card,
+        .volunteer-card,
+        .interest-item {
+            padding: 1.5rem;
+        }
+    }
+    
+    /* Dark mode styles */
+    body.dark-theme .page-title,
+    body.dark-theme .about-text h2,
+    body.dark-theme .timeline-title,
+    body.dark-theme .achievement-title,
+    body.dark-theme .volunteer-title,
+    body.dark-theme .interest-title,
+    body.dark-theme .section-title {
+        color: var(--text-on-dark);
+    }
+    
+    /* Dark mode heading styles - explicitly separate from general heading styles */
+    body.dark-theme .education-heading,
+    body.dark-theme .certifications-heading {
+        color: #ffffff;
+        background-color: rgba(30, 30, 40, 0.8);
+        box-shadow: 0 4px 25px rgba(255, 193, 7, 0.25);
+        border: 1px solid rgba(255, 193, 7, 0.15);
+        backdrop-filter: blur(10px);
+    }
+    
+    body.dark-theme .education-heading {
+        box-shadow: 0 4px 25px rgba(255, 193, 7, 0.25), 0 0 0 2px rgba(255, 193, 7, 0.1);
+        border: 1px solid rgba(255, 193, 7, 0.2);
+    }
+    
+    body.dark-theme .certifications-heading {
+        box-shadow: 0 4px 25px rgba(141, 198, 63, 0.25), 0 0 0 2px rgba(141, 198, 63, 0.1);
+        border: 1px solid rgba(141, 198, 63, 0.2);
+    }
+    
+    body.dark-theme .education-heading i {
+        background-color: var(--accent-primary);
+        color: #000000;
+        box-shadow: 0 5px 15px rgba(255, 193, 7, 0.5), 0 0 0 5px rgba(30, 30, 40, 0.7);
+        border: 3px solid rgba(30, 30, 40, 0.9);
+    }
+    
+    body.dark-theme .certifications-heading i {
+        background-color: var(--accent-secondary);
+        color: #000000;
+        box-shadow: 0 5px 15px rgba(141, 198, 63, 0.5), 0 0 0 5px rgba(30, 30, 40, 0.7);
+        border: 3px solid rgba(30, 30, 40, 0.9);
+    }
+    
+    body.dark-theme .about-text p,
+    body.dark-theme .timeline-description p,
+    body.dark-theme .timeline-description li,
+    body.dark-theme .achievement-description,
+    body.dark-theme .volunteer-description p,
+    body.dark-theme .volunteer-activities li,
+    body.dark-theme .interest-description,
+    body.dark-theme .breadcrumb-item.active {
+        color: var(--text-on-dark);
+    }
+    
+    body.dark-theme .breadcrumb-item a {
+        color: var(--text-on-dark);
+    }
+    
+    body.dark-theme .timeline-content,
+    body.dark-theme .achievement-card,
+    body.dark-theme .volunteer-card,
+    body.dark-theme .interest-item,
+    body.dark-theme .section.bg-light .container {
+        background-color: var(--card-bg);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: none;
+    }
+    
+    body.dark-theme .section.bg-light .section-title,
+    body.dark-theme .section.bg-light p {
+        color: var(--text-on-dark);
+    }
+    
+    body.dark-theme .timeline-period {
+        background-color: rgba(255, 193, 7, 0.2);
+        color: var(--text-on-dark);
+    }
+    
+    body.dark-theme .timeline-section:nth-child(2) .timeline-period {
+        background-color: rgba(141, 198, 63, 0.2);
+    }
+    
+    body.dark-theme .btn-outline {
+        color: var(--text-on-dark);
+        border-color: var(--accent-primary);
+    }
+    
+    body.dark-theme .btn-outline:hover {
+        color: #000000;
+    }
+</style>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<!-- Add chatbot functionality -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Create chatbot elements
+        const chatbotContainer = document.createElement('div');
+        chatbotContainer.className = 'chatbot-container';
+        chatbotContainer.style.display = 'none'; // Hidden by default
+        
+        // Create chatbot header
+        const chatbotHeader = document.createElement('div');
+        chatbotHeader.className = 'chatbot-header';
+        chatbotHeader.innerHTML = `
+            <div class="chatbot-header-icon">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div>
+                <h3 class="chatbot-title">Arpit's AI Assistant</h3>
+                <div class="chatbot-status">Online</div>
+            </div>
+            <div class="chatbot-refresh" id="resetChat" title="Reset Conversation">
+                <i class="fas fa-redo-alt"></i>
+            </div>
+        `;
+        
+        // Create chatbot body
+        const chatbotBody = document.createElement('div');
+        chatbotBody.className = 'chatbot-body';
+        chatbotBody.id = 'chatMessages';
+        
+        // Add welcome message
+        const welcomeMessage = document.createElement('div');
+        welcomeMessage.className = 'chatbot-message';
+        welcomeMessage.innerHTML = `
+            <div class="chatbot-message-icon">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="chatbot-message-bubble">
+                <p>👋 Hi there! I'm Arpit's AI Assistant. How can I help you today?</p>
+                <div class="chatbot-message-time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+            </div>
+        `;
+        chatbotBody.appendChild(welcomeMessage);
+        
+        // Create quick actions for common questions
+        const quickActions = document.createElement('div');
+        quickActions.className = 'chatbot-quick-actions';
+        quickActions.innerHTML = `
+            <div class="chatbot-quick-action">Tell me about Arpit</div>
+            <div class="chatbot-quick-action">What skills does Arpit have?</div>
+            <div class="chatbot-quick-action">Recent projects</div>
+            <div class="chatbot-quick-action">Experience background</div>
+        `;
+        chatbotBody.appendChild(quickActions);
+        
+        // Create chatbot footer
+        const chatbotFooter = document.createElement('div');
+        chatbotFooter.className = 'chatbot-footer';
+        chatbotFooter.innerHTML = `
+            <input type="text" class="chatbot-input" id="userInput" placeholder="Type your message here...">
+            <button class="chatbot-send" id="sendMessage">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        `;
+        
+        // Assemble chatbot
+        chatbotContainer.appendChild(chatbotHeader);
+        chatbotContainer.appendChild(chatbotBody);
+        chatbotContainer.appendChild(chatbotFooter);
+        
+        // Create toggle button
+        const toggleButton = document.createElement('div');
+        toggleButton.className = 'chatbot-toggle';
+        toggleButton.innerHTML = '<i class="fas fa-comments"></i>';
+        toggleButton.style.position = 'fixed';
+        toggleButton.style.bottom = '20px';
+        toggleButton.style.right = '20px';
+        toggleButton.style.width = '60px';
+        toggleButton.style.height = '60px';
+        toggleButton.style.borderRadius = '50%';
+        toggleButton.style.background = 'linear-gradient(90deg, #ffd700, #9acd32)';
+        toggleButton.style.display = 'flex';
+        toggleButton.style.alignItems = 'center';
+        toggleButton.style.justifyContent = 'center';
+        toggleButton.style.color = '#000000';
+        toggleButton.style.fontSize = '1.5rem';
+        toggleButton.style.boxShadow = '0 5px 15px rgba(0,0,0,0.2)';
+        toggleButton.style.cursor = 'pointer';
+        toggleButton.style.zIndex = '999';
+        toggleButton.style.transition = 'all 0.3s ease';
+        
+        // Add elements to the document
+        document.body.appendChild(chatbotContainer);
+        document.body.appendChild(toggleButton);
+        
+        // Toggle chatbot visibility
+        toggleButton.addEventListener('click', function() {
+            if (chatbotContainer.style.display === 'none') {
+                chatbotContainer.style.display = 'block';
+                toggleButton.innerHTML = '<i class="fas fa-times"></i>';
+                chatbotContainer.style.animation = 'fadeIn 0.3s ease forwards';
+            } else {
+                chatbotContainer.style.display = 'none';
+                toggleButton.innerHTML = '<i class="fas fa-comments"></i>';
+            }
+        });
+        
+        // Send message functionality
+        const sendMessage = () => {
+            const userInput = document.getElementById('userInput');
+            const message = userInput.value.trim();
+            
+            if (message) {
+                // Create user message
+                const userMessage = document.createElement('div');
+                userMessage.className = 'chatbot-message user';
+                userMessage.innerHTML = `
+                    <div class="chatbot-message-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="chatbot-message-bubble">
+                        <p>${message}</p>
+                        <div class="chatbot-message-time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                    </div>
+                `;
+                
+                chatbotBody.appendChild(userMessage);
+                userInput.value = '';
+                
+                // Scroll to bottom
+                chatbotBody.scrollTop = chatbotBody.scrollHeight;
+                
+                // Create loading indicator
+                const loadingMessage = document.createElement('div');
+                loadingMessage.className = 'chatbot-message';
+                loadingMessage.innerHTML = `
+                    <div class="chatbot-message-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="chatbot-message-bubble">
+                        <p>Thinking...</p>
+                    </div>
+                `;
+                chatbotBody.appendChild(loadingMessage);
+                
+                // Send request to server
+                fetch('/api/chatbot/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ message: message }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Remove loading indicator
+                    chatbotBody.removeChild(loadingMessage);
+                    
+                    // Create bot message
+                    const botMessage = document.createElement('div');
+                    botMessage.className = 'chatbot-message';
+                    botMessage.innerHTML = `
+                        <div class="chatbot-message-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="chatbot-message-bubble">
+                            <p>${data.response}</p>
+                            <div class="chatbot-message-time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                        </div>
+                    `;
+                    chatbotBody.appendChild(botMessage);
+                    
+                    // Scroll to bottom
+                    chatbotBody.scrollTop = chatbotBody.scrollHeight;
+                })
+                .catch(error => {
+                    // Remove loading indicator
+                    chatbotBody.removeChild(loadingMessage);
+                    
+                    // Create error message
+                    const errorMessage = document.createElement('div');
+                    errorMessage.className = 'chatbot-message';
+                    errorMessage.innerHTML = `
+                        <div class="chatbot-message-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="chatbot-message-bubble">
+                            <p>Sorry, I'm having trouble connecting right now. Please try again later.</p>
+                            <div class="chatbot-message-time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                        </div>
+                    `;
+                    chatbotBody.appendChild(errorMessage);
+                    
+                    // Scroll to bottom
+                    chatbotBody.scrollTop = chatbotBody.scrollHeight;
+                    
+                    console.error('Error:', error);
+                });
+            }
+        };
+        
+        // Event listeners
+        document.getElementById('sendMessage').addEventListener('click', sendMessage);
+        document.getElementById('userInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+        
+        // Quick action event listeners
+        const quickActionButtons = document.querySelectorAll('.chatbot-quick-action');
+        quickActionButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                document.getElementById('userInput').value = this.textContent;
+                sendMessage();
+            });
+        });
+        
+        // Reset chat event listener
+        document.getElementById('resetChat').addEventListener('click', function() {
+            fetch('/api/chatbot/reset', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Clear chat messages
+                chatbotBody.innerHTML = '';
+                
+                // Add welcome message again
+                chatbotBody.appendChild(welcomeMessage);
+                
+                // Add quick actions again
+                chatbotBody.appendChild(quickActions);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    });
+</script>
+{% endblock %} 

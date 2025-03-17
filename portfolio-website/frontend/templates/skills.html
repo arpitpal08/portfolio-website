@@ -1,0 +1,1150 @@
+{% extends "base.html" %}
+
+{% block title %}Skills - Arpit Pal{% endblock %}
+
+{% block body_class %}skills-page{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <h1 class="page-title">My Skills</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Skills</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<!-- Skills Overview -->
+<section class="section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="skills-overview">
+                    <h2>Technical Expertise</h2>
+                    <p class="lead">
+                        As a Cyber Security Specialist and Backend Developer, I've developed a diverse skill set
+                        spanning cybersecurity, software development, and AI/ML technologies.
+                    </p>
+                    <p>
+                        My expertise in cybersecurity includes vulnerability assessment, penetration testing, and API security,
+                        while my development skills encompass Java, Spring Boot, Python, and various web technologies.
+                        Recently, I've been expanding my knowledge in AI and ML, particularly in RAG systems and chatbot development.
+                    </p>
+                    <div class="skills-buttons mt-4">
+                        <a href="{{ url_for('projects') }}" class="btn btn-primary me-3">View Projects</a>
+                        <a href="{{ url_for('contact') }}" class="btn btn-outline">Get In Touch</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="skills-chart">
+                    <canvas id="skillsRadarChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skill Categories -->
+<section class="section bg-light">
+    <div class="container">
+        <h2 class="section-title">Skill Categories</h2>
+        
+        <!-- Cybersecurity Skills -->
+        <div class="skill-category-section">
+            <div class="skill-category-header">
+                <div class="skill-category-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="skill-category-title">Cybersecurity</h3>
+            </div>
+            <div class="skill-category-content">
+                <p>
+                    My cybersecurity expertise focuses on identifying, assessing, and mitigating security vulnerabilities
+                    in web applications, APIs, and network infrastructure. I specialize in penetration testing, vulnerability
+                    assessment, and implementing robust security measures.
+                </p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="skill-progress-container">
+                            <div class="skill-progress-header">
+                                <span class="skill-name">VAPT</span>
+                                <span class="skill-percentage">90%</span>
+                            </div>
+                            <div class="skill-progress-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="skill-progress-container">
+                            <div class="skill-progress-header">
+                                <span class="skill-name">API Security</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <div class="skill-progress-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="skill-progress-container">
+                            <div class="skill-progress-header">
+                                <span class="skill-name">OWASP Top 10</span>
+                                <span class="skill-percentage">95%</span>
+                            </div>
+                            <div class="skill-progress-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="skill-progress-container">
+                            <div class="skill-progress-header">
+                                <span class="skill-name">Network Security</span>
+                                <span class="skill-percentage">80%</span>
+                            </div>
+                            <div class="skill-progress-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-tools mt-4">
+                    <h4>Tools & Technologies:</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Burp Suite</span>
+                        <span class="skill-tag">OWASP ZAP</span>
+                        <span class="skill-tag">Metasploit</span>
+                        <span class="skill-tag">Nessus</span>
+                        <span class="skill-tag">Wireshark</span>
+                        <span class="skill-tag">Nmap</span>
+                        <span class="skill-tag">Kali Linux</span>
+                        <span class="skill-tag">IDS/IPS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Backend Development Skills -->
+        <div class="skill-category-section">
+            <div class="skill-category-header">
+                <div class="skill-category-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3 class="skill-category-title">Backend Development</h3>
+            </div>
+            <div class="skill-category-content">
+                <p>
+                    My backend development skills encompass building robust, scalable, and secure server-side applications.
+                    I specialize in Java and Spring Boot for enterprise applications, as well as Python for web development
+                    and data processing tasks.
+                </p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="skill-progress-container">
+                            <div class="skill-progress-header">
+                                <span class="skill-name">Java</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <div class="skill-progress-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="skill-progress-container">
+                            <div class="skill-progress-header">
+                                <span class="skill-name">Spring Boot</span>
+                                <span class="skill-percentage">80%</span>
+                            </div>
+                            <div class="skill-progress-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="skill-progress-container">
+                            <div class="skill-progress-header">
+                                <span class="skill-name">Python</span>
+                                <span class="skill-percentage">90%</span>
+                            </div>
+                            <div class="skill-progress-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="skill-progress-container">
+                            <div class="skill-progress-header">
+                                <span class="skill-name">RESTful APIs</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <div class="skill-progress-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-tools mt-4">
+                    <h4>Tools & Technologies:</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Spring Boot</span>
+                        <span class="skill-tag">Flask</span>
+                        <span class="skill-tag">Django</span>
+                        <span class="skill-tag">JPA/Hibernate</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">Redis</span>
+                        <span class="skill-tag">JWT</span>
+                        <span class="skill-tag">OAuth</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- AI & ML Skills -->
+        <div class="skill-category-section">
+            <div class="skill-category-header">
+                <div class="skill-category-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3 class="skill-category-title">AI & Machine Learning</h3>
+            </div>
+            <div class="skill-category-content">
+                <p>
+                    My AI and ML skills focus on developing intelligent systems, particularly in the areas of natural language
+                    processing and retrieval-augmented generation. I'm currently working on AI-powered chatbots and RAG systems
+                    for enhanced information retrieval and user interactions.
+                </p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="skill-progress-container">
+                            <div class="skill-progress-header">
+                                <span class="skill-name">RAG Systems</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <div class="skill-progress-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="skill-progress-container">
+                            <div class="skill-progress-header">
+                                <span class="skill-name">LLMs</span>
+                                <span class="skill-percentage">80%</span>
+                            </div>
+                            <div class="skill-progress-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="skill-progress-container">
+                            <div class="skill-progress-header">
+                                <span class="skill-name">NLP</span>
+                                <span class="skill-percentage">75%</span>
+                            </div>
+                            <div class="skill-progress-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="skill-progress-container">
+                            <div class="skill-progress-header">
+                                <span class="skill-name">Chatbot Development</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <div class="skill-progress-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-tools mt-4">
+                    <h4>Tools & Technologies:</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">TinyLlama</span>
+                        <span class="skill-tag">LangChain</span>
+                        <span class="skill-tag">ChromaDB</span>
+                        <span class="skill-tag">FAISS</span>
+                        <span class="skill-tag">Transformers</span>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">Scikit-learn</span>
+                        <span class="skill-tag">Hugging Face</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Web Development Skills -->
+        <div class="skill-category-section">
+            <div class="skill-category-header">
+                <div class="skill-category-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3 class="skill-category-title">Web Development</h3>
+            </div>
+            <div class="skill-category-content">
+                <p>
+                    My web development skills include frontend and backend technologies for creating responsive, user-centric
+                    websites and web applications. I focus on building secure, performant, and accessible web solutions.
+                </p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="skill-progress-container">
+                            <div class="skill-progress-header">
+                                <span class="skill-name">HTML/CSS</span>
+                                <span class="skill-percentage">90%</span>
+                            </div>
+                            <div class="skill-progress-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="skill-progress-container">
+                            <div class="skill-progress-header">
+                                <span class="skill-name">JavaScript</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <div class="skill-progress-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="skill-progress-container">
+                            <div class="skill-progress-header">
+                                <span class="skill-name">React.js</span>
+                                <span class="skill-percentage">80%</span>
+                            </div>
+                            <div class="skill-progress-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="skill-progress-container">
+                            <div class="skill-progress-header">
+                                <span class="skill-name">Responsive Design</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <div class="skill-progress-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-tools mt-4">
+                    <h4>Tools & Technologies:</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React.js</span>
+                        <span class="skill-tag">Bootstrap</span>
+                        <span class="skill-tag">jQuery</span>
+                        <span class="skill-tag">SASS</span>
+                        <span class="skill-tag">Webpack</span>
+                        <span class="skill-tag">Responsive Design</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Cloud & DevOps Skills -->
+        <div class="skill-category-section">
+            <div class="skill-category-header">
+                <div class="skill-category-icon">
+                    <i class="fas fa-cloud"></i>
+                </div>
+                <h3 class="skill-category-title">Cloud & DevOps</h3>
+            </div>
+            <div class="skill-category-content">
+                <p>
+                    My cloud and DevOps skills focus on deploying, managing, and securing applications in cloud environments.
+                    I have experience with AWS services and implementing CI/CD pipelines for automated testing and deployment.
+                </p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="skill-progress-container">
+                            <div class="skill-progress-header">
+                                <span class="skill-name">AWS</span>
+                                <span class="skill-percentage">75%</span>
+                            </div>
+                            <div class="skill-progress-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="skill-progress-container">
+                            <div class="skill-progress-header">
+                                <span class="skill-name">Docker</span>
+                                <span class="skill-percentage">70%</span>
+                            </div>
+                            <div class="skill-progress-bar">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="skill-progress-container">
+                            <div class="skill-progress-header">
+                                <span class="skill-name">CI/CD</span>
+                                <span class="skill-percentage">65%</span>
+                            </div>
+                            <div class="skill-progress-bar">
+                                <div class="skill-progress" style="width: 65%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="skill-progress-container">
+                            <div class="skill-progress-header">
+                                <span class="skill-name">Cloud Security</span>
+                                <span class="skill-percentage">80%</span>
+                            </div>
+                            <div class="skill-progress-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-tools mt-4">
+                    <h4>Tools & Technologies:</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AWS EC2</span>
+                        <span class="skill-tag">AWS S3</span>
+                        <span class="skill-tag">AWS IAM</span>
+                        <span class="skill-tag">AWS Security Groups</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">GitHub Actions</span>
+                        <span class="skill-tag">Jenkins</span>
+                        <span class="skill-tag">Netlify</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Soft Skills -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Soft Skills</h2>
+        
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="soft-skills-content">
+                    <p class="lead">
+                        Beyond technical expertise, I've developed strong soft skills that enhance my ability to work
+                        effectively in teams, communicate complex ideas, and lead projects to successful completion.
+                    </p>
+                    <p>
+                        My experience organizing workshops and participating in hackathons has honed my leadership,
+                        problem-solving, and communication skills, allowing me to collaborate effectively with diverse teams
+                        and stakeholders.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="soft-skills-list">
+                    <div class="soft-skill-item">
+                        <div class="soft-skill-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="soft-skill-content">
+                            <h4>Leadership</h4>
+                            <p>Leading teams, organizing workshops, and managing projects effectively.</p>
+                        </div>
+                    </div>
+                    <div class="soft-skill-item">
+                        <div class="soft-skill-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="soft-skill-content">
+                            <h4>Communication</h4>
+                            <p>Clearly conveying complex technical concepts to diverse audiences.</p>
+                        </div>
+                    </div>
+                    <div class="soft-skill-item">
+                        <div class="soft-skill-icon">
+                            <i class="fas fa-puzzle-piece"></i>
+                        </div>
+                        <div class="soft-skill-content">
+                            <h4>Problem Solving</h4>
+                            <p>Analyzing complex issues and developing effective solutions.</p>
+                        </div>
+                    </div>
+                    <div class="soft-skill-item">
+                        <div class="soft-skill-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="soft-skill-content">
+                            <h4>Time Management</h4>
+                            <p>Efficiently prioritizing tasks and meeting deadlines consistently.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="section bg-light">
+    <div class="container text-center">
+        <h2 class="section-title">Interested in Working Together?</h2>
+        <p class="mb-4">Let's collaborate on your next project or security challenge.</p>
+        <div class="cta-buttons">
+            <a href="{{ url_for('contact') }}" class="btn btn-primary me-3">Get In Touch</a>
+            <a href="{{ url_for('chatbot') }}" class="btn btn-secondary">Chat with AI Assistant</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block custom_css %}
+<style>
+    /* Custom styles for the skills page */
+    .page-header {
+        background: linear-gradient(135deg, var(--bg-color), var(--bg-secondary));
+        padding: 3rem 0;
+        margin-bottom: 0;
+        border-bottom: 3px solid var(--accent-primary);
+    }
+    
+    .page-title {
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: #000000;
+        margin-bottom: 0.5rem;
+        position: relative;
+        display: inline-block;
+    }
+    
+    .page-title:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        border-radius: 2px;
+    }
+    
+    .breadcrumb {
+        background-color: transparent;
+        padding: 0;
+        margin: 0;
+        margin-top: 1.5rem;
+    }
+    
+    .breadcrumb-item a {
+        color: #000000;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    
+    .breadcrumb-item a:hover {
+        color: var(--accent-primary);
+    }
+    
+    .breadcrumb-item.active {
+        color: #000000;
+        opacity: 0.7;
+    }
+    
+    /* Section styling */
+    .section {
+        padding: 4rem 0;
+        background-color: #fffdf0;
+    }
+    
+    .section.bg-light {
+        background-color: #fff;
+        padding: 3rem 0;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 2.5rem;
+        text-align: center;
+        color: #000000;
+        position: relative;
+        display: inline-block;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .section-title:after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: -12px;
+        width: 80px;
+        height: 4px;
+        background-color: #ffffff;
+        margin: 0 auto;
+        border-radius: 2px;
+    }
+    
+    /* Skills Overview */
+    .skills-overview {
+        padding-right: 2rem;
+    }
+    
+    .skills-overview h2 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #000000;
+        margin-bottom: 1.5rem;
+        position: relative;
+        display: inline-block;
+    }
+    
+    .skills-overview h2:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        border-radius: 2px;
+    }
+    
+    .skills-overview .lead {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: #000000;
+        margin-bottom: 1.2rem;
+    }
+    
+    .skills-overview p {
+        color: #333333;
+        line-height: 1.7;
+    }
+    
+    .skills-chart {
+        background-color: #ffffff;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    /* Skill Categories */
+    .skill-category-section {
+        background-color: #ffffff;
+        border-radius: 15px;
+        margin-bottom: 2rem;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        border-top: 5px solid var(--accent-primary);
+    }
+    
+    .skill-category-section:nth-child(odd) {
+        border-top-color: var(--accent-primary); /* Yellow */
+    }
+    
+    .skill-category-section:nth-child(even) {
+        border-top-color: var(--accent-secondary); /* Yellow-green */
+    }
+    
+    .skill-category-section:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .skill-category-header {
+        display: flex;
+        align-items: center;
+        padding: 1.8rem 1.8rem 1rem;
+        background-color: transparent;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    .skill-category-icon {
+        font-size: 2.2rem;
+        color: var(--accent-primary);
+        margin-right: 1.5rem;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(255, 193, 7, 0.15);
+        border-radius: 50%;
+        transition: all 0.3s ease;
+    }
+    
+    .skill-category-section:hover .skill-category-icon {
+        transform: rotate(10deg);
+        background-color: rgba(255, 193, 7, 0.25);
+    }
+    
+    .skill-category-section:nth-child(even) .skill-category-icon {
+        color: var(--accent-secondary);
+        background-color: rgba(141, 198, 63, 0.15);
+    }
+    
+    .skill-category-section:nth-child(even):hover .skill-category-icon {
+        background-color: rgba(141, 198, 63, 0.25);
+    }
+    
+    .skill-category-title {
+        margin-bottom: 0;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #000000;
+    }
+    
+    .skill-category-content {
+        padding: 1.8rem;
+    }
+    
+    .skill-category-content p {
+        color: #333333;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Skill Progress Bars */
+    .skill-progress-container {
+        margin-bottom: 1.5rem;
+    }
+    
+    .skill-progress-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.7rem;
+    }
+    
+    .skill-name {
+        font-weight: 600;
+        color: #000000;
+    }
+    
+    .skill-percentage {
+        font-weight: 700;
+        color: var(--accent-primary);
+    }
+    
+    .skill-progress-bar {
+        height: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border-radius: 5px;
+        overflow: hidden;
+    }
+    
+    .skill-progress {
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        border-radius: 5px;
+        transition: width 1.5s ease-in-out;
+    }
+    
+    /* Skill Tags */
+    .skill-tools h4 {
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #000000;
+    }
+    
+    .skill-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+    }
+    
+    .skill-tag {
+        font-size: 0.85rem;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        background-color: rgba(255, 193, 7, 0.1);
+        color: #000000;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    
+    .skill-tag:hover {
+        background-color: var(--accent-primary);
+        transform: translateY(-3px);
+        box-shadow: 0 3px 10px rgba(255, 193, 7, 0.2);
+    }
+    
+    /* Soft Skills */
+    .soft-skills-content {
+        padding-right: 2rem;
+    }
+    
+    .soft-skills-content .lead {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: #000000;
+        margin-bottom: 1.2rem;
+    }
+    
+    .soft-skills-content p {
+        color: #333333;
+        line-height: 1.7;
+    }
+    
+    .soft-skill-item {
+        display: flex;
+        margin-bottom: 1.5rem;
+        background-color: #ffffff;
+        border-radius: 15px;
+        padding: 1.5rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        border-left: 5px solid var(--accent-primary);
+    }
+    
+    .soft-skill-item:nth-child(odd) {
+        border-left-color: var(--accent-primary); /* Yellow */
+    }
+    
+    .soft-skill-item:nth-child(even) {
+        border-left-color: var(--accent-secondary); /* Yellow-green */
+    }
+    
+    .soft-skill-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .soft-skill-icon {
+        font-size: 1.8rem;
+        color: var(--accent-primary);
+        margin-right: 1rem;
+        min-width: 50px;
+        text-align: center;
+    }
+    
+    .soft-skill-item:nth-child(even) .soft-skill-icon {
+        color: var(--accent-secondary);
+    }
+    
+    .soft-skill-content h4 {
+        margin-bottom: 0.7rem;
+        font-weight: 700;
+        color: #000000;
+    }
+    
+    .soft-skill-content p {
+        margin-bottom: 0;
+        color: #333333;
+    }
+    
+    /* Call to Action Styling */
+    .section.bg-light .container {
+        padding: 2rem;
+        border-radius: 15px;
+        background-color: #f8f9fa;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        text-align: center;
+    }
+    
+    .section.bg-light .section-title {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: #000000;
+        position: relative;
+        display: inline-block;
+    }
+    
+    .section.bg-light .section-title:after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: -12px;
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        transform: translateX(-50%);
+        border-radius: 2px;
+    }
+    
+    .section.bg-light p {
+        color: #000000;
+        max-width: 800px;
+        margin: 0 auto 1.5rem;
+    }
+    
+    .cta-buttons {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        margin-top: 2rem;
+    }
+    
+    .btn {
+        padding: 0.9rem 1.8rem;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border: 2px solid transparent;
+    }
+    
+    .btn-primary {
+        background-color: var(--accent-primary);
+        color: #000000;
+        border-color: var(--accent-primary);
+    }
+    
+    .btn-primary:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(255, 193, 7, 0.4);
+        background-color: var(--accent-primary);
+        color: #000000;
+    }
+    
+    .btn-secondary {
+        background-color: #6c757d;
+        color: #ffffff;
+        border-color: #6c757d;
+    }
+    
+    .btn-secondary:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(108, 117, 125, 0.4);
+        background-color: #5a6268;
+        color: #ffffff;
+    }
+    
+    @media (max-width: 576px) {
+        .cta-buttons {
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+            max-width: 300px;
+            margin: 2rem auto 0;
+        }
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        .skills-overview {
+            padding-right: 0;
+        }
+        
+        .skills-chart {
+            margin-top: 2rem;
+        }
+        
+        .page-title {
+            font-size: 2.2rem;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+        }
+        
+        .skills-overview h2 {
+            font-size: 1.8rem;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .page-title {
+            font-size: 1.8rem;
+            text-align: center;
+        }
+        
+        .page-title:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .breadcrumb {
+            justify-content: center;
+            text-align: center;
+        }
+    }
+    
+    /* Dark mode styles remain untouched */
+    body.dark-theme .skill-category-section {
+        background-color: var(--card-bg);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    body.dark-theme .skill-category-title,
+    body.dark-theme .skill-name,
+    body.dark-theme .skill-tools h4,
+    body.dark-theme .soft-skill-content h4 {
+        color: var(--text-on-dark);
+    }
+    
+    body.dark-theme .section-title {
+        color: var(--text-on-dark);
+    }
+    
+    body.dark-theme .page-title {
+        color: var(--text-on-dark);
+    }
+    
+    body.dark-theme .skill-category-content p,
+    body.dark-theme .skills-overview p,
+    body.dark-theme .skills-overview .lead,
+    body.dark-theme .soft-skills-content p,
+    body.dark-theme .soft-skills-content .lead,
+    body.dark-theme .soft-skill-content p {
+        color: var(--text-on-dark);
+    }
+    
+    body.dark-theme .section.bg-light .container {
+        background-color: var(--card-bg);
+    }
+    
+    body.dark-theme .section.bg-light .section-title,
+    body.dark-theme .section.bg-light p {
+        color: var(--text-on-dark);
+    }
+    
+    body.dark-theme .skill-progress-bar {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    body.dark-theme .skill-tag {
+        background-color: rgba(255, 193, 7, 0.2);
+        color: var(--text-on-dark);
+    }
+    
+    body.dark-theme .soft-skill-item,
+    body.dark-theme .skills-chart {
+        background-color: var(--card-bg);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Dark mode overrides for Call to Action section */
+    body.dark-theme .section.bg-light {
+        background-color: var(--bg-secondary);
+    }
+    
+    body.dark-theme .section.bg-light .container {
+        background-color: var(--card-bg);
+        box-shadow: none;
+    }
+    
+    body.dark-theme .section.bg-light .section-title,
+    body.dark-theme .section.bg-light p {
+        color: var(--text-on-dark);
+    }
+    
+    body.dark-theme .btn-secondary {
+        background-color: var(--accent-primary);
+        color: #000000;
+        border-color: var(--accent-primary);
+    }
+    
+    body.dark-theme .btn-secondary:hover {
+        background-color: var(--accent-primary);
+        box-shadow: 0 8px 20px rgba(255, 193, 7, 0.4);
+    }
+</style>
+{% endblock %}
+
+{% block custom_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Radar chart for skills overview
+        const ctx = document.getElementById('skillsRadarChart').getContext('2d');
+        
+        const skillsRadarChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: [
+                    'Cybersecurity',
+                    'Backend Development',
+                    'AI & ML',
+                    'Web Development',
+                    'Cloud & DevOps',
+                    'Problem Solving'
+                ],
+                datasets: [{
+                    label: 'Skill Level',
+                    data: [90, 85, 80, 85, 75, 90],
+                    backgroundColor: 'rgba(0, 168, 150, 0.2)',
+                    borderColor: 'rgba(0, 168, 150, 1)',
+                    pointBackgroundColor: 'rgba(0, 168, 150, 1)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgba(0, 168, 150, 1)'
+                }]
+            },
+            options: {
+                scales: {
+                    r: {
+                        angleLines: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        },
+                        pointLabels: {
+                            color: getComputedStyle(document.documentElement).getPropertyValue('--text-color')
+                        },
+                        ticks: {
+                            backdropColor: 'transparent',
+                            color: getComputedStyle(document.documentElement).getPropertyValue('--text-color')
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+        
+        // Animate skill progress bars on scroll
+        const skillProgressBars = document.querySelectorAll('.skill-progress');
+        
+        const options = {
+            threshold: 0.5
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = entry.target;
+                    const width = target.style.width;
+                    
+                    // Reset width to 0 and then animate to the target width
+                    target.style.width = '0%';
+                    setTimeout(() => {
+                        target.style.width = width;
+                    }, 100);
+                    
+                    observer.unobserve(target);
+                }
+            });
+        }, options);
+        
+        skillProgressBars.forEach(bar => {
+            observer.observe(bar);
+        });
+    });
+</script>
+{% endblock %} 

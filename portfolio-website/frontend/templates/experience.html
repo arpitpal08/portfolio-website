@@ -1,0 +1,1751 @@
+{% extends "base.html" %}
+{% block title %}Experience - Arpit Pal{% endblock %}
+
+{% block body_class %}experience-page{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <h1 class="page-title">Professional Experience</h1>
+        <nav aria-label="breadcrumb">   
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Experience</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<!-- Experience Overview -->
+<section class="section career-journey-section">
+    <div class="container">
+        <h2 class="section-title">Career Journey</h2>
+        <div class="section-underline"></div>
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="experience-overview">
+                    <p class="lead">
+                        My professional journey spans cybersecurity, backend development, and AI/ML,
+                        with a focus on building secure and innovative solutions.
+                    </p>
+                    <p class="experience-summary">
+                        From managing security at DitanSource to developing AI solutions at Predusk Technology,
+                        I've consistently delivered value through technical expertise and innovative problem-solving.
+                    </p>
+                    <div class="experience-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="2">0</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="15">0</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="10">0</div>
+                            <div class="stat-label">Workshops Conducted</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="experience-chart-container">
+                    <canvas id="experienceChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Experience Timeline -->
+<section class="section timeline-section">
+    <div class="container">
+        <h2 class="section-title">Professional Timeline</h2>
+        <div class="section-underline"></div>
+        
+        <div class="experience-timeline">
+            <!-- Current Role - Ditansource -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="experience-card ditansource-card">
+                        <div class="experience-header">
+                            <a href="https://ditansource.com" target="_blank" class="company-logo-link" title="Visit Ditansource">
+                                <div class="company-logo">
+                                    <img src="{{ url_for('static', filename='images/logos/ditansource.svg') }}" alt="Ditansource">
+                                </div>
+                            </a>
+                            <div class="experience-info">
+                                <h3 class="experience-title">Lead Security Officer</h3>
+                                <div class="company-name">
+                                    <img src="{{ url_for('static', filename='images/logos/ditansource_logo.jpg') }}" alt="Ditansource" class="company-name-logo">
+                                    <span>Ditansource</span>
+                                </div>
+                                <div class="experience-meta">
+                                    <span class="experience-period"><i class="far fa-calendar-alt me-2"></i>Feb 2024 - Present</span>
+                                    <span class="experience-location"><i class="fas fa-map-marker-alt me-2"></i>United States · Remote</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="experience-body">
+                            <p class="experience-description">
+                                As a full-time Cyber Security Specialist & Security Officer at Ditansource, I lead end-to-end security operations, 
+                                backend development, and product management to ensure robust digital security, efficient system performance, 
+                                and business growth.
+                            </p>
+                            <div class="key-responsibilities">
+                                <h4 class="section-subtitle">Key Responsibilities</h4>
+                                <ul class="styled-list">
+                                    <li>Leading end-to-end security operations and backend development</li>
+                                    <li>Managing product development and security implementation</li>
+                                    <li>Implementing API security and penetration testing (VAPT)</li>
+                                    <li>Developing cloud security solutions and backend infrastructure</li>
+                                    <li>Optimizing SEO and enhancing business visibility</li>
+                                </ul>
+                            </div>
+                            <div class="tech-stack">
+                                <h4 class="section-subtitle">Technologies Used</h4>
+                                <div class="tech-tags">
+                                    <span class="tech-tag">Burp Suite</span>
+                                    <span class="tech-tag">OWASP ZAP</span>
+                                    <span class="tech-tag">Metasploit</span>
+                                    <span class="tech-tag">Nessus</span>
+                                    <span class="tech-tag">AWS IAM</span>
+                                    <span class="tech-tag">EC2</span>
+                                    <span class="tech-tag">CloudTrail</span>
+                                    <span class="tech-tag">Java</span>
+                                    <span class="tech-tag">Spring Boot</span>
+                                    <span class="tech-tag">RESTful APIs</span>
+                                    <span class="tech-tag">MySQL</span>
+                                    <span class="tech-tag">PostgreSQL</span>
+                                    <span class="tech-tag">MongoDB</span>
+                                    <span class="tech-tag">Nmap</span>
+                                    <span class="tech-tag">Wireshark</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Predusk Role -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="experience-card predusk-card">
+                        <div class="experience-header">
+                            <a href="https://predusk.com" target="_blank" class="company-logo-link" title="Visit Predusk Technology">
+                                <div class="company-logo">
+                                    <img src="{{ url_for('static', filename='images/logos/predusk logo.jpg') }}" alt="Predusk Technology">
+                                </div>
+                            </a>
+                            <div class="experience-info">
+                                <h3 class="experience-title">Business Analytics and AI Intelligence Intern</h3>
+                                <div class="company-name">
+                                    <img src="{{ url_for('static', filename='images/logos/predusk logo.jpg') }}" alt="Predusk Technology" class="company-name-logo">
+                                    <span>Predusk Technology Private Limited</span>
+                                </div>
+                                <div class="experience-meta">
+                                    <span class="experience-period"><i class="far fa-calendar-alt me-2"></i>January 2024 - Present</span>
+                                    <span class="experience-location"><i class="fas fa-map-marker-alt me-2"></i>Jaipur, Rajasthan · On-Site</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="experience-body">
+                            <p class="experience-description">
+                                Working on AI and ML solutions for business insights and user interactions, focusing on
+                                RAG systems, chatbot development, and predictive analytics models.  
+                            </p>
+                            <div class="key-responsibilities">
+                                <h4 class="section-subtitle">Key Responsibilities</h4>
+                                <ul class="styled-list">
+                                    <li>Developing an agentic RAG setup for IT helpdesk chatbot using LLM, LlamaIndex, ChromaDB, and FAISS</li>
+                                    <li>Implementing AI-powered chatbots using NLP techniques and large language models</li>
+                                    <li>Conducting API testing and integration for various projects</li>
+                                    <li>Managing product development and security scanning processes</li>
+                                </ul>
+                            </div>
+                            <div class="achievements">
+                                <h4 class="section-subtitle">Key Achievements</h4>
+                                <ul class="styled-list achievement-list">
+                                    <li>Successfully implemented RAG pipeline improving query response accuracy by 40%</li>
+                                    <li>Reduced manual support tickets by 30% through chatbot implementation</li>
+                                    <li>Optimized API response times by 25% through performance enhancements</li>
+                                </ul>
+                            </div>
+                            <div class="tech-stack">
+                                <h4 class="section-subtitle">Technologies Used</h4>
+                                <div class="tech-tags">
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">LangChain</span>
+                                    <span class="tech-tag">ChromaDB</span>
+                                    <span class="tech-tag">TinyLlama</span>
+                                    <span class="tech-tag">Flask</span>
+                                    <span class="tech-tag">React.js</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Previous Role -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="experience-card ditanbiz-card">
+                        <div class="experience-header">
+                            <a href="https://ditanbizinc.com" target="_blank" class="company-logo-link" title="Visit DitanBizInc">
+                                <div class="company-logo">
+                                    <img src="{{ url_for('static', filename='images/logos/ditanbiz.jpg') }}" alt="DitanBizInc">
+                                </div>
+                            </a>
+                            <div class="experience-info">
+                                <h3 class="experience-title">Security Management Intern</h3>
+                                <div class="company-name">
+                                    <img src="{{ url_for('static', filename='images/logos/ditanbiz.jpg') }}" alt="DitanBizInc" class="company-name-logo">
+                                    <span>DitanBizInc</span>
+                                </div>
+                                <div class="experience-meta">
+                                    <span class="experience-period"><i class="far fa-calendar-alt me-2"></i>June 2023 - December 2023</span>
+                                    <span class="experience-location"><i class="fas fa-map-marker-alt me-2"></i>United States · Remote</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="experience-body">
+                            <p class="experience-description">
+                                Managed security operations for DitanSource, implementing robust security measures
+                                and conducting vulnerability assessments.
+                            </p>
+                            <div class="key-responsibilities">
+                                <h4 class="section-subtitle">Key Responsibilities</h4>
+                                <ul class="styled-list">
+                                    <li>Conducted regular security audits and vulnerability assessments</li>
+                                    <li>Implemented security policies and procedures</li>
+                                    <li>Managed incident response and security monitoring</li>
+                                    <li>Developed security documentation and training materials</li>
+                                </ul>
+                            </div>
+                            <div class="achievements">
+                                <h4 class="section-subtitle">Key Achievements</h4>
+                                <ul class="styled-list achievement-list">
+                                    <li>Reduced security incidents by 45% through improved monitoring</li>
+                                    <li>Implemented automated security scanning reducing assessment time by 60%</li>
+                                    <li>Created comprehensive security documentation and training program</li>
+                                </ul>
+                            </div>
+                            <div class="tech-stack">
+                                <h4 class="section-subtitle">Technologies Used</h4>
+                                <div class="tech-tags">
+                                    <span class="tech-tag">Burp Suite</span>
+                                    <span class="tech-tag">OWASP ZAP</span>
+                                    <span class="tech-tag">Nmap</span>
+                                    <span class="tech-tag">Wireshark</span>
+                                    <span class="tech-tag">Metasploit</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills & Expertise -->
+<section class="section skills-section">
+    <div class="container">
+        <h2 class="section-title">Skills & Expertise</h2>
+        <div class="section-underline"></div>
+        
+        <div class="skills-matrix">
+            <div class="skill-category">
+                <div class="skill-header">
+                    <div class="skill-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="skill-category-title">Cybersecurity</h3>
+                </div>
+                <p class="skill-description">
+                    My cybersecurity expertise focuses on identifying, assessing, and mitigating security vulnerabilities in web applications, APIs, and network infrastructure. I specialize in penetration testing, vulnerability assessment, and implementing robust security measures.
+                </p>
+                <div class="skill-progress-container">
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">VAPT</span>
+                            <span class="skill-percentage">90%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-bar security-bar" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">OWASP Top 10</span>
+                            <span class="skill-percentage">95%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-bar security-bar" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">API Security</span>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-bar security-bar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Network Security</span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-bar security-bar" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tools-section">
+                    <h4 class="tools-title">Tools & Technologies:</h4>
+                    <div class="tools-tags">
+                        <span class="tool-tag">Burp Suite</span>
+                        <span class="tool-tag">OWASP ZAP</span>
+                        <span class="tool-tag">Metasploit</span>
+                        <span class="tool-tag">Nessus</span>
+                        <span class="tool-tag">Wireshark</span>
+                        <span class="tool-tag">Nmap</span>
+                        <span class="tool-tag">Kali Linux</span>
+                        <span class="tool-tag">IDS/IPS</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <div class="skill-header">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="skill-category-title">Development</h3>
+                </div>
+                <p class="skill-description">
+                    I build secure, scalable applications with a focus on backend systems, APIs, and database design. My development approach emphasizes clean code, performance optimization, and security best practices.
+                </p>
+                <div class="skill-progress-container">
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Backend Development</span>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-bar development-bar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">API Development</span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-bar development-bar" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Database Management</span>
+                            <span class="skill-percentage">75%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-bar development-bar" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Cloud Services</span>
+                            <span class="skill-percentage">70%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-bar development-bar" style="width: 70%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tools-section">
+                    <h4 class="tools-title">Tools & Technologies:</h4>
+                    <div class="tools-tags">
+                        <span class="tool-tag">Python</span>
+                        <span class="tool-tag">Java</span>
+                        <span class="tool-tag">Spring Boot</span>
+                        <span class="tool-tag">Flask</span>
+                        <span class="tool-tag">RESTful APIs</span>
+                        <span class="tool-tag">MySQL</span>
+                        <span class="tool-tag">PostgreSQL</span>
+                        <span class="tool-tag">MongoDB</span>
+                        <span class="tool-tag">AWS</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <div class="skill-header">
+                    <div class="skill-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="skill-category-title">AI & ML</h3>
+                </div>
+                <p class="skill-description">
+                    I leverage AI and machine learning to build intelligent systems that provide valuable insights and enhance user experiences. My focus areas include retrieval-augmented generation, natural language processing, and predictive analytics.
+                </p>
+                <div class="skill-progress-container">
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">RAG Systems</span>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-bar ai-bar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">NLP</span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-bar ai-bar" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Machine Learning</span>
+                            <span class="skill-percentage">75%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-bar ai-bar" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">LLM Fine-tuning</span>
+                            <span class="skill-percentage">70%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-bar ai-bar" style="width: 70%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tools-section">
+                    <h4 class="tools-title">Tools & Technologies:</h4>
+                    <div class="tools-tags">
+                        <span class="tool-tag">LangChain</span>
+                        <span class="tool-tag">ChromaDB</span>
+                        <span class="tool-tag">TinyLlama</span>
+                        <span class="tool-tag">Hugging Face</span>
+                        <span class="tool-tag">PyTorch</span>
+                        <span class="tool-tag">TensorFlow</span>
+                        <span class="tool-tag">FAISS</span>
+                        <span class="tool-tag">Scikit-learn</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Certifications -->
+<section class="section bg-light certifications-section">
+    <div class="container">
+        <h2 class="section-title">Professional Certifications</h2>
+        <div class="section-underline"></div>
+        
+        <div class="certifications-grid">
+            <div class="certification-card">
+                <div class="certification-header">
+                    <div class="certification-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="certification-title">Cyber Security And Digital Forensics</h3>
+                </div>
+                <div class="certification-content">
+                    <div class="certification-issuer">IIIT Kota</div>
+                    <p class="certification-description">
+                        Advanced training in cybersecurity principles and digital forensics techniques.
+                    </p>
+                    <div class="certification-skills">
+                        <span class="cert-tag">Digital Forensics</span>
+                        <span class="cert-tag">Incident Response</span>
+                        <span class="cert-tag">Malware Analysis</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="certification-card">
+                <div class="certification-header">
+                    <div class="certification-icon">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <h3 class="certification-title">VAPT Certification</h3>
+                </div>
+                <div class="certification-content">
+                    <div class="certification-issuer">Internshala</div>
+                    <p class="certification-description">
+                        Comprehensive training in vulnerability assessment and penetration testing.
+                    </p>
+                    <div class="certification-skills">
+                        <span class="cert-tag">Penetration Testing</span>
+                        <span class="cert-tag">Security Assessment</span>
+                        <span class="cert-tag">Risk Analysis</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="certification-card">
+                <div class="certification-header">
+                    <div class="certification-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="certification-title">Web Development</h3>
+                </div>
+                <div class="certification-content">
+                    <div class="certification-issuer">Internshala</div>
+                    <p class="certification-description">
+                        Comprehensive training in modern web development technologies and best practices.
+                    </p>
+                    <div class="certification-skills">
+                        <span class="cert-tag">Frontend</span>
+                        <span class="cert-tag">Backend</span>
+                        <span class="cert-tag">Database</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="section">
+    <div class="container text-center">
+        <h2 class="section-title">Ready to Collaborate?</h2>
+        <p class="mb-4">Let's discuss how my experience can benefit your next project.</p>
+        <div class="cta-buttons">
+            <a href="{{ url_for('contact') }}" class="btn btn-primary me-3">Get In Touch</a>
+            <a href="{{ url_for('static', filename='files/arpit pal_Resume (1).pdf') }}" class="btn btn-outline" target="_blank">
+                <i class="fas fa-download me-2"></i>Download Resume
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block custom_css %}
+<style>
+    /* Light mode variables */
+    :root {
+        --heading-color: #1e293b;
+        --text-color: #334155;
+        --text-color-secondary: #475569;
+        --text-color-muted: #64748b;
+        --accent-primary: #ffd700;
+        --accent-secondary: #9acd32;
+        --accent-tertiary: #7cb342;
+        --accent-highlight: #fcd34d;
+        --card-bg: #ffffff;
+        --percentage-bg: #fcd34d;
+        --percentage-border: #fbbf24;
+        --percentage-color: #000000;
+        --section-bg: #f8fafc;
+        --track-bg: #f1f1f1;
+        --timeline-bg: #f8fafc;
+        --timeline-marker-color: #ffd700;
+        --timeline-line-color: #cbd5e1;
+        --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        --card-hover-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        --stat-item-bg: #ffffff;
+        --stat-number-color: #ffc107;
+        --chart-line-color: #ffc107;
+        --chart-point-color: #ffc107;
+        --chart-area-color: rgba(255, 193, 7, 0.2);
+        --chart-grid-color: rgba(0, 0, 0, 0.1);
+        --chart-text-color: #1e293b;
+        --chart-point-border: #ffffff;
+        --chart-hover-color: #8dc63f;
+    }
+
+    /* Dark mode overrides */
+    body.dark-theme {
+        --heading-color: #ffffff;
+        --text-color: #ffffff;
+        --text-color-secondary: #e2e8f0;
+        --text-color-muted: #cbd5e1;
+        --card-bg: #1e293b;
+        --section-bg: #0f172a;
+        --timeline-bg: #0f172a;
+        --track-bg: #334155;
+        --timeline-line-color: #334155;
+        --description-bg: #1e293b;
+        --tool-tag-bg: #334155;
+        --tool-tag-color: #ffffff;
+        --tool-tag-border: #475569;
+        --cert-tag-bg: #334155;
+        --cert-border-color: #475569;
+        --skills-bg: #0f172a;
+        --chart-line-color: #fcd34d;
+        --chart-point-color: #fcd34d;
+        --chart-area-color: rgba(252, 211, 77, 0.15);
+        --chart-text-color: #ffffff;
+        --chart-point-border: #1e293b;
+        --chart-hover-color: #fbbf24;
+        --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        --card-hover-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        --stat-item-bg: #1e293b;
+        --stat-number-color: #fcd34d;
+        --stat-label-color: #ffffff;
+        --stat-item-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        --stat-item-hover-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    body.dark-theme .company-logo {
+        background-color: #334155;
+        border-color: #475569;
+    }
+
+    body.dark-theme .experience-card {
+        border-color: #475569;
+        background-color: var(--card-bg);
+    }
+
+    body.dark-theme .experience-header {
+        border-bottom-color: #475569;
+    }
+
+    body.dark-theme .section-subtitle {
+        border-bottom-color: #475569;
+        color: var(--heading-color);
+    }
+
+    body.dark-theme .progress-track {
+        background-color: #334155;
+    }
+
+    body.dark-theme .skill-category {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        background-color: var(--card-bg);
+    }
+
+    body.dark-theme .skill-category:hover {
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    body.dark-theme .certification-card {
+        border-color: #475569;
+        background-color: var(--card-bg);
+    }
+
+    /* Enhance text visibility in dark mode */
+    body.dark-theme .section-title {
+        color: var(--heading-color) !important;
+        text-shadow: 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+
+    body.dark-theme .experience-title {
+        color: var(--heading-color) !important;
+        text-shadow: 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+
+    body.dark-theme .skill-category-title {
+        color: var(--heading-color) !important;
+        text-shadow: 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+
+    body.dark-theme .stat-number {
+        color: var(--stat-number-color);
+        text-shadow: 0 0 15px rgba(252, 211, 77, 0.3);
+    }
+
+    body.dark-theme .stat-label {
+        color: var(--stat-label-color);
+    }
+
+    body.dark-theme .company-name span {
+        color: var(--text-color);
+    }
+
+    body.dark-theme .experience-period,
+    body.dark-theme .experience-location {
+        color: var(--text-color-secondary);
+    }
+
+    body.dark-theme .experience-description {
+        color: var(--text-color);
+        background-color: var(--description-bg);
+    }
+
+    body.dark-theme .styled-list li {
+        color: var(--text-color);
+    }
+
+    body.dark-theme .lead {
+        color: var(--text-color);
+    }
+
+    body.dark-theme .experience-summary {
+        color: var(--text-color-secondary);
+    }
+
+    /* Skills section text visibility */
+    body.dark-theme .skill-name {
+        color: var(--text-color);
+    }
+
+    body.dark-theme .skill-percentage {
+        background-color: #fcd34d;
+        color: #000000;
+        border-color: #fbbf24;
+    }
+
+    body.dark-theme .skill-description {
+        color: var(--text-color);
+    }
+
+    /* Tools section text visibility */
+    body.dark-theme .tools-title {
+        color: var(--text-color);
+    }
+
+    body.dark-theme .tech-tag,
+    body.dark-theme .tool-tag {
+        color: var(--tool-tag-color);
+        background-color: var(--tool-tag-bg);
+        border-color: var(--tool-tag-border);
+    }
+
+    body.dark-theme .tech-tag:hover,
+    body.dark-theme .tool-tag:hover {
+        background-color: var(--percentage-bg);
+        color: var(--percentage-color);
+        border-color: var(--percentage-border);
+    }
+
+    /* Certification section text visibility */
+    body.dark-theme .certification-title {
+        color: var(--text-color) !important;
+    }
+
+    body.dark-theme .certification-description {
+        color: var(--text-color);
+    }
+
+    body.dark-theme .certification-issuer {
+        color: var(--text-color-secondary);
+    }
+
+    body.dark-theme .cert-tag {
+        color: var(--cert-tag-color);
+        background-color: var(--cert-tag-bg);
+        border-color: var(--cert-border-color);
+    }
+
+    body.dark-theme .cert-tag:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--card-shadow);
+        background-color: var(--accent-highlight);
+        color: var(--percentage-color);
+        border-color: var(--percentage-border);
+    }
+
+    /* Fix icon colors */
+    body.dark-theme .skill-icon {
+        color: #ffffff;
+    }
+
+    body.dark-theme .certification-icon {
+        color: #ffffff;
+    }
+
+    /* Ensure list markers are visible */
+    body.dark-theme .styled-list li:before {
+        color: var(--percentage-bg);
+    }
+
+    body.dark-theme .achievement-list li:before {
+        color: var(--percentage-bg);
+    }
+
+    /* Chart text visibility */
+    body.dark-theme #experienceChart {
+        color: var(--text-color) !important;
+    }
+
+    body.dark-theme .chart-legend {
+        color: var(--text-color);
+    }
+
+    /* Experience Chart Container */
+    .experience-chart-container {
+        background: var(--card-bg);
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: var(--card-shadow);
+        position: relative;
+    }
+
+    body.dark-theme .experience-chart-container {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Basic transitions for hover effects */
+    .stat-item, .experience-card, .certification-card {
+        transform: translateY(0);
+        transition: transform 0.3s ease,
+                    box-shadow 0.3s ease,
+                    background-color 0.3s ease;
+    }
+
+    .stat-item:hover, .experience-card:hover, .certification-card:hover {
+        transform: translateY(-5px);
+    }
+
+    /* Update text colors to use CSS variables */
+    .page-title, .section-title, .experience-title, .certification-title {
+        color: var(--heading-color);
+    }
+
+    .lead, .experience-summary, .experience-description, .skill-description, 
+    .certification-description, .styled-list li, .company-name span {
+        color: var(--text-color);
+    }
+
+    .experience-period, .experience-location, .certification-issuer {
+        color: var(--text-color-secondary);
+    }
+
+    .stat-label {
+        color: var(--text-color-muted);
+    }
+
+    /* Update accent colors */
+    .skill-category:nth-child(1) {
+        border-top-color: #ffc107;
+    }
+
+    .skill-category:nth-child(2) {
+        border-top-color: #8dc63f;
+    }
+
+    .skill-category:nth-child(3) {
+        border-top-color: #7cb342;
+    }
+
+    /* Update hover states */
+    .tool-tag:hover, .tech-tag:hover {
+        background-color: var(--accent-highlight);
+        color: var(--percentage-color);
+        border-color: var(--percentage-border);
+    }
+
+    /* Update chart colors */
+    #experienceChart {
+        color: var(--text-color);
+    }
+
+    /* Career Journey Section */
+    .career-journey-section {
+        padding: 5rem 0;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--heading-color);
+        margin-bottom: 2rem;
+    }
+
+    .section-underline {
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        margin: 0 auto 3rem;
+        border-radius: 2px;
+    }
+
+    .experience-overview {
+        padding: 2rem;
+        background: var(--card-bg);
+        border-radius: 12px;
+        box-shadow: var(--card-shadow);
+    }
+
+    .lead {
+        font-size: 1.5rem;
+        line-height: 1.6;
+        color: var(--text-color);
+        margin-bottom: 1.5rem;
+    }
+
+    .experience-summary {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: var(--text-color-secondary);
+        margin-bottom: 2rem;
+    }
+
+    .experience-stats {
+        display: flex;
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+
+    .stat-item {
+        flex: 1;
+        background: var(--stat-item-bg);
+        border-radius: 12px;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: var(--card-shadow);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .stat-item:hover {
+        transform: translateY(-5px);
+    }
+
+    .stat-number {
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--stat-number-color);
+        line-height: 1;
+        margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+        font-size: 1rem;
+        color: var(--stat-label-color);
+        font-weight: 500;
+        text-align: center;
+        line-height: 1.2;
+    }
+
+    /* Timeline Section Styling */
+    .timeline-section {
+        padding: 5rem 0;
+        background-color: var(--timeline-bg);
+        position: relative;
+    }
+    
+    .timeline-section .section-title {
+        color: var(--heading-color);
+        font-weight: 800;
+        text-align: center;
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .experience-timeline {
+        position: relative;
+        max-width: 1200px;
+        margin: 4rem auto 0;
+    }
+    
+    .experience-timeline:before {
+        content: '';
+        position: absolute;
+        left: 20px;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: var(--timeline-line-color);
+        z-index: 1;
+    }
+    
+    .timeline-item {
+        position: relative;
+        padding-left: 60px;
+        margin-bottom: 4rem;
+    }
+    
+    .timeline-item:last-child {
+        margin-bottom: 0;
+    }
+    
+    .timeline-marker {
+        position: absolute;
+        left: 0;
+        top: 20px;
+        width: 40px;
+        height: 40px;
+        background-color: var(--timeline-marker-color);
+        border-radius: 50%;
+        z-index: 2;
+        box-shadow: 0 0 0 5px rgba(255, 193, 7, 0.2);
+        transition: all 0.3s ease;
+    }
+    
+    .timeline-item:hover .timeline-marker {
+        transform: scale(1.2);
+        box-shadow: 0 0 0 8px rgba(255, 193, 7, 0.3);
+    }
+    
+    .timeline-content {
+        position: relative;
+    }
+    
+    .experience-card {
+        background-color: var(--card-bg);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: var(--card-shadow);
+        transition: all 0.3s ease;
+        border-left: 5px solid transparent;
+    }
+    
+    .experience-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--card-hover-shadow);
+    }
+    
+    .ditansource-card {
+        border-left-color: #ffc107;
+    }
+    
+    .predusk-card {
+        border-left-color: #8dc63f;
+    }
+    
+    .ditanbiz-card {
+        border-left-color: #7cb342;
+    }
+    
+    .experience-header {
+        display: flex;
+        gap: 1.5rem;
+        padding: 2rem 2rem 1rem;
+        border-bottom: 1px solid rgba(203, 213, 225, 0.2);
+    }
+    
+    .company-logo-link {
+        display: block;
+        position: relative;
+        transition: transform 0.3s ease;
+    }
+    
+    .company-logo-link:hover {
+        transform: scale(1.05);
+    }
+    
+    .company-logo {
+        width: 80px;
+        height: 80px;
+        border-radius: 12px;
+        overflow: hidden;
+        background-color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(203, 213, 225, 0.5);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+    
+    .company-logo img {
+        max-width: 80%;
+        max-height: 80%;
+        transition: transform 0.3s ease;
+    }
+    
+    .company-logo:hover img {
+        transform: scale(1.1);
+    }
+    
+    .experience-info {
+        flex: 1;
+    }
+    
+    .experience-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--heading-color);
+        margin-bottom: 0.75rem;
+        line-height: 1.3;
+    }
+    
+    .company-name {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .company-name-logo {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    
+    .company-name span {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--text-color);
+    }
+    
+    .experience-meta {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+    }
+    
+    .experience-period, .experience-location {
+        font-size: 0.9rem;
+        color: var(--text-color);
+        opacity: 0.8;
+        display: flex;
+        align-items: center;
+    }
+    
+    .experience-period i, .experience-location i {
+        color: #fcd34d;
+    }
+    
+    .experience-body {
+        padding: 2rem;
+    }
+    
+    .experience-description {
+        font-size: 1.05rem;
+        line-height: 1.7;
+        color: var(--text-color);
+        margin-bottom: 2rem;
+        padding: 1.25rem;
+        background-color: var(--description-bg);
+        border-radius: 8px;
+        border-left: 3px solid var(--description-border);
+    }
+    
+    .section-subtitle {
+        font-size: 1.15rem;
+        color: var(--heading-color);
+        font-weight: 700;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        position: relative;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid rgba(203, 213, 225, 0.3);
+    }
+    
+    .key-responsibilities .section-subtitle:before {
+        content: '\f0ad';
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        color: #fcd34d;
+    }
+    
+    .achievements .section-subtitle:before {
+        content: '\f091';
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        color: #fcd34d;
+    }
+    
+    .tech-stack .section-subtitle:before {
+        content: '\f7d9';
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        color: #fcd34d;
+    }
+    
+    .styled-list {
+        list-style: none;
+        padding-left: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .styled-list li {
+        position: relative;
+        margin-bottom: 0.75rem;
+        padding-left: 1.5rem;
+        line-height: 1.6;
+        color: var(--text-color);
+    }
+    
+    .styled-list li:before {
+        content: '\f00c';
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        position: absolute;
+        left: 0;
+        color: #ffc107;
+    }
+    
+    .achievement-list li:before {
+        content: '\f005';
+        color: #fcd34d;
+    }
+    
+    .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+    
+    .tech-tag {
+        font-size: 0.85rem;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        background-color: var(--tool-tag-bg);
+        color: var(--tool-tag-color);
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border: 1px solid transparent;
+    }
+    
+    .tech-tag:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        background-color: var(--tool-tag-hover-bg);
+        color: #000000;
+        border-color: #fbbf24;
+    }
+    
+    /* Enhanced Skills & Expertise Section */
+    .skills-section {
+        padding: 5rem 0;
+        background-color: var(--skills-bg);
+        position: relative;
+    }
+    
+    .skills-section .section-title {
+        position: relative;
+        color: var(--heading-color);
+        font-weight: 800;
+        margin-bottom: 1rem;
+        text-align: center;
+        font-size: 2.2rem;
+    }
+    
+    .section-underline {
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        margin: 0 auto 3rem;
+        border-radius: 2px;
+    }
+    
+    .skills-matrix {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2.5rem;
+    }
+    
+    .skill-category {
+        background-color: var(--card-bg);
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+        border-top: 5px solid transparent;
+    }
+    
+    .skill-category:hover {
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 15px rgba(129, 140, 248, 0.3);
+        transform: translateY(-10px);
+    }
+    
+    .skill-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    .skill-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        font-size: 1.5rem;
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        color: white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .skill-category:nth-child(1) .skill-icon {
+        background: linear-gradient(135deg, #ffc107, #8dc63f);
+    }
+    
+    .skill-category:nth-child(2) .skill-icon {
+        background: linear-gradient(135deg, #8dc63f, #ffc107);
+    }
+    
+    .skill-category:nth-child(3) .skill-icon {
+        background: linear-gradient(135deg, #7cb342, #ffc107);
+    }
+    
+    .skill-category-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0;
+        color: var(--text-color);
+    }
+    
+    .skill-description {
+        color: var(--text-color);
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+    
+    .skill-progress-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .skill-item {
+        width: 100%;
+    }
+    
+    .skill-info {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+    }
+    
+    .skill-name {
+        color: var(--text-color);
+        font-weight: 600;
+        font-size: 1.05rem;
+    }
+    
+    .skill-percentage {
+        font-weight: 700;
+        color: var(--percentage-color);
+        position: relative;
+        padding: 2px 8px;
+        border-radius: 12px;
+        background-color: var(--percentage-bg);
+        border: 1px solid var(--percentage-border);
+    }
+    
+    .progress-track {
+        width: 100%;
+        height: 12px;
+        background-color: var(--track-bg);
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .progress-bar {
+        height: 100%;
+        border-radius: 10px;
+        position: relative;
+        transition: width 1.5s ease-in-out;
+    }
+    
+    .security-bar {
+        background: linear-gradient(90deg, #fbbf24, #fcd34d);
+    }
+    
+    .development-bar {
+        background: linear-gradient(90deg, #fbbf24, #fcd34d);
+    }
+    
+    .ai-bar {
+        background: linear-gradient(90deg, #fbbf24, #fcd34d);
+    }
+    
+    /* Tools section styling */
+    .tools-section {
+        margin-top: 1rem;
+    }
+    
+    .tools-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text-color);
+        margin-bottom: 0.75rem;
+    }
+    
+    .tools-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .tool-tag {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.8rem;
+        border-radius: 50px;
+        background-color: var(--tool-tag-bg);
+        color: var(--tool-tag-color);
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border: 1px solid var(--tool-tag-border);
+    }
+    
+    .tool-tag:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        background-color: var(--tool-tag-hover-bg);
+        color: #000000;
+        border-color: #fbbf24;
+    }
+    
+    /* Animation for progress bars */
+    @keyframes progressAnimation {
+        0% {
+            width: 0;
+        }
+    }
+    
+    .progress-bar {
+        animation: progressAnimation 1.5s ease-in-out forwards;
+    }
+    
+    /* Enhanced Certifications Section */
+    .certifications-section {
+        padding: 5rem 0;
+        background-color: var(--section-bg);
+    }
+    
+    .certifications-section .section-title {
+        color: var(--heading-color);
+        font-weight: 800;
+        text-align: center;
+        font-size: 2.2rem;
+    }
+    
+    .certifications-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2.5rem;
+        margin-top: 2rem;
+    }
+    
+    .certification-card {
+        background-color: var(--card-bg);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: var(--card-shadow);
+        transition: all 0.3s ease;
+        border-top: 5px solid transparent;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .certification-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--card-hover-shadow);
+    }
+    
+    .certification-card:nth-child(1) {
+        border-top-color: #ffc107;
+    }
+    
+    .certification-card:nth-child(2) {
+        border-top-color: #8dc63f;
+    }
+    
+    .certification-card:nth-child(3) {
+        border-top-color: #7cb342;
+    }
+    
+    .certification-header {
+        padding: 1.5rem 1.5rem 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .certification-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        color: var(--heading-color);
+        background-color: var(--card-bg);
+        box-shadow: var(--card-shadow);
+        flex-shrink: 0;
+    }
+    
+    .certification-card:nth-child(1) .certification-icon {
+        background: linear-gradient(135deg, #ffc107, #8dc63f);
+        color: white;
+    }
+    
+    .certification-card:nth-child(2) .certification-icon {
+        background: linear-gradient(135deg, #8dc63f, #ffc107);
+        color: white;
+    }
+    
+    .certification-card:nth-child(3) .certification-icon {
+        background: linear-gradient(135deg, #7cb342, #ffc107);
+        color: white;
+    }
+    
+    .certification-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin: 0;
+        color: var(--heading-color);
+        line-height: 1.3;
+    }
+    
+    .certification-content {
+        padding: 0.5rem 1.5rem 1.5rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .certification-issuer {
+        font-size: 1rem;
+        color: var(--text-color-secondary);
+        margin-bottom: 1rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+    }
+    
+    .certification-issuer:before {
+        content: '\f19d';
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        margin-right: 0.5rem;
+        color: #fcd34d;
+    }
+    
+    .certification-description {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: var(--text-color);
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid var(--cert-border-color);
+        padding-bottom: 1.5rem;
+        flex-grow: 1;
+    }
+    
+    .certification-skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: auto;
+    }
+    
+    .cert-tag {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+        border-radius: 50px;
+        background-color: var(--cert-tag-bg);
+        color: var(--text-color);
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border: 1px solid var(--cert-border-color);
+    }
+    
+    .cert-tag:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--card-shadow);
+        background-color: var(--accent-highlight);
+        color: var(--percentage-color);
+        border-color: var(--percentage-border);
+    }
+    
+    .certification-card:nth-child(1) .cert-tag:hover {
+        background-color: #fcd34d;
+        color: #000000;
+        border-color: #fbbf24;
+    }
+    
+    .certification-card:nth-child(2) .cert-tag:hover {
+        background-color: #fcd34d;
+        color: #000000;
+        border-color: #fbbf24;
+    }
+    
+    .certification-card:nth-child(3) .cert-tag:hover {
+        background-color: #fcd34d;
+        color: #000000;
+        border-color: #fbbf24;
+    }
+
+    /* Page header styling to match projects page */
+    .page-header {
+        background: linear-gradient(135deg, var(--bg-color), var(--bg-secondary));
+        padding: 3.5rem 0 3rem;
+        margin-bottom: 0;
+        border-bottom: 3px solid var(--accent-primary);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        position: relative;
+    }
+    
+    .page-header:after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), var(--accent-primary));
+        background-size: 200% 100%;
+        animation: gradient-shift 8s ease infinite;
+    }
+    
+    @keyframes gradient-shift {
+        0% {background-position: 0% 50%}
+        50% {background-position: 100% 50%}
+        100% {background-position: 0% 50%}
+    }
+    
+    .page-title {
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: #000000;
+        margin-bottom: 0.5rem;
+        position: relative;
+        display: inline-block;
+        letter-spacing: -0.5px;
+    }
+    
+    .page-title:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        border-radius: 2px;
+    }
+    
+    .breadcrumb {
+        background-color: transparent;
+        padding: 0;
+        margin: 0;
+        margin-top: 1.5rem;
+    }
+    
+    .breadcrumb-item a {
+        color: #000000;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    
+    .breadcrumb-item a:hover {
+        color: var(--accent-primary);
+    }
+    
+    .breadcrumb-item.active {
+        color: #000000;
+        opacity: 0.7;
+    }
+    
+    /* Dark mode specific styles */
+    body.dark-theme .page-title,
+    body.dark-theme .breadcrumb-item.active {
+        color: var(--text-on-dark);
+    }
+    
+    body.dark-theme .breadcrumb-item a {
+        color: var(--text-on-dark);
+    }
+</style>
+{% endblock %}
+
+{% block custom_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Basic Experience Chart
+        const ctx = document.getElementById('experienceChart').getContext('2d');
+        
+        const experienceChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: [
+                    'Cybersecurity',
+                    'Backend Development',
+                    'AI & ML',
+                    'API Security',
+                    'Cloud & DevOps',
+                    'Team Leadership'
+                ],
+                datasets: [{
+                    label: 'Experience Level',
+                    data: [90, 85, 80, 85, 75, 80],
+                    backgroundColor: 'rgba(255, 193, 7, 0.2)',
+                    borderColor: '#ffc107',
+                    pointBackgroundColor: '#ffc107',
+                    pointBorderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true
+            }
+        });
+
+        // Animate stats counters
+        const animateValue = (element, start, end, duration) => {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                element.textContent = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        };
+        
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = entry.target;
+                    const countValue = parseInt(target.getAttribute('data-count'));
+                    animateValue(target, 0, countValue, 2000);
+                    statsObserver.unobserve(target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        document.querySelectorAll('.stat-number').forEach(number => {
+            statsObserver.observe(number);
+        });
+        
+        // Animate progress bars
+        const progressObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = entry.target;
+                    const width = target.style.width;
+                    target.style.width = '0%';
+                    setTimeout(() => {
+                        target.style.width = width;
+                    }, 100);
+                    progressObserver.unobserve(target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        document.querySelectorAll('.progress-bar').forEach(bar => {
+            progressObserver.observe(bar);
+        });
+    });
+</script>
+{% endblock %} 

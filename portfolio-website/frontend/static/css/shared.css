@@ -1,0 +1,93 @@
+/* Shared CSS styles for common elements across the portfolio website */
+
+/* Technology tags visibility fix for dark mode */
+body.dark-theme .tech-tag,
+body.dark-theme .badge,
+body.dark-theme .tech-badge,
+body.dark-theme .project-tech span,
+body.dark-theme .project-tags span,
+body.dark-theme [class*="tech-"] {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-weight: 500;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+    padding: 0.4rem 0.8rem;
+    border-radius: 50px;
+    display: inline-block;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+
+body.dark-theme .project-card .tech-tag:hover,
+body.dark-theme .project-card .badge:hover,
+body.dark-theme .project-card .tech-badge:hover,
+body.dark-theme .project-card .project-tech span:hover,
+body.dark-theme .project-card .project-tags span:hover,
+body.dark-theme .project-card [class*="tech-"]:hover {
+    background-color: rgba(255, 215, 0, 0.25) !important;
+    color: #ffd700 !important;
+    border-color: rgba(255, 215, 0, 0.5);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced visibility for links in dark mode */
+body.dark-theme a:not(.btn):not(.nav-link) {
+    color: #ffd700;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+body.dark-theme a:not(.btn):not(.nav-link):hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* Improved button visibility in dark mode */
+body.dark-theme .btn {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-theme .btn-primary {
+    background-color: #ffd700;
+    border-color: #ffd700;
+    color: #000000;
+}
+
+body.dark-theme .btn-secondary {
+    background-color: #9acd32;
+    border-color: #9acd32;
+    color: #000000;
+}
+
+body.dark-theme .btn-outline-primary {
+    border-color: #ffd700;
+    color: #ffd700;
+}
+
+body.dark-theme .btn-outline-primary:hover {
+    background-color: #ffd700;
+    color: #000000;
+}
+
+/* Project technology tag specific styles */
+.tech-tag {
+    padding: 0.35rem 0.75rem;
+    border-radius: 50px;
+    background-color: #f5f5f5;
+    color: #333;
+    display: inline-block;
+    margin: 0.25rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.tech-tag:hover {
+    background-color: #e5e5e5;
+    transform: translateY(-1px);
+} 

@@ -1,0 +1,220 @@
+/* Hero Section */
+.hero {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("../images/hero-pattern.svg") repeat;
+    opacity: 0.1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    color: var(--text-color);
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    color: var(--text-color);
+}
+
+.hero-buttons {
+    margin-bottom: 3rem;
+}
+
+/* Experience Cards */
+.experience-section {
+    padding: 4rem 0;
+}
+
+/* Base card styles */
+.iiit-kota-card,
+.infosys-card,
+.jpmc-card,
+.walmart-card {
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    margin-bottom: 1rem;
+    background: var(--card-bg);
+}
+
+/* Institution name styles */
+.institution-name {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.5rem;
+}
+
+.institution-primary {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 0.2rem;
+}
+
+.institution-secondary {
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+/* IIIT Kota Card */
+.iiit-kota-card {
+    border: 2px solid #003366;
+}
+
+.iiit-kota-card:hover {
+    border-color: #FF6600;
+    box-shadow: 0 15px 30px rgba(255, 102, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+.iiit-kota-card .institution-primary {
+    color: #003366;
+}
+
+.iiit-kota-card .institution-secondary {
+    color: #FF6600;
+}
+
+/* Infosys Card */
+.infosys-card {
+    border: 2px solid #0082CA;
+}
+
+.infosys-card:hover {
+    border-color: #FF5722;
+    box-shadow: 0 15px 30px rgba(255, 87, 34, 0.15);
+    transform: translateY(-5px);
+}
+
+.infosys-card .institution-primary {
+    color: #0082CA;
+}
+
+.infosys-card .institution-secondary {
+    color: #FF5722;
+}
+
+/* JPMorgan Chase Card */
+.jpmc-card {
+    border: 2px solid #8B4513;
+}
+
+.jpmc-card:hover {
+    border-color: #C19A6B;
+    box-shadow: 0 15px 30px rgba(139, 69, 19, 0.15);
+    transform: translateY(-5px);
+}
+
+.jpmc-card .institution-primary {
+    color: #8B4513;
+}
+
+.jpmc-card .institution-secondary {
+    color: #C19A6B;
+}
+
+/* Walmart Card */
+.walmart-card {
+    border: 2px solid #041E42;
+}
+
+.walmart-card:hover {
+    border-color: #1CD874;
+    box-shadow: 0 15px 30px rgba(28, 216, 116, 0.15);
+    transform: translateY(-5px);
+}
+
+.walmart-card .institution-primary {
+    color: #041E42;
+}
+
+.walmart-card .institution-secondary {
+    color: #1CD874;
+}
+
+/* Dark Mode Overrides */
+body.dark-theme .hero-title,
+body.dark-theme .hero-description {
+    color: var(--text-on-dark);
+}
+
+/* Dark theme card overrides */
+body.dark-theme .iiit-kota-card,
+body.dark-theme .infosys-card,
+body.dark-theme .jpmc-card,
+body.dark-theme .walmart-card {
+    background: var(--card-bg-dark);
+}
+
+/* IIIT Kota Dark Theme */
+body.dark-theme .iiit-kota-card .institution-primary {
+    color: #FF6600;
+}
+
+body.dark-theme .iiit-kota-card .institution-secondary {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Infosys Dark Theme */
+body.dark-theme .infosys-card .institution-primary {
+    color: #0082CA;
+}
+
+body.dark-theme .infosys-card .institution-secondary {
+    color: #FF5722;
+}
+
+/* JPMC Dark Theme */
+body.dark-theme .jpmc-card .institution-primary {
+    color: #C19A6B;
+}
+
+body.dark-theme .jpmc-card .institution-secondary {
+    color: #E6C9A8;
+}
+
+/* Walmart Dark Theme */
+body.dark-theme .walmart-card .institution-primary {
+    color: #1CD874;
+}
+
+body.dark-theme .walmart-card .institution-secondary {
+    color: #9EEFC3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero {
+        padding: 4rem 0;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .experience-section {
+        padding: 2rem 0;
+    }
+} 
