@@ -1,0 +1,4 @@
+Flask==2.0.1
+Werkzeug==2.0.1
+setuptools==57.5.0
+gunicorn==20.1.0 

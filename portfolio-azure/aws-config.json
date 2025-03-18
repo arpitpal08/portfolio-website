@@ -1,0 +1,17 @@
+[
+  {
+    "Namespace": "aws:autoscaling:launchconfiguration",
+    "OptionName": "InstanceType",
+    "Value": "t2.micro"
+  },
+  {
+    "Namespace": "aws:elasticbeanstalk:container:python",
+    "OptionName": "WSGIPath",
+    "Value": "app:app"
+  },
+  {
+    "Namespace": "aws:elasticbeanstalk:application:environment",
+    "OptionName": "PYTHONPATH",
+    "Value": "/var/app/current"
+  }
+] 
