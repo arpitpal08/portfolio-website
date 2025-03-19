@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: portfolio-website
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn wsgi:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11
+      - key: PORT
+        value: 8080 
